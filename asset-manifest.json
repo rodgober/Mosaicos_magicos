@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Mosaicos_magicos/static/css/main.ab7136cd.chunk.css",
+    "main.js": "/Mosaicos_magicos/static/js/main.87fd9333.chunk.js",
+    "main.js.map": "/Mosaicos_magicos/static/js/main.87fd9333.chunk.js.map",
+    "runtime-main.js": "/Mosaicos_magicos/static/js/runtime-main.867a0bb4.js",
+    "runtime-main.js.map": "/Mosaicos_magicos/static/js/runtime-main.867a0bb4.js.map",
+    "static/js/2.de7ecc7f.chunk.js": "/Mosaicos_magicos/static/js/2.de7ecc7f.chunk.js",
+    "static/js/2.de7ecc7f.chunk.js.map": "/Mosaicos_magicos/static/js/2.de7ecc7f.chunk.js.map",
+    "static/js/3.b161d4d1.chunk.js": "/Mosaicos_magicos/static/js/3.b161d4d1.chunk.js",
+    "static/js/3.b161d4d1.chunk.js.map": "/Mosaicos_magicos/static/js/3.b161d4d1.chunk.js.map",
+    "index.html": "/Mosaicos_magicos/index.html",
+    "static/css/main.ab7136cd.chunk.css.map": "/Mosaicos_magicos/static/css/main.ab7136cd.chunk.css.map",
+    "static/js/2.de7ecc7f.chunk.js.LICENSE.txt": "/Mosaicos_magicos/static/js/2.de7ecc7f.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/Mosaicos_magicos/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.867a0bb4.js",
+    "static/js/2.de7ecc7f.chunk.js",
+    "static/css/main.ab7136cd.chunk.css",
+    "static/js/main.87fd9333.chunk.js"
+  ]
+}
