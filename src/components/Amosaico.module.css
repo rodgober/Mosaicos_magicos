@@ -1,0 +1,68 @@
+div.relative {
+    position: absolute;
+    bottom: 1000;
+    width: 400px;
+    height: 200px;
+    border: 3px solid #73AD21;
+  }
+
+.mosaicotran {
+    position: relative;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    animation: mymove 5s;
+}
+
+.mosaicotran1 {
+    position: relative;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+}
+
+@keyframes mymove {
+    0%   {left:0px; top:0px;}
+    50%  {left:0px; top:200px;}
+    100% {left:500px; top:200px;}
+}
+
+.horno {
+    position: relative; 
+    left: 0; 
+    top: 0;
+    z-index: -1;
+}
+
+.ocultar {
+    display: none;
+}
+
+  .cfimg {
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .cftop {
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    animation-name: cf3FadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 50;
+    animation-duration: .1s;
+    animation-direction: alternate;
+  }
+
+@keyframes cf3FadeInOut {
+        0% {opacity:1;}
+        45% {opacity:1;}
+        55% {opacity:0;}
+        100% {opacity:0;}
+  }
