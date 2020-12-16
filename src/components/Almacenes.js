@@ -1,5 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import salaContext from '../context/salas/salaContext'
+import styles from './Sala.module.css';
+
+import FolderOpenIcon from '@material-ui/icons/FolderOpen';
+import SaveIcon from '@material-ui/icons/Save';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
 
 import { obtenerXInicialMos, obtenerYInicialMos, obtenerMosXSeleccionado, obtenerXDelMosSeleccionado, obtenerLargoAlmacen, obtenerAltoAlmacen, obtenerNumMosaicosXLargoImagen } from '../helper';
 
@@ -21,7 +29,7 @@ const Almacenes = React.forwardRef((props,ref) => {
             setAlmacen(0);
             setMosSeleccionado(0);
         }
-    }, []);
+    }, [almacen]);
 
 
     const handleChange = e => {
@@ -130,9 +138,8 @@ const Almacenes = React.forwardRef((props,ref) => {
     }
 
     return ( 
-        <div>
-            <div>
-                <p>Almacen</p>
+        <div className={`${styles.tercera_seccion}`} >
+            <div className={`${styles.contenedor_almacen}`} >
                 <canvas
                     ref={ref}
                     id='canv'
@@ -144,25 +151,53 @@ const Almacenes = React.forwardRef((props,ref) => {
 
             <div>
 
-                <input type="file" id="fileUpload" 
-                    onChange={abrirAlmacen}
-                    ref={refInput}/>
+            <Tooltip title="Abrir almacen" arrow>
+                    <Button
+                        component="label"
+                    >
+                        <input
+                            type="file"
+                            id="fileUpload"
+                            style={{ display: "none" }}
+                            onChange={abrirAlmacen}
+                            ref={refInput}
+                        />
+                        <FolderOpenIcon></FolderOpenIcon>
+                    </Button>
+                </Tooltip>
  
+                <Tooltip title="Guardar almacen" arrow>
+                    <Button
+                        type="button"
+                        onClick={ () => guardar() }
+                    >
+                    <SaveIcon>
+                    </SaveIcon>
+                    </Button>
+                </Tooltip>
 
-                <button 
-                    type="button"
-                    onClick={guardar}
-                >Guardar
-                </button>
+                <Tooltip title="Eliminar 1 mosaico" arrow>
+                    <Button
+                            type="button"
+                            onClick={ () => borrarMos() }
+                        >
+                        <HighlightOffIcon
+                            type="button"
+                            fontSize="small"
+                            style={{ color: 'blue' }}
+                    
+                        ></HighlightOffIcon>
+                    </Button>
+                </Tooltip>
 
-                <button
-                    type="button"
-                    onClick={ () => borrarMos() }                
-                >Eliminar 1</button>
-                <button
-                    type="button"
-                    onClick={ () => eliminartodos() }                
-                >Eliminar todos</button>
+                <Tooltip title="Eliminar todos los mosaicos" arrow>
+                    <Button
+                                type="button"
+                                onClick={ () => eliminartodos() }
+                            >
+                        <DeleteOutlineIcon></DeleteOutlineIcon>
+                    </Button>
+                </Tooltip>
 
             </div>
         </div> 

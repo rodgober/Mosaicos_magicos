@@ -1,13 +1,25 @@
 import React, { useEffect, useContext } from 'react';
 import salaContext from '../context/salas/salaContext'
+import styles from './Sala.module.css';
+
+import FolderOpenIcon from '@material-ui/icons/FolderOpen';
+import SaveIcon from '@material-ui/icons/Save';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
+import PrintIcon from '@material-ui/icons/Print';
+
+
 import { obtenerXDelMosSeleccionado, obtenerMosXSeleccionadoMu, obtenerXDelMosSeleccionadoMu, obtenerMosYSeleccionadoMu, obtenerYDelMosSeleccionadoMu } from '../helper';
 
 const Murales = React.forwardRef((props,ref) => {
 
     const salaContexto = useContext(salaContext);
-    const { alto, largo, separacion, almacen, mosSeleccionado, setMosSeleccionado } = salaContexto;
+    const { alto, largo, separacion, mosSeleccionado } = salaContexto;
     const canvasAlmacenes = ref;  // Toma la referencia del canvas del Almacen que se pasa por parámetro en la llamada del componente
     const canvasMural = React.createRef(); //Crea la referencia del canvas del Mural donde se pegan los mosaicos
+    const refInput = React.createRef(); //Crea la referencia al input que permite abrir el mural
+
 
     
 
@@ -55,6 +67,93 @@ const Murales = React.forwardRef((props,ref) => {
         }
     }
 
+    const abrirMuralBtn = e => {
+        console.log('Veo que quieres abrir un mural');
+        
+        const canvas = canvasMural.current;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'white';
+        ctx.strokeStyle = 'white';  
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+    
+        const img = new Image();
+        const file = e.target.files[0];
+        const reader = new FileReader();
+     
+        reader.addEventListener("load", function () {
+          img.src = reader.result;
+        }, false);
+      
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+     
+        img.onload = function() {
+          ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
+        };
+        console.log(img.naturalWidth);
+    }
+
+    const guardar = () => {
+
+            const canvas = canvasMural.current;
+
+            let canvasdwn = document.createElement('canvas'); //Crea el canvas que va a descargar
+            canvasdwn.width = (12*largo)+13; //le coloca el largo del canvas dependiendo de los mosaicos
+            canvasdwn.height = (8*alto)+9;//coloca el alto del canvas
+            var destCtx = canvasdwn.getContext('2d');
+            destCtx.drawImage(canvas, 0, 0); //Copia la imagen del canvas del almacen al canvas que va a descargar con el tamaño mínimo necesario
+            let downloadLink = document.createElement('a');
+            downloadLink.setAttribute('download', 'mural.png');
+            let dataURL = canvasdwn.toDataURL('image/png');
+            let url = dataURL.replace(/^data:image\/png/,'data:application/octet-stream');
+            downloadLink.setAttribute('href',url);
+            downloadLink.click();
+    }
+
+    const imprimir = () => {
+        const canvas = canvasMural.current;
+
+        let canvasdwn = document.createElement('canvas'); //Crea el canvas que va a descargar
+        canvasdwn.width = (12*largo)+13; //le coloca el largo del canvas dependiendo de los mosaicos
+        canvasdwn.height = (8*alto)+9;//coloca el alto del canvas
+        var destCtx = canvasdwn.getContext('2d');
+        destCtx.drawImage(canvas, 0, 0); //Copia la imagen del canvas del almacen al canvas que va a descargar con el tamaño mínimo necesario
+        let downloadLink = document.createElement('a');
+        downloadLink.setAttribute('download', 'mural.png');
+        let dataURL = canvasdwn.toDataURL('image/png');
+
+/*
+        var windowContent = '<!DOCTYPE html>';
+    windowContent += '<html>'
+    windowContent += '<head><title>Murales</title></head>';
+    windowContent += '<body>'
+    windowContent += '<img src="' + dataURL + '">';
+    windowContent += '</body>';
+    windowContent += '</html>';*/
+
+        var windowContent = '<img src="' + dataURL + '">';
+
+        var printWin = window.open('','','width=800,height=600');
+        printWin.document.open();
+        printWin.document.write(windowContent);
+        printWin.document.close();
+        printWin.focus();
+        printWin.print();
+        //printWin.close();
+
+   /*     printWin.document.addEventListener('load', function() {
+            printWin.focus();
+            printWin.print();
+            printWin.document.close();
+        //    printWin.close();            
+        }, true); */
+        
+    }
+
+
+
     useEffect (()=>{
         const mural1 = localStorage.getItem('mural');
         const canvasMu = canvasMural.current;
@@ -74,17 +173,58 @@ const Murales = React.forwardRef((props,ref) => {
 
 
     return ( 
-        <div>
-            <canvas
-                ref={canvasMural}
-                width={(12*largo)+13}
-                height={(8*largo)+9}
-                onClick={handleChange}
-            />
-        <button
-            type="button"
-            onClick={ () => limpiaMuralBtn() } 
-        >Limpiar mural</button>
+        <div className={`${styles.mural_y_toolbar}`}  >
+            <div className={`${styles.cont_mural}`}  >
+                <canvas
+                    ref={canvasMural}
+                    width={(12*largo)+13}
+                    height={(8*largo)+9}
+                    onClick={handleChange}
+                />
+            </div>
+            <div className={`${styles.toolbar}`}  >
+                <Tooltip title="Abrir mural" arrow>
+                    <Button
+                        component="label"
+                    >
+                        <input
+                            type="file"
+                            id="fileUpload"
+                            style={{ display: "none" }}
+                            onChange={abrirMuralBtn}
+                            ref={refInput}
+                        />
+                        <FolderOpenIcon></FolderOpenIcon>
+                    </Button>
+                </Tooltip>
+        
+                <Tooltip title="Guardar mural" arrow>
+                    <Button
+                        type="button"
+                        onClick={ () => guardar() }
+                    >
+                        <SaveIcon></SaveIcon>
+                    </Button>
+                </Tooltip>
+
+                <Tooltip title="Limpiar el mural" arrow>
+                    <Button
+                        type="button"
+                        onClick={ () => limpiaMuralBtn() }
+                    >
+                        <DeleteOutlineIcon></DeleteOutlineIcon>
+                    </Button>
+                </Tooltip>
+
+                <Tooltip title="Imprimir mural" arrow>
+                    <Button
+                        type="button"
+                        onClick={ () => imprimir() }
+                    >
+                        <PrintIcon></PrintIcon>
+                    </Button>
+                </Tooltip>   
+            </div>
         </div>
     );
 });

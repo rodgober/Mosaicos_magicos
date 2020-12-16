@@ -1,0 +1,34 @@
+.menu_izq  {
+    padding: 1rem;
+    background-color: #90abc0;
+    flex: 0 0 30px;
+  }
+
+
+  /*320px — 480px: Mobile devices. */
+  @media screen and (max-width: 480px) {
+    .menu_izq  {
+      display: none;
+    }
+  }
+
+  /*    481px — 768px: iPads, Tablets.*/
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    .menu_izq {
+      display: none;
+    }
+  }
+/* 769px — 1024px: Small screens, laptops. */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .menu_izq {
+      display: none;
+    }
+  }
+
+
+    /* 1201px and more — Extra large screens, TV. */
+    @media screen and (min-width: 1201px) {
+      .menu_izq  {
+        padding: 5rem;
+      }
+    }

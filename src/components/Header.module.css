@@ -1,0 +1,141 @@
+.header {
+    background: rgb(33,56,100);
+    background: -moz-linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
+    background: linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#213864",endColorstr="#648baa",GradientType=1);
+  
+}
+  
+  .header_contenedor{
+    display: grid;
+    margin: 0 auto;
+    max-width: 1200px;
+    max-height: 100px;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-areas: "logo" "menu" "configuracion"
+  }
+  
+  .header_contenedor > * {
+      padding: 1rem;
+  }
+
+  .header_contenedor {
+    grid-template-areas: 
+    "logo menu menu configuracion";
+    grid-template-columns: 4, 1fr;
+    justify-content: center;
+  }
+
+  .logo {
+    grid-area: logo;
+  }
+
+  .img_logo {
+    max-width:100%;
+    height:auto;
+  }
+
+
+.menu {
+  display: flex;
+  grid-area: menu;
+  margin-top: auto;
+  margin-bottom: auto;
+  justify-content: space-around;
+}
+
+.configuracion {
+  grid-area: configuracion;
+  margin: auto;
+}
+
+.myButton {
+	background:linear-gradient(to bottom, #648bb3 5%, #305c83 100%);
+	background-color:#648bb3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:10px 10px;
+  text-decoration:none;
+  border: none;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #305c83 5%, #648bb3 100%);
+	background-color:#305c83;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.presionado {
+	background:linear-gradient(to bottom, #cedeed 5%, #8cadcc 100%);
+	background-color:#cedeed;
+	display:inline-block;
+	cursor:pointer;
+	color:#25547e;
+	font-family:Arial;
+  font-size:17px;
+	font-weight:bold;
+	padding:10px 10px;
+  text-decoration:none;
+  border: none;  
+}
+
+
+
+/*320px — 480px: Mobile devices. */
+/* fourth breakpoint */
+@media screen and (max-width: 480px) {
+  .presionado {
+    font-size:8px;
+  }
+  .myButton {
+    font-size:8px;
+  }
+  .header_contenedor{
+    max-height: 50px;
+  }
+}
+
+  /*    481px — 768px: iPads, Tablets.*/
+  /* Third breakpoint */
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    .presionado {
+      font-size:10px;
+    }
+    .myButton {
+      font-size:10px;
+    }
+    .header_contenedor{
+      max-height: 70px;
+    }
+  }
+
+  /* 769px — 1024px: Small screens, laptops. */
+/* Second breakpoint */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .presionado {
+    font-size:13px;
+  }
+  .myButton {
+    font-size:13px;
+  }
+  .header_contenedor{
+    max-height: 90px;
+  }
+}
+
+  /* 1025px — 1200px: Desktops, large screens. */
+  /* First breakpoint */
+@media screen and (min-width: 1025px)  {
+  .presionado {
+    font-size:17px;
+  }
+  .myButton {
+    font-size:17px;
+  }
+}

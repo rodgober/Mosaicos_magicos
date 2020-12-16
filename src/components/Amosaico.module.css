@@ -1,68 +1,180 @@
-div.relative {
-    position: absolute;
-    bottom: 1000;
-    width: 400px;
-    height: 200px;
-    border: 3px solid #73AD21;
-  }
 
 .mosaicotran {
-    position: relative;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    animation: mymove 5s;
+  position: relative;
+  z-index: 2;
+  animation: mymove 5s;
 }
 
 .mosaicotran1 {
-    position: relative;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    z-index: 1;
+  position: relative;
+  z-index: -1;
+  display: none;
 }
 
-@keyframes mymove {
-    0%   {left:0px; top:0px;}
-    50%  {left:0px; top:200px;}
-    100% {left:500px; top:200px;}
+.huecos {
+position: absolute; 
+width: 880px;
+height: 284px;
+  left: 100; 
+  top: 0;
+  z-index: 2;
+display: none; /*quitar esta linea*/
 }
-
+/*DIV que contiene las imagenes de la pared del horno apgado y encendido*/
 .horno {
-    position: relative; 
-    left: 0; 
-    top: 0;
-    z-index: -1;
+  position: relative; 
+  left: 0; 
+  top: 0;
+  z-index: 1;
 }
 
 .ocultar {
-    display: none;
+  display: none;
 }
 
-  .cfimg {
-    position: absolute;
-    top: 100px;
-    left: 0px;
-    -webkit-transition: opacity 1s ease-in-out;
-    -moz-transition: opacity 1s ease-in-out;
-    -o-transition: opacity 1s ease-in-out;
-    transition: opacity 1s ease-in-out;
-  }
+/*Imagen del horno apagado*/
+.cfimg {
+  display: none; /*Quitar esta linea*/
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
 
-  .cftop {
-    position: absolute;
-    top: 100px;
-    left: 0px;
-    animation-name: cf3FadeInOut;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 50;
-    animation-duration: .1s;
-    animation-direction: alternate;
-  }
+.cftop {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  animation-name: cf3FadeInOut;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 50;
+  animation-duration: .1s;
+  animation-direction: alternate;
+}
 
 @keyframes cf3FadeInOut {
-        0% {opacity:1;}
-        45% {opacity:1;}
-        55% {opacity:0;}
-        100% {opacity:0;}
-  }
+      0% {opacity:1;}
+      45% {opacity:1;}
+      55% {opacity:0;}
+      100% {opacity:0;}
+}
+
+/*320px — 480px: Mobile devices. */
+/* fourth breakpoint */
+@media screen and (max-width: 480px) {
+.horno {
+  width: 303px;
+  height: 94px; 
+}
+.cftop {
+  width: 303px;
+  height: 94px; 
+}
+.cfimg {
+  width: 303px;
+  height: 94px; 
+}
+.mosaicotran {
+  left: 10px;
+}
+.mosaicotran1 {
+  left: 10px;
+}
+
+@keyframes mymove {
+  0%   {left:10px; top:0px;}
+  50%  {left:10px; top:15px;}
+  100% {left:250px; top:15px;}
+}
+}
+
+/*    481px — 768px: iPads, Tablets.*/
+/* Third breakpoint */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+.horno {
+  width: 405px;
+  height: 126px;  
+}
+.cftop {
+  width: 405px;
+  height: 126px;  
+}
+.cfimg {
+  width: 405px;
+  height: 126px; 
+}
+.mosaicotran {
+  left: 30px;
+}
+.mosaicotran1 {
+  left: 30px;
+}
+
+@keyframes mymove {
+  0%   {left:30px; top:0px;}
+  50%  {left:30px; top:40px;}
+  100% {left:350px; top:40px;}
+}
+}
+
+/* 769px — 1024px: Small screens, laptops. */
+/* Second breakpoint */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+.horno {
+  width: 700px;
+  height: 217px;
+}
+.cftop {
+  width: 700px;
+  height: 217px;
+}
+.cfimg {
+  width: 700px;
+  height: 217px; 
+}
+.mosaicotran {
+  left: 80px;
+}
+.mosaicotran1 {
+  left: 80px;
+}
+
+@keyframes mymove {
+  0%   {left:80px; top:0px;}
+  50%  {left:80px; top:80px;}
+  100% {left:650px; top:80px;}
+}
+
+}
+
+/* 1025px — 1200px: Desktops, large screens. */
+/* First breakpoint */
+@media screen and (min-width: 1025px)  {
+.horno {
+  width: 910px;
+  height: 284px;
+}
+.cftop {
+  width: 910px;
+  height: 284px;
+}
+.cfimg {
+  width: 910px;
+  height: 284px;
+}
+.mosaicotran {
+  left: 110px;
+}
+.mosaicotran1 {
+  left: 110px;
+}
+
+@keyframes mymove {
+  0%   {left:110px; top:0px;}
+  50%  {left:110px; top:120px;}
+  100% {left:810px; top:120px;}
+}
+}

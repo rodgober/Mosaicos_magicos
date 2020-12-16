@@ -1,118 +1,48 @@
-
 *, *:before, *:after {
-    box-sizing: inherit;
-  } 
-  
-  html {
-    box-sizing: border-box;
-    height: 100%;
-    font-size: 62.5%; 
+  box-sizing: inherit;
+} 
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 62.5%; 
+}
+
+body {
+  min-height: 100%;
+  background-color: #ced7de;
+}
+
+.contenedor-app {
+  display: flex;
+  min-height: 100%;
+}
+
+.seccion-principal {
+  display: flex;
+  width: 100%;
+  padding-left: 0px;
+
+  align-items: top;
+  justify-content: center;
+}
+
+.vertical {
+  display: none;
+}
+@media all and (orientation: portrait){
+  .contenedor-app {
+    display: none;
   }
-  
-  body {
-    min-height: 100%;
-    background-color: #ced7de;
+  .vertical{
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    background:url(../src/components/images/vertical.jpg);
+    background-size: cover;
+    background-position: center;
   }
-  
-  /** HEADER **/
-  .header {
-    background: rgb(33,56,100);
-    background: -moz-linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
-    background: -webkit-linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
-    background: linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#213864",endColorstr="#648baa",GradientType=1);
-  
-  }
-  
-  .header-contenedor{
-    display: grid;
-      margin: 0 auto;
-    max-width: 900px;
-    max-height: 300px;
-    grid-template-columns: 25% 25% 25% 25%;
-      grid-template-areas: "logo" "menu" "configuracion"
-  }
-  
-  .header-contenedor > * {
-      padding: 1rem;
-  }
-  
-  .logo {
-      grid-area: logo;
-  }
-  
-  .menu {
-      grid-area: menu;
-  }
-  
-  .configuracion {
-    grid-area: configuracion;
-  }
-  
-  /*Botones menú principal*/
-  .myButton {
-      background:linear-gradient(to bottom, #648bb3 5%, #305c83 100%);
-      background-color:#648bb3;
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:Arial;
-      font-size:17px;
-      padding:10px 10px;
-    text-decoration:none;
-    border: none;
-  }
-  .myButton:hover {
-      background:linear-gradient(to bottom, #305c83 5%, #648bb3 100%);
-      background-color:#305c83;
-  }
-  .myButton:active {
-      position:relative;
-      top:1px;
-  }
-  
-  .presionado {
-      background:linear-gradient(to bottom, #cedeed 5%, #8cadcc 100%);
-      background-color:#cedeed;
-      display:inline-block;
-      cursor:pointer;
-      color:#25547e;
-      font-family:Arial;
-    font-size:17px;
-      font-weight:bold;
-      padding:10px 10px;
-    text-decoration:none;
-    border: none;  
-  }
-  
-  @media screen and (min-width: 768px) {
-      .header-contenedor {
-          grid-template-areas: 
-          "logo menu menu configuracion";
-          grid-template-columns: 4, 1fr;
-      }
-  }
-  
-  
-  @media (min-width: 768px) {
-    .contenedor-app {
-        display: flex;
-        min-height: 100vh;
-    }
-  
-    aside {
-        flex: 0 0 300px;
-    }
-    .seccion-principal {
-        flex: 1;
-    }
-  
-  }
-  
-  
-  /* BARRA LATERAL */
-  aside  {
-    padding: 3rem;
-    background-color: #90abc0;
-  }
-  
+}
+

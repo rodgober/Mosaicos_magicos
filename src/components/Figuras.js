@@ -1,38 +1,57 @@
 import React, {useState, useEffect} from 'react';
 import styled from '@emotion/styled';
-
-const circUp = require('./images/botones/figuras/btnCirculoUp.jpg');
-const circOver = require('./images/botones/figuras/btnCirculoOver.jpg');
-const circDis = require('./images/botones/figuras/btnCirculoDis.jpg');
-const cuadUp = require('./images/botones/figuras/btnCuaUp.jpg');
-const cuadOver = require('./images/botones/figuras/btnCuaOver.jpg');
-const cuadDis = require('./images/botones/figuras/btnCuaDis.jpg');
-const triaUp = require('./images/botones/figuras/btnTrianUp.jpg');
-const triaOver = require('./images/botones/figuras/btnTrianOver.jpg');
-const triaDis = require('./images/botones/figuras/btnTrianDis.jpg');
-const romboUp = require('./images/botones/figuras/btnRomboUp.jpg');
-const romboOver = require('./images/botones/figuras/btnRomboOver.jpg');
-const romboDis = require('./images/botones/figuras/btnRomboDis.jpg');
-const hexaUp = require('./images/botones/figuras/btnHexaUp.jpg');
-const hexaOver = require('./images/botones/figuras/btnHexaOver.jpg');
-const hexaDis = require('./images/botones/figuras/btnHexaDis.jpg');
-const lineaUp = require('./images/botones/figuras/btnLineaUp.jpg');
-const lineaOver = require('./images/botones/figuras/btnLineaOver.jpg');
-const lineaDis = require('./images/botones/figuras/btnLineaDis.jpg');
-const btnDis = require('./images/botones/figuras/btnDis.jpg');
+import {btnDis, circUp, circOver, circDis, cuadUp, cuadOver, cuadDis, triaUp, triaOver, triaDis, romboUp, romboOver, romboDis, hexaUp, hexaOver, hexaDis, lineaUp, lineaOver, lineaDis
+} from '../types/imgbotones';
+import styles from './Figuras.module.css';
 
 
-const ContenedorFiguras = styled.div`
-    display: flex;
-    flex-flow: row wrap;
-`;
 const BotonFiguras = styled.button`
+
     cursor:pointer;
     border:none;
-    flex-grow: 1;
     flex-basis: auto; //1 grow, 2 shrink, 3 basis 
     padding: 0px;
+    width: 40px;
+    height: 40px;
+
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    overflow: hidden;  
+
+    @media screen and (max-width: 480px) {
+        width: 11px;
+        height: 11px;
+    }
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+        width: 15px;
+        height: 15px;
+    }
+    /* Second breakpoint */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        width: 25px;
+        height: 25px;        
+    }
 `;
+
+const ImgBotones = styled.img`
+    width: 40px;
+    height: 40px;
+
+    @media screen and (max-width: 480px) {
+        width: 11px;
+        height: 11px;
+    }
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+        width: 15px;
+        height: 15px;
+    }
+    /* Second breakpoint */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        width: 25px;
+        height: 25px;        
+    }  
+`;
+
 
 const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHexa, btnLinea}) => {
 
@@ -44,35 +63,34 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
     btnLinea = React.createRef();
 
     const imgList = [circUp, circOver, circDis, cuadUp, cuadOver, cuadDis, triaUp, triaOver, triaDis, romboUp, romboOver, romboDis, hexaUp, hexaOver, hexaDis, lineaUp, lineaOver, lineaDis];
-    let inCircUp = 0;
-    let inCircOver = 1;
-    let inCuadUp = 3;
-    let inCuadOver = 4;
-    let inTriaUp = 6;
-    let inTriaOver = 7;
-    let inRomboUp = 9;
-    let inRomboOver = 10;
-    let inHexadUp = 12;
-    let inHexadOver = 13;
-    let inLineaUp = 15;
-    let inLineaOver = 16;
-    console.log('inicia las imagenes de las figuras');
+    const [inCircUp, setinCircUp] = useState(0)
+    const [inCircOver, setinCircOver] = useState(1)
+    const [inCuadUp, setinCuadUp] = useState(3)
+    const [inCuadOver, setinCuadOver] = useState(4)
+    const [inTriaUp, setinTriaUp] = useState(6)
+    const [inTriaOver, setinTriaOver] = useState(7)
+    const [inRomboUp, setinRomboUp] = useState(9)
+    const [inRomboOver, setinRomboOver] = useState(10)
+    const [inHexadUp, setinHexadUp] = useState(12)
+    const [inHexadOver, setinHexadOver] = useState(13)
+    const [inLineaUp, setinLineaUp] = useState(15)
+    const [inLineaOver, setinLineaOver] = useState(16)
 
 //Cuando ya seleccionó una figura, cambia las imagenes y deshabilita los botones
     useEffect(() => {
         if (figura === 0){
-            inCircUp = 0;
-            inCircOver = 1;
-            inCuadUp = 3;
-            inCuadOver = 4;
-            inTriaUp = 6;
-            inTriaOver = 7;
-            inRomboUp = 9;
-            inRomboOver = 10;
-            inHexadUp = 12;
-            inHexadOver = 13;
-            inLineaUp = 15;
-            inLineaOver = 16;
+            setinCircUp(0);
+            setinCircOver(1);
+            setinCuadUp(3);
+            setinCuadOver(4);
+            setinTriaUp(6);
+            setinTriaOver(7);
+            setinRomboUp(9);
+            setinRomboOver(10);
+            setinHexadUp(12);
+            setinHexadOver(13);
+            setinLineaUp(15);
+            setinLineaOver(16);
             btnCirc.current.src = circUp;
             btnCuad.current.src = cuadUp;
             btnTria.current.src = triaUp;
@@ -80,18 +98,18 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             btnHexa.current.src = hexaUp;
             btnLinea.current.src = lineaUp;             
         }else{
-            inCircUp = 2;
-            inCircOver = 2;
-            inCuadUp = 5;
-            inCuadOver = 5;
-            inTriaUp = 8;
-            inTriaOver = 8;
-            inRomboUp = 11;
-            inRomboOver = 11;
-            inHexadUp = 14;
-            inHexadOver = 14;
-            inLineaUp = 17;
-            inLineaOver = 17;
+            setinCircUp(2);
+            setinCircOver(2);
+            setinCuadUp(5);
+            setinCuadOver(5);
+            setinTriaUp(8);
+            setinTriaOver(8);
+            setinRomboUp(11);
+            setinRomboOver(11);
+            setinHexadUp(14);
+            setinHexadOver(14);
+            setinLineaUp(17);
+            setinLineaOver(17);
             btnCirc.current.src = circDis;
             btnCuad.current.src = cuadDis;
             btnTria.current.src = triaDis;
@@ -101,38 +119,38 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             switch (figura) {
                 case 1:
                     btnCirc.current.src = circUp;
-                    inCircUp = 0;
-                    inCircOver = 1;
+                    setinCircUp(0);
+                    setinCircOver(1);
                     break;
                 case 2:
-                    inCuadUp = 3;
-                    inCuadOver = 4;
+                    setinCuadUp(3);
+                    setinCuadOver(4);
                     btnCuad.current.src = cuadUp;
                     break;
                 case 3:
                     btnTria.current.src = triaUp;
-                    inTriaUp = 6;
-                    inTriaOver = 7;
+                    setinTriaUp(6);
+                    setinTriaOver(7);
                     break;
                 case 4:
                     btnRombo.current.src = romboUp;
-                    inRomboUp = 9;
-                    inRomboOver = 10;
+                    setinRomboUp(9);
+                    setinRomboOver(10);
                     break;
                 case 5:
                     btnHexa.current.src = hexaUp;
-                    inHexadUp = 12;
-                    inHexadOver = 13;
+                    setinHexadUp(12);
+                    setinHexadOver(13);
                     break;
                 case 6:
                     btnLinea.current.src = lineaUp;
-                    inLineaUp = 15;
-                    inLineaOver = 16;
+                    setinLineaUp(15);
+                    setinLineaOver(16);
                     break;                    
                 default:
                     btnCirc.current.src = circUp;
-                    inCircUp = 0;
-                    inCircOver = 1;
+                    setinCircUp(0);
+                    setinCircOver(1);
                     break;
             }   
         }
@@ -147,10 +165,9 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
 
 
     return ( 
-        <ContenedorFiguras>
-            <BotonFiguras
-            >
-                <img 
+        <div className={`${styles.cont_figuras}`}>
+            <BotonFiguras>
+                <ImgBotones
                     id="1"
                     key="1"
                     src={imgList[inCircUp]}
@@ -162,7 +179,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             </BotonFiguras>
 
             <BotonFiguras>
-                <img 
+                <ImgBotones 
                     id="2"
                     key="2"
                     src={imgList[inCuadUp]}
@@ -174,7 +191,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             </BotonFiguras>
 
             <BotonFiguras>
-                <img 
+                <ImgBotones 
                     id="3"
                     key="3"
                     src={imgList[inTriaUp]}
@@ -183,10 +200,10 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                     onMouseLeave={e => (e.currentTarget.src = imgList[inTriaUp])}
                     ref={btnTria}
                 />                
-                  </BotonFiguras>
+            </BotonFiguras>
 
             <BotonFiguras>
-                <img 
+                <ImgBotones 
                     id="4"
                     key="4"
                     src={imgList[inRomboUp]}
@@ -198,7 +215,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             </BotonFiguras>
 
             <BotonFiguras>
-                <img 
+                <ImgBotones 
                     id="5"
                     key="5"
                     src={imgList[inHexadUp]}
@@ -210,7 +227,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             </BotonFiguras>
 
             <BotonFiguras>
-                <img 
+                <ImgBotones 
                     id="6"
                     key="6"
                     src={imgList[inLineaUp]}
@@ -223,7 +240,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
 
             <BotonFiguras
             disabled >
-                <img 
+                <ImgBotones 
                     id="7"
                     key="7"
                     src={btnDis}
@@ -231,7 +248,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             </BotonFiguras>
             <BotonFiguras
             disabled >
-                <img 
+                <ImgBotones 
                     id="8"
                     key="8"
                     src={btnDis}
@@ -239,7 +256,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             </BotonFiguras> 
             <BotonFiguras
             disabled >
-                <img 
+                <ImgBotones 
                     id="9"
                     key="9"
                     src={btnDis}
@@ -247,7 +264,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             </BotonFiguras> 
             <BotonFiguras
             disabled >
-                <img 
+                <ImgBotones
                     id="10"
                     key="10"
                     src={btnDis}
@@ -255,7 +272,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             </BotonFiguras>               
 
             
-        </ContenedorFiguras>
+        </div>
      );
 }
  

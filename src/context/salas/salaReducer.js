@@ -1,4 +1,4 @@
-import { SALA_HABILITADA, SET_ALMACEN, SET_MOSSELECCIONADO } from '../../types';
+import { SALA_HABILITADA, SET_ALMACEN, SET_MOSSELECCIONADO, SET_ALMACEN_COLLAGE } from '../../types';
 
 export default (state, action) => {
     switch(action.type) {
@@ -16,6 +16,11 @@ export default (state, action) => {
             return{
                 ...state,
                 mosSeleccionado: action.payload
+            }
+        case SET_ALMACEN_COLLAGE:
+            return{
+                ...state,
+                almacenCollages: action.payload
             }
         default:
             return state;

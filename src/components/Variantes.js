@@ -1,4 +1,4 @@
-import React,  { useEffect } from 'react';
+import React,  { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import {btnDis, cir1Up, cir1Over, cir1Dis, cir2Up, cir2Over, cir2Dis, cir3Up, cir3Over, cir3Dis, cir4Up, cir4Over, cir4Dis, cir5Up, cir5Over, cir5Dis, cir6Up, cir6Over, cir6Dis, cir7Up, cir7Over, cir7Dis, cir8Up, cir8Over, cir8Dis, cir9Up, cir9Over, cir9Dis, cir10Up, cir10Over, cir10Dis,
     cua1Up, cua1Over, cua1Dis, cua2Up, cua2Over, cua2Dis, cua3Up, cua3Over, cua3Dis, cua4Up, cua4Over, cua4Dis, cua5Up, cua5Over, cua5Dis, cua6Up, cua6Over, cua6Dis, cua7Up, cua7Over, cua7Dis, cua8Up, cua8Over, cua8Dis, cua9Up, cua9Over, cua9Dis, cua10Up, cua10Over, cua10Dis,
@@ -9,19 +9,57 @@ import {btnDis, cir1Up, cir1Over, cir1Dis, cir2Up, cir2Over, cir2Dis, cir3Up, ci
  } from '../types/imgbotones';
 
 
-
 const ContenedorVariantes = styled.div`
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-around;
+
 `;
 const BotonVariantes = styled.button`
     cursor:pointer;
     border:none;
-    flex-grow: 1;
     flex-basis: auto; //1 grow, 2 shrink, 3 basis 
     padding: 0px;
+    width: 40px;
+    height: 40px;
+
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    overflow: hidden;  
+
+    @media screen and (max-width: 480px) {
+        width: 11px;
+        height: 11px;
+    }
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+        width: 15px;
+        height: 15px;
+    }
+    /* Second breakpoint */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        width: 25px;
+        height: 25px;        
+    }
 `;
 
+const ImgBotones = styled.img`
+    width: 40px;
+    height: 40px;
+
+    @media screen and (max-width: 480px) {
+        width: 11px;
+        height: 11px;
+    }
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+        width: 15px;
+        height: 15px;
+    }
+    /* Second breakpoint */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        width: 25px;
+        height: 25px;        
+    }
+`;
 const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btnVar4, btnVar5, btnVar6, btnVar7, btnVar8, btnVar9, btnVar10}) => {
 
     btnVar1 = React.createRef();
@@ -45,27 +83,27 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
     const imgListV8 = [btnDis, cir8Up, cir8Over, cir8Dis, cua8Up, cua8Over, cua8Dis, tri8Up, tri8Over, tri8Dis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis];
     const imgListV9 = [btnDis, cir9Up, cir9Over, cir9Dis, cua9Up, cua9Over, cua9Dis, tri9Up, tri9Over, tri9Dis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis];
     const imgListV10 = [btnDis, cir10Up, cir10Over, cir10Dis, cua10Up, cua10Over, cua10Dis, tri10Up, tri10Over, tri10Dis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis, btnDis];
-    let inVari1Up = 0;
-    let inVari1Over = 0;
-    let inVari2Up = 0;
-    let inVari2Over = 0;
-    let inVari3Up = 0;
-    let inVari3Over = 0;
-    let inVari4Up = 0;
-    let inVari4Over = 0;
-    let inVari5Up = 0;
-    let inVari5Over = 0;
-    let inVari6Up = 0;
-    let inVari6Over = 0;
-    let inVari7Up = 0;
-    let inVari7Over = 0;
-    let inVari8Up = 0;
-    let inVari8Over = 0;
-    let inVari9Up = 0;
-    let inVari9Over = 0;
-    let inVari10Up = 0;
-    let inVari10Over = 0;
-    
+    const [inVari1Up, setinVari1Up] = useState(0);
+    const [inVari1Over, setinVari1Over] = useState(0);
+    const [inVari2Up, setinVari2Up] = useState(0);
+    const [inVari2Over, setinVari2Over] = useState(0);
+    const [inVari3Up, setinVari3Up] = useState(0);
+    const [inVari3Over, setinVari3Over] = useState(0);
+    const [inVari4Up, setinVari4Up] = useState(0);
+    const [inVari4Over, setinVari4Over] = useState(0);
+    const [inVari5Up, setinVari5Up] = useState(0);
+    const [inVari5Over, setinVari5Over] = useState(0);
+    const [inVari6Up, setinVari6Up] = useState(0);
+    const [inVari6Over, setinVari6Over] = useState(0);
+    const [inVari7Up, setinVari7Up] = useState(0);
+    const [inVari7Over, setinVari7Over] = useState(0);
+    const [inVari8Up, setinVari8Up] = useState(0);
+    const [inVari8Over, setinVari8Over] = useState(0);
+    const [inVari9Up, setinVari9Up] = useState(0);
+    const [inVari9Over, setinVari9Over] = useState(0);
+    const [inVari10Up, setinVari10Up] = useState(0);
+    const [inVari10Over, setinVari10Over] = useState(0);
+
 
     //Funcion que pone en el STATE el ID de la variante presionada
     const handleChange = e => {
@@ -76,26 +114,26 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
 
     useEffect(() => {
         if (figura > 0){
-            inVari1Up = (figura * 3) - 2;
-            inVari1Over = (figura * 3) - 2 + 1;
-            inVari2Up = (figura * 3) - 2;
-            inVari2Over = (figura * 3) - 2 + 1;
-            inVari3Up = (figura * 3) - 2;
-            inVari3Over = (figura * 3) - 2 + 1;
-            inVari4Up = (figura * 3) - 2;
-            inVari4Over = (figura * 3) - 2 + 1;
-            inVari5Up = (figura * 3) - 2;
-            inVari5Over = (figura * 3) - 2 + 1;
-            inVari6Up = (figura * 3) - 2;
-            inVari6Over = (figura * 3) - 2 + 1;
-            inVari7Up = (figura * 3) - 2;
-            inVari7Over = (figura * 3) - 2 + 1;
-            inVari8Up = (figura * 3) - 2;
-            inVari8Over = (figura * 3) - 2 + 1;
-            inVari9Up = (figura * 3) - 2;
-            inVari9Over = (figura * 3) - 2 + 1;
-            inVari10Up = (figura * 3) - 2;
-            inVari10Over = (figura * 3) - 2 + 1;
+            setinVari1Up((figura * 3) - 2);
+            setinVari1Over((figura * 3) - 2 + 1);
+            setinVari2Up((figura * 3) - 2);
+            setinVari2Over((figura * 3) - 2 + 1);
+            setinVari3Up((figura * 3) - 2);
+            setinVari3Over((figura * 3) - 2 + 1);
+            setinVari4Up((figura * 3) - 2);
+            setinVari4Over((figura * 3) - 2 + 1);
+            setinVari5Up((figura * 3) - 2);
+            setinVari5Over((figura * 3) - 2 + 1);
+            setinVari6Up((figura * 3) - 2);
+            setinVari6Over((figura * 3) - 2 + 1);
+            setinVari7Up((figura * 3) - 2);
+            setinVari7Over((figura * 3) - 2 + 1);
+            setinVari8Up((figura * 3) - 2);
+            setinVari8Over((figura * 3) - 2 + 1);
+            setinVari9Up((figura * 3) - 2);
+            setinVari9Over((figura * 3) - 2 + 1);
+            setinVari10Up((figura * 3) - 2);
+            setinVari10Over((figura * 3) - 2 + 1);
             btnVar1.current.src = imgListV1[(figura * 3) - 2];
             btnVar2.current.src = imgListV2[(figura * 3) - 2];
             btnVar3.current.src = imgListV3[(figura * 3) - 2];
@@ -118,7 +156,27 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
     }, [variante]);
     
     function iniciarVariantes(){
-        inVari1Up = inVari1Over = inVari2Up = inVari3Up = inVari3Over = inVari4Up = inVari4Over = inVari5Up = inVari5Over = inVari6Up = inVari6Over = inVari7Up = inVari7Over = inVari8Up = inVari8Over = inVari9Up = inVari9Over = inVari10Up = inVari10Over = 0
+        setinVari1Up(0);
+        setinVari1Over(0);
+        setinVari2Up(0);
+        setinVari2Over(0);
+        setinVari3Up(0);
+        setinVari3Over(0);
+        setinVari4Up(0);
+        setinVari4Over(0);
+        setinVari5Up(0);
+        setinVari5Over(0);
+        setinVari6Up(0);
+        setinVari6Over(0);
+        setinVari7Up(0);
+        setinVari7Over(0);
+        setinVari8Up(0);
+        setinVari8Over(0);
+        setinVari9Up(0);
+        setinVari9Over(0);
+        setinVari10Up(0);
+        setinVari10Over(0);
+        
         btnVar1.current.src = imgListV1[0];
         btnVar2.current.src = imgListV2[0];
         btnVar3.current.src = imgListV3[0];
@@ -142,62 +200,81 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
         btnVar8.current.src = imgListV8[(figura * 3)];
         btnVar9.current.src = imgListV9[(figura * 3)];
         btnVar10.current.src = imgListV10[(figura * 3)];
-        inVari1Up = inVari1Over = inVari2Up = inVari2Over = inVari3Up = inVari3Over = inVari4Up = inVari4Over = inVari5Up = inVari5Over = inVari6Up = inVari6Over = inVari7Up = inVari7Over = inVari8Up = inVari8Over = inVari9Up = inVari9Over = inVari10Up = inVari10Over = (figura * 3);
+        setinVari1Up(figura * 3);
+        setinVari1Over(figura * 3);
+        setinVari2Up(figura * 3);
+        setinVari2Over(figura * 3);
+        setinVari3Up(figura * 3);
+        setinVari3Over(figura * 3);
+        setinVari4Up(figura * 3);
+        setinVari4Over(figura * 3);
+        setinVari5Up(figura * 3);
+        setinVari5Over(figura * 3);
+        setinVari6Up(figura * 3);
+        setinVari6Over(figura * 3);
+        setinVari7Up(figura * 3);
+        setinVari7Over(figura * 3);
+        setinVari8Up(figura * 3);
+        setinVari8Over(figura * 3);
+        setinVari9Up(figura * 3);
+        setinVari9Over(figura * 3);
+        setinVari10Up(figura * 3);
+        setinVari10Over(figura * 3);
         switch (variante) {
             case 11:
                 btnVar1.current.src = imgListV1[(figura * 3) - 2];
-                inVari1Up = (figura * 3) - 2;
-                inVari1Over = (figura * 3) - 2;               
+                setinVari1Up((figura * 3) - 2)
+                setinVari1Over((figura * 3) - 2)         
                 break;
             case 12:
                 btnVar2.current.src = imgListV2[(figura * 3) - 2];
-                inVari2Up = (figura * 3) - 2;
-                inVari2Over = (figura * 3) - 2;               
+                setinVari2Up((figura * 3) - 2);
+                setinVari2Over((figura * 3) - 2);           
                 break;
             case 13:
                 btnVar3.current.src = imgListV3[(figura * 3) - 2];
-                inVari3Up = (figura * 3) - 2;
-                inVari3Over = (figura * 3) - 2;               
+                setinVari3Up((figura * 3) - 2);
+                setinVari3Over((figura * 3) - 2);          
                 break;
             case 14:
                 btnVar4.current.src = imgListV4[(figura * 3) - 2];
-                inVari4Up = (figura * 3) - 2;
-                inVari4Over = (figura * 3) - 2;               
+                setinVari4Up((figura * 3) - 2);
+                setinVari4Over((figura * 3) - 2);             
                 break;
             case 15:
                 btnVar5.current.src = imgListV5[(figura * 3) - 2];
-                inVari5Up = (figura * 3) - 2;
-                inVari5Over = (figura * 3) - 2;               
+                setinVari5Up((figura * 3) - 2);
+                setinVari5Over((figura * 3) - 2);             
                 break;
             case 16:
                 btnVar6.current.src = imgListV6[(figura * 3) - 2];
-                inVari6Up = (figura * 3) - 2;
-                inVari6Over = (figura * 3) - 2;               
+                setinVari6Up((figura * 3) - 2);
+                setinVari6Over((figura * 3) - 2);              
                 break;
             case 17:
                 btnVar7.current.src = imgListV7[(figura * 3) - 2];
-                inVari7Up = (figura * 3) - 2;
-                inVari7Over = (figura * 3) - 2;               
+                setinVari7Up((figura * 3) - 2);
+                setinVari7Over((figura * 3) - 2);              
                 break;
             case 18:
                 btnVar8.current.src = imgListV8[(figura * 3) - 2];
-                inVari8Up = (figura * 3) - 2;
-                inVari8Over = (figura * 3) - 2;               
+                setinVari8Up((figura * 3) - 2);
+                setinVari8Over((figura * 3) - 2);          
                 break;
             case 19:
                 btnVar9.current.src = imgListV9[(figura * 3) - 2];
-                inVari9Up = (figura * 3) - 2;
-                inVari9Over = (figura * 3) - 2;               
+                setinVari9Up((figura * 3) - 2);
+                setinVari9Over((figura * 3) - 2);            
                 break;
             case 20:
                 btnVar10.current.src = imgListV10[(figura * 3) - 2];
-                inVari10Up = (figura * 3) - 2;
-                inVari10Over = (figura * 3) - 2;               
+                setinVari10Up((figura * 3) - 2);
+                setinVari10Over((figura * 3) - 2);          
                 break;
             default:
                 btnVar1.current.src = imgListV1[(figura * 3) - 2];
-                inVari1Up = (figura * 3) - 2;
-                inVari1Over = (figura * 3) - 2;                 
+                setinVari1Up((figura * 3) - 2);
+                setinVari1Over((figura * 3) - 2);              
                 break;
         }
     }
@@ -205,7 +282,7 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
     return ( 
         <ContenedorVariantes>
             <BotonVariantes>
-                <img 
+                <ImgBotones 
                     id="11"
                     key="11"
                     src={imgListV1[inVari1Up]}
@@ -213,11 +290,12 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                     onMouseOver={e => (e.currentTarget.src = imgListV1[inVari1Over])}
                     onMouseLeave={e => (e.currentTarget.src = imgListV1[inVari1Up])}
                     ref={btnVar1}
+                    alt="Variente 1"
                 />                
             </BotonVariantes>
 
             <BotonVariantes>
-                <img 
+                <ImgBotones 
                     id="12"
                     key="12"
                     src={imgListV2[inVari2Up]}
@@ -225,11 +303,12 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                     onMouseOver={e => (e.currentTarget.src = imgListV2[inVari2Over])}
                     onMouseLeave={e => (e.currentTarget.src = imgListV2[inVari2Up])}
                     ref={btnVar2}
+                    alt="Variente 2"
                 />  
             </BotonVariantes>
 
             <BotonVariantes>
-                <img 
+                <ImgBotones 
                     id="13"
                     key="13"
                     src={imgListV3[inVari3Up]}
@@ -237,11 +316,12 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                     onMouseOver={e => (e.currentTarget.src = imgListV3[inVari3Over])}
                     onMouseLeave={e => (e.currentTarget.src = imgListV3[inVari3Up])}
                     ref={btnVar3}
+                    alt="Variente 3"
                 />
             </BotonVariantes>
 
             <BotonVariantes>
-                <img 
+                <ImgBotones 
                     id="14"
                     key="14"
                     src={imgListV4[inVari4Up]}
@@ -249,12 +329,13 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                     onMouseOver={e => (e.currentTarget.src = imgListV4[inVari4Over])}
                     onMouseLeave={e => (e.currentTarget.src = imgListV4[inVari4Up])}
                     ref={btnVar4}
+                    alt="Variente 4"
                 />                 
             </BotonVariantes>
 
 
             <BotonVariantes>
-                <img 
+                <ImgBotones 
                     id="15"
                     key="15"
                     src={imgListV5[inVari5Up]}
@@ -262,11 +343,12 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                     onMouseOver={e => (e.currentTarget.src = imgListV5[inVari5Over])}
                     onMouseLeave={e => (e.currentTarget.src = imgListV5[inVari5Up])}
                     ref={btnVar5}
+                    alt="Variente 5"
                 />                 
             </BotonVariantes>
 
             <BotonVariantes>
-                <img 
+                <ImgBotones 
                     id="16"
                     key="16"
                     src={imgListV6[inVari6Up]}
@@ -274,11 +356,12 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                     onMouseOver={e => (e.currentTarget.src = imgListV6[inVari6Over])}
                     onMouseLeave={e => (e.currentTarget.src = imgListV6[inVari6Up])}
                     ref={btnVar6}
+                    alt="Variente 6"
                 />                 
             </BotonVariantes>   
 
             <BotonVariantes>
-                <img 
+                <ImgBotones 
                     id="17"
                     key="17"
                     src={imgListV7[inVari7Up]}
@@ -286,11 +369,12 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                     onMouseOver={e => (e.currentTarget.src = imgListV7[inVari7Over])}
                     onMouseLeave={e => (e.currentTarget.src = imgListV7[inVari7Up])}
                     ref={btnVar7}
+                    alt="Variente 7"
                 />                 
             </BotonVariantes>
 
             <BotonVariantes>
-                <img 
+                <ImgBotones 
                     id="18"
                     key="18"
                     src={imgListV8[inVari8Up]}
@@ -298,11 +382,12 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                     onMouseOver={e => (e.currentTarget.src = imgListV8[inVari8Over])}
                     onMouseLeave={e => (e.currentTarget.src = imgListV8[inVari8Up])}
                     ref={btnVar8}
+                    alt="Variente 8"
                 />                 
             </BotonVariantes>
 
             <BotonVariantes>
-                <img 
+                <ImgBotones 
                     id="19"
                     key="19"
                     src={imgListV9[inVari9Up]}
@@ -310,11 +395,12 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                     onMouseOver={e => (e.currentTarget.src = imgListV9[inVari9Over])}
                     onMouseLeave={e => (e.currentTarget.src = imgListV9[inVari9Up])}
                     ref={btnVar9}
+                    alt="Variente 9"
                 />                 
             </BotonVariantes>
 
             <BotonVariantes>
-                <img 
+                <ImgBotones 
                     id="20"
                     key="20"
                     src={imgListV10[inVari10Up]}
@@ -322,6 +408,7 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                     onMouseOver={e => (e.currentTarget.src = imgListV10[inVari10Over])}
                     onMouseLeave={e => (e.currentTarget.src = imgListV10[inVari10Up])}
                     ref={btnVar10}
+                    alt="Variente 10"
                 />  
             </BotonVariantes>
 

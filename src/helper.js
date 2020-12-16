@@ -66,3 +66,21 @@ export function obtenerAltoAlmacen(alto, separacion){
 export function obtenerNumMosaicosXLargoImagen(naturalWidth, largo, separacion){
     return Math.trunc(naturalWidth / (separacion + largo + separacion));
 }
+
+export function obtenerXinicialCollage(x, columnas, largoCollage){
+    const largoSeccion = largoCollage / columnas;
+    return (Math.floor(x / largoSeccion) * largoSeccion); 
+}
+
+export function obtenerYinicialCollage(y, filas, altoCollage){
+    const altoSeccion = altoCollage / filas;
+    return (Math.floor(y / altoSeccion) * altoSeccion); 
+}
+
+export function obtenerLargoSeccionCollage(x, columnas, largoCollage){
+    return largoCollage / columnas;
+}
+
+export function obtenerAltoSeccionCollage(y, filas, altoCollage){
+    return altoCollage / filas; 
+}

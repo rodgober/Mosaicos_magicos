@@ -1,4 +1,28 @@
-export const btnDis = require('../components/images/botones/figuras/btnDis.jpg'); 
+export const btnDis = require('../components/images/botones/figuras/btnDis.jpg'); //Botón deshabilitado
+
+
+/*IMÁGENES DE LOS BOTONES DE LAS FIGURAS */
+export const circUp = require('../components/images/botones/figuras/btnCirculoUp.jpg');
+export const circOver = require('../components/images/botones/figuras/btnCirculoOver.jpg');
+export const circDis = require('../components/images/botones/figuras/btnCirculoDis.jpg');
+export const cuadUp = require('../components/images/botones/figuras/btnCuaUp.jpg');
+export const cuadOver = require('../components/images/botones/figuras/btnCuaOver.jpg');
+export const cuadDis = require('../components/images/botones/figuras/btnCuaDis.jpg');
+export const triaUp = require('../components/images/botones/figuras/btnTrianUp.jpg');
+export const triaOver = require('../components/images/botones/figuras/btnTrianOver.jpg');
+export const triaDis = require('../components/images/botones/figuras/btnTrianDis.jpg');
+export const romboUp = require('../components/images/botones/figuras/btnRomboUp.jpg');
+export const romboOver = require('../components/images/botones/figuras/btnRomboOver.jpg');
+export const romboDis = require('../components/images/botones/figuras/btnRomboDis.jpg');
+export const hexaUp = require('../components/images/botones/figuras/btnHexaUp.jpg');
+export const hexaOver = require('../components/images/botones/figuras/btnHexaOver.jpg');
+export const hexaDis = require('../components/images/botones/figuras/btnHexaDis.jpg');
+export const lineaUp = require('../components/images/botones/figuras/btnLineaUp.jpg');
+export const lineaOver = require('../components/images/botones/figuras/btnLineaOver.jpg');
+export const lineaDis = require('../components/images/botones/figuras/btnLineaDis.jpg');
+
+/*IMÁGENES DE LOS BOTONES DE LAS VARIANTES DE LAS FIGURAS */
+/*Variantes de los círculos*/
 export const cir1Up = require('../components/images/botones/variantes/circulo/btnCirc1Up.jpg'); 
 export const cir1Over = require('../components/images/botones/variantes/circulo/btnCirc1Over.jpg'); 
 export const cir1Dis = require('../components/images/botones/variantes/circulo/btnCirc1Dis.jpg'); 
@@ -29,6 +53,7 @@ export const cir9Dis = require('../components/images/botones/variantes/circulo/b
 export const cir10Up = require('../components/images/botones/variantes/circulo/btnCirc10Up.jpg'); 
 export const cir10Over = require('../components/images/botones/variantes/circulo/btnCirc10Over.jpg'); 
 export const cir10Dis = require('../components/images/botones/variantes/circulo/btnCirc10Dis.jpg');
+/* Variantes de los cuadrados */
 export const cua1Up = require('../components/images/botones/variantes/cuadro/btnCuad1Up.jpg'); 
 export const cua1Over = require('../components/images/botones/variantes/cuadro/btnCuad1Over.jpg'); 
 export const cua1Dis = require('../components/images/botones/variantes/cuadro/btnCuad1Dis.jpg'); 
@@ -59,6 +84,7 @@ export const cua9Dis = require('../components/images/botones/variantes/cuadro/bt
 export const cua10Up = require('../components/images/botones/variantes/cuadro/btnCuad10Up.jpg');
 export const cua10Over = require('../components/images/botones/variantes/cuadro/btnCuad10Over.jpg'); 
 export const cua10Dis = require('../components/images/botones/variantes/cuadro/btnCuad10Dis.jpg');
+/* Variantes de los triángulos */
 export const tri1Up = require('../components/images/botones/variantes/triangulo/btnTrian1Up.jpg'); 
 export const tri1Over = require('../components/images/botones/variantes/triangulo/btnTrian1Over.jpg'); 
 export const tri1Dis = require('../components/images/botones/variantes/triangulo/btnTrian1Dis.jpg'); 
@@ -89,21 +115,21 @@ export const tri9Dis = require('../components/images/botones/variantes/triangulo
 export const tri10Up = require('../components/images/botones/variantes/triangulo/btnTrian10Up.jpg'); 
 export const tri10Over = require('../components/images/botones/variantes/triangulo/btnTrian10Over.jpg'); 
 export const tri10Dis = require('../components/images/botones/variantes/triangulo/btnTrian10Dis.jpg');
-
+/* Variantes de los Rombos */
 export const rom1Up = require('../components/images/botones/variantes/rombo/btnRombo1Up.jpg'); 
 export const rom1Over = require('../components/images/botones/variantes/rombo/btnRombo1Over.jpg'); 
 export const rom1Dis = require('../components/images/botones/variantes/rombo/btnRombo1Dis.jpg'); 
 export const rom2Up = require('../components/images/botones/variantes/rombo/btnRombo2Up.jpg'); 
 export const rom2Over = require('../components/images/botones/variantes/rombo/btnRombo2Over.jpg'); 
 export const rom2Dis = require('../components/images/botones/variantes/rombo/btnRombo2Dis.jpg'); 
-
+/* Variantes de los hexágonos */
 export const hex1Up = require('../components/images/botones/variantes/hexagono/btnHexa1Up.jpg'); 
 export const hex1Over = require('../components/images/botones/variantes/hexagono/btnHexa1Over.jpg'); 
 export const hex1Dis = require('../components/images/botones/variantes/hexagono/btnHexa1Dis.jpg'); 
 export const hex2Up = require('../components/images/botones/variantes/hexagono/btnHexa2Up.jpg'); 
 export const hex2Over = require('../components/images/botones/variantes/hexagono/btnHexa2Over.jpg'); 
 export const hex2Dis = require('../components/images/botones/variantes/hexagono/btnHexa2Dis.jpg');
-
+/* Variantes de las líneas */
 export const lin1Up = require('../components/images/botones/variantes/linea/btnLin1Up.jpg'); 
 export const lin1Over = require('../components/images/botones/variantes/linea/btnLin1Over.jpg'); 
 export const lin1Dis = require('../components/images/botones/variantes/linea/btnLin1Dis.jpg'); 
@@ -117,6 +143,17 @@ export const lin4Up = require('../components/images/botones/variantes/linea/btnL
 export const lin4Over = require('../components/images/botones/variantes/linea/btnLin4Over.jpg'); 
 export const lin4Dis = require('../components/images/botones/variantes/linea/btnLin4Dis.jpg');
 
+export const salaMosUp = require('../components/images/botones/salas/mosaicosUp.png');
+export const salaMosOver = require('../components/images/botones/salas/mosaicosDown.png');
+export const salaMosDown = require('../components/images/botones/salas/mosaicosOver.png');
+export const salaMurUp = require('../components/images/botones/salas/muralesUp.png');
+export const salaMurOver = require('../components/images/botones/salas/muralesDown.png');
+export const salaMurDown = require('../components/images/botones/salas/muralesOver.png');
+export const salaCollUp = require('../components/images/botones/salas/collagesUp.png');
+export const salaCollOver = require('../components/images/botones/salas/collagesDown.png');
+export const salaCollDown = require('../components/images/botones/salas/collagesOver.png');
+
 export const horno1 = require('../components/images/horno/horno1.jpg'); 
 export const horno2 = require('../components/images/horno/horno2.png'); 
-export const horno3 = require('../components/images/horno/horno3.png'); 
+export const horno3 = require('../components/images/horno/horno3.png');
+export const huecosTrans =  require('../components/images/SalidasHorno.png'); 

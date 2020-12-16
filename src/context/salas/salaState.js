@@ -2,19 +2,23 @@ import React, {useReducer} from 'react';
 import salaContext from './salaContext';
 import salaReducer from './salaReducer';
 import { 
-    SALA_HABILITADA,
-    SET_ALMACEN,
-    SET_MOSSELECCIONADO
-    } from '../../types';
+        SALA_HABILITADA,
+        SET_ALMACEN,
+        SET_MOSSELECCIONADO,
+        SET_ALMACEN_COLLAGE
+        } from '../../types';
 
 const SalaState = props => {
     const initialState ={
-        sala : 1,
+        sala : 2,
         alto: 40,
         largo: 40,
         separacion: 5,
         almacen: 0,
-        mosSeleccionado :0
+        mosSeleccionado :0,
+        almacenCollages: 0,
+        altoCollage: 329, 
+        largoCollage: 493
     }
 
     //Dispatch para ejecutar las acciones
@@ -41,7 +45,14 @@ const SalaState = props => {
         })
     }
 
-    return ( 
+    const setAlmacenCollages = n => {
+        dispatch({
+            type: SET_ALMACEN_COLLAGE,
+            payload: n
+        })
+    }
+
+    return(
         <salaContext.Provider
             value={{
                 sala: state.sala,
@@ -50,14 +61,18 @@ const SalaState = props => {
                 separacion: state.separacion,
                 almacen: state.almacen,
                 mosSeleccionado: state.mosSeleccionado,  
+                almacenCollages: state.almacenCollages,
+                altoCollage:  state.altoCollage, 
+                largoCollage: state.largoCollage,
                 setMosSeleccionado, 
                 mostrarSala,
-                setAlmacen
+                setAlmacen,
+                setAlmacenCollages
             }}
         >
             {props.children}
         </salaContext.Provider>
-     );
+    )
 }
- 
+
 export default SalaState;

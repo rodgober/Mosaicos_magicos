@@ -1,15 +1,56 @@
-import React, {useEffect, useContext } from 'react';
+import React, {useEffect, useContext, useState } from 'react';
 import salaContext from '../context/salas/salaContext'
+import styles from './Mosaico.module.css';
 
 const Mosaico = React.forwardRef((props, ref) => {
+
+    const copia = React.createRef(); //Canvas a utilizar en caso de deshacer la última acción
 
     const salaContexto = useContext(salaContext);
     const { alto, largo } = salaContexto;
 
     const col = ['red', 'yellow', 'green', 'aqua', 'blue', 'fuchsia', 'gray', 'orange', 'black', 'white'];
-    let {figura, variante, color, pintar, setPintar, setFigura, setVariante} = props;
+    let {figura, variante, color, pintar, setPintar, setFigura, setVariante, deshacer, setDeshacer } = props;
 
-    
+    useEffect(e => {
+        const canvasRef = ref;
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, largo, alto);  //Limpia el mosaico de arriba para crear un nuevo mosaic
+        ctx.fillStyle = 'white'; //Estblece color de relleno blanco
+        ctx.strokeStyle = 'white'; //Estblece color de relleno blanco
+        ctx.fillRect(0, 0, largo, alto);
+
+        const canvasCopia = copia;
+        const canvas2 = canvasCopia.current;
+        const ctx2 = canvas2.getContext('2d');
+        ctx2.clearRect(0, 0, largo, alto);  //Limpia el mosaico de arriba para crear un nuevo mosaic
+        ctx2.fillStyle = 'white'; //Estblece color de relleno blanco
+        ctx2.strokeStyle = 'white'; //Estblece color de relleno blanco
+        ctx2.fillRect(0, 0, largo, alto);
+
+    }, []);
+
+    useEffect(e => {
+        if (!deshacer){
+            const canvasRef = ref;
+            const canvasCopia = copia;
+
+            const canvasMos = canvasRef.current;
+            const canvasDes = canvasCopia.current;
+
+            const ctx1 = canvasMos.getContext('2d');
+            ctx1.drawImage(canvasDes, 0, 0);
+
+
+
+            const ctx2 = canvasDes.getContext('2d');
+            ctx2.clearRect(0, 0, largo, alto);  //Limpia el mosaico de arriba para crear un nuevo mosaic
+            ctx2.fillStyle = 'white'; //Estblece color de relleno blanco
+            ctx2.strokeStyle = 'white'; //Estblece color de relleno blanco
+            ctx2.fillRect(0, 0, largo, alto);
+        }
+    }, [deshacer]);
 
     useEffect(e => {
         if(pintar){
@@ -22,9 +63,13 @@ const Mosaico = React.forwardRef((props, ref) => {
             ctx.fill('nonzero');
             ctx.fillStyle = col[color-21];
             ctx.strokeStyle = col[color-21];
-
             ctx.beginPath();
-
+            //Respaldar lo que tien para el Deshacer
+            const canvasCopia = copia;
+            const canvasDes = canvasCopia.current;
+            const ctx2 = canvasDes.getContext('2d');
+            ctx2.drawImage(canvas, 0, 0);
+            //Ya hizo copia de lo que tenía, se puede proceder a estampar
             switch (figura) {
                 case 1:
                     fig1(ctx);//Circulo
@@ -53,6 +98,7 @@ const Mosaico = React.forwardRef((props, ref) => {
             setPintar(false);
             setFigura(0);
             setVariante(0);
+            setDeshacer(true);
             return;
         }        
     }, [pintar]);
@@ -279,12 +325,28 @@ const Mosaico = React.forwardRef((props, ref) => {
         ctx.lineTo(pto2[0], pto2[1]);
     }    
 
+    /*
+                        <canvas
+                        className={`${styles.cvs_mosaico}`}
+                        ref={ref}
+                        width={alto}
+                        height={largo}
+                    />
+    * */
+
     return ( 
-        <div>
+        <div className={`${styles.cont_mosaico}`} >
             <canvas
                 ref={ref}
-                width={alto}
-                height={largo}
+                width='40px'
+                height='40px'
+                className={`${styles.canvas_mosaico}`}
+            />
+            <canvas
+                ref={copia}
+                width='40px'
+                height='40px'
+                className={`${styles.canvas_oculto}`}                
             />
         </div>
      );

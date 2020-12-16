@@ -1,11 +1,12 @@
 import React, { useContext, Fragment, useEffect } from 'react';
 import salaContext from '../context/salas/salaContext'
 import styles from './Amosaico.module.css';
-import { horno1, horno2, horno3 } from '../types/imgbotones';
+import { horno1, horno2, horno3, huecosTrans } from '../types/imgbotones';
 
-const fuente1 = horno1;
-const fuente2 = horno2;
-const fuente3 = horno3;
+const fuente1 = horno1; //Horno apagado
+const fuente2 = horno2; //Horno encendido
+const fuente3 = horno3; //Horno encendido
+const huecos = huecosTrans;
 
 const Amosaico = React.forwardRef((props, ref) => {
 
@@ -19,9 +20,7 @@ const Amosaico = React.forwardRef((props, ref) => {
       useEffect(() => {
         if(animacion){
             const interval = setInterval(() => {
-                console.log('Interval triggered');
                 setAnimacion(false);
-                console.log('cambiaron el state de animacion');
               }, 5000);
               return () => clearInterval(interval);
         }
@@ -32,8 +31,8 @@ const Amosaico = React.forwardRef((props, ref) => {
 
 
     return ( 
-        <Fragment>
-            <div className="relative" >
+      <Fragment>
+          <div className={`${styles.horno}`} >
                 <div 
                     className={animacion ? `${styles.mosaicotran}` : `${styles.mosaicotran1}`}
                 >
@@ -44,19 +43,27 @@ const Amosaico = React.forwardRef((props, ref) => {
                     />
                 </div>
 
-                <div className={`${styles.horno}`} >
+                
 
-                    <img className= {animacion ? `${styles.cfimg}` :  `${styles.cfimg}`} 
+                
+
+                    <img className= {`${styles.cfimg}`} 
                         src={fuente1}
+                        alt="Horno"
                     />
 
                     <img className={animacion ? `${styles.cfimg}` : `${styles.ocultar}`} 
                         src={fuente2}
+                        alt="Horno encendido"
                                 />
                     <img className={animacion ? `${styles.cftop}` : `${styles.ocultar}`} 
                         src={fuente3}
+                        alt="Horno encendido"
                                 />
-                </div>
+                    <img className= {`${styles.huecos}`} 
+                        src={huecos}
+                        alt="Horno"
+                    />
             </div>
       </Fragment>
      );

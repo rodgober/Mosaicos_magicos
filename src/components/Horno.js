@@ -1,11 +1,14 @@
 import React, {Fragment, useState, useContext } from 'react';
+import styles from './Sala.module.css';
 import Mosaico from './Mosaico';
 import Figuras from './Figuras';
 import Variantes from './Variantes';
 import Colores from './Colores';
-import Almacen from './Almacen';
 import Amosaico from './Amosaico';
 import salaContext from '../context/salas/salaContext'
+import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
+import ReplayIcon from '@material-ui/icons/Replay';
 
 const Horno = React.forwardRef((props, ref) => {
 
@@ -18,6 +21,7 @@ const Horno = React.forwardRef((props, ref) => {
     const [pintar, setPintar] = useState(false);
     const [estampar, setEstampar] = useState(false); //Indica si el mosaico está listo para Estampar
     const [animacion, setAnimacion] = useState(false); //Indica que debe iniciar y finalizar la animacion
+    const [deshacer, setDeshacer] = useState(false); //Indica si es posible deshacer la acción del mosaico
 
     const canvasMos = React.createRef(); // Crea la referencia del mosaico que pinta arriba en el horno
     const canvasTrans = React.createRef(); //Crea la referencia del mosaico que se mueve en el horno
@@ -25,14 +29,19 @@ const Horno = React.forwardRef((props, ref) => {
     const canvasAlmacenes = ref; //Toma la referencia del almacen
 
     const handleChange = e => { 
+       
 
-        const canvas1 = canvasMos.current;  //Asigna la referencia del mosaico de arriba del horno
+        const canvas1 = canvasMos.current;  //Asigna la referencia del mosaico de arriba del horno (tablero)
         const canvas2 = canvasTrans.current;//Asigna la refrencia del mosaico que se mueve
         const ctxM1 = canvas1.getContext('2d');
         const ctxM2 = canvas2.getContext('2d');
+        
 
         ctxM2.drawImage(canvas1, 0, 0); //Dibuja el mosaico que se mueve
+
         ctxM1.clearRect(0, 0, largo, alto);  //Limpia el mosaico de arriba para crear un nuevo mosaico
+        ctxM1.fillStyle = 'white'; //Estblece color de relleno blanco
+        ctxM1.fillRect(0, 0, largo, alto);  //Pinta un cuadro blanco del tamaño del canvas para que no sea transparente
 
         
 
@@ -49,57 +58,84 @@ const Horno = React.forwardRef((props, ref) => {
         setAlmacen(almacen + 1); //Incrementa el almacen
         setEstampar(false); //Indica que ya no  puede volver a estampar hasta completar nuevamente el ciclo (figura, variante, color)
         setAnimacion(true);
+
       }
+
+    const undo = e => {
+        setDeshacer(false);
+    }
 
     return ( 
         <Fragment>
-            <Figuras
-                figura={figura}
-                setFigura={setFigura}
-            />
+            <div className={`${styles.primera_seccion}`} >
+                <div className={`${styles.cont_mosaico}`} >
+                    <div className={`${styles.mosaico}`} >
+                        <Mosaico
+                            figura={figura}
+                            variante={variante}
+                            color={color}
+                            pintar={pintar}
+                            deshacer={deshacer}
+                            setPintar={setPintar}
+                            setFigura={setFigura}
+                            setVariante={setVariante}
+                            setDeshacer={setDeshacer}                
+                            ref={canvasMos}
+                        />
+                    </div>
+                </div>
 
-            <Variantes
-                figura={figura}
-                variante={variante}
-                setVariante={setVariante}
-            />
+                <div className={`${styles.tablero}`} >
+                    <Figuras
+                        figura={figura}
+                        setFigura={setFigura}
+                    />
 
-            <Colores
-                figura={figura}
-                variante={variante}
-                color={color}
-                setColor={setColor}
-                setPintar={setPintar}
-                setEstampar={setEstampar}
-                setFigura={setFigura}
-            />
+                    <Variantes
+                        figura={figura}
+                        variante={variante}
+                        setVariante={setVariante}
+                    />
 
-            <Mosaico
-                figura={figura}
-                variante={variante}
-                color={color}
-                pintar={pintar}
-                setPintar={setPintar}
-                setFigura={setFigura}
-                setVariante={setVariante}                
-                ref={canvasMos}
-            />
+                    <Colores
+                        figura={figura}
+                        variante={variante}
+                        color={color}
+                        setColor={setColor}
+                        setPintar={setPintar}
+                        setEstampar={setEstampar}
+                        setFigura={setFigura}
+                    />
+                </div>
+                <div>
 
+                    <Tooltip title="Deshacer" arrow>
+                    <Button
+                                type="button"
+                                onClick={e => undo()}
+                                disabled={!deshacer}
+                            >
+                        <ReplayIcon></ReplayIcon>
+                    </Button>
+                </Tooltip>
+                </div> 
+            </div>
+            <div className={`${styles.div_estampar}`}  >
                 <button
+                    className={`${styles.btn_estampar}`}
                     type="button"
                     onClick={handleChange}
                     disabled={!estampar}
                 >Estampar  
                  </button>
-
-            
-
-            <Amosaico
-                animacion={animacion}
-                setAnimacion={setAnimacion}
-                ref={canvasTrans}
-            />
-
+            </div>
+            <div className={`${styles.segunda_seccion}`} >
+                <Amosaico
+                    animacion={animacion}
+                    setAnimacion={setAnimacion}
+                    ref={canvasTrans}
+                />
+            </div> 
         </Fragment>
 
      );

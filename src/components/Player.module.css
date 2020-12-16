@@ -1,0 +1,146 @@
+.label_checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .label_checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .label_checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .label_checkbox input:checked ~ .checkmark {
+    background-color: #25547e;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .label_checkbox input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .label_checkbox .checkmark:after {
+    left: 5px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+    /*320px — 480px: Mobile devices. */
+    /* fourth breakpoint */
+    @media screen and (max-width: 480px) {
+        .label_checkbox .checkmark:after {
+            left: 2px;
+            top: 0px;
+            width: 3px;
+            height: 7px;
+            border-width: 0 1px 1px 0;            
+        }
+
+        .checkmark {
+            width: 8px;
+            height: 8px;
+        }
+
+        .label_checkbox {
+            font-size:8px;
+            padding-left: 15px;
+        }
+    }
+  
+    /*    481px — 768px: iPads, Tablets.*/
+    /* Third breakpoint */
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+        .label_checkbox .checkmark:after {
+            left: 3px;
+            top: 0px;
+            width: 4px;
+            height: 8px;
+            border-width: 0 2px 2px 0;            
+        }
+
+        .label_checkbox{
+            font-size:10px;
+            padding-left: 17px;
+        }
+        .checkmark {
+            width: 10px;
+            height: 10px;
+        }
+    }
+  
+    /* 769px — 1024px: Small screens, laptops. */
+  /* Second breakpoint */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .label_checkbox .checkmark:after {
+        left: 5px;
+        top: 1px;
+        width: 5px;
+        height: 10px;
+        border-width: 0 3px 3px 0;            
+    }
+
+    .label_checkbox{
+        font-size:13px;
+        padding-left: 25px;
+    }
+    .checkmark {
+        width: 13px;
+        height: 13px;
+    }
+  }
+  
+    /* 1025px — 1200px: Desktops, large screens. */
+    /* First breakpoint */
+  @media screen and (min-width: 1025px)  {
+    .label_checkbox .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 7px;
+        height: 14px;
+        border-width: 0 3px 3px 0;        
+    }
+    .label_checkbox {
+        font-size:17px;
+    }
+  }
