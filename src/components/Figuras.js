@@ -162,8 +162,6 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             setFigura(Number(e.target.id));
         }
     }
-    
-    console.log("Ruta de la imagen del boton del círculo up: ", imgList[inCircUp].default);
 
     return ( 
         <div className={`${styles.cont_figuras}`}>

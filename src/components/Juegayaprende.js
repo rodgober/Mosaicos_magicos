@@ -9,7 +9,7 @@ const Juegayaprende = () => {
 
     return ( 
         <Fragment>
-            <div className="verticals" ></div>
+            <div className="vertical" ></div>
             <Header>
 
             </Header>

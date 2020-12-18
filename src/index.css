@@ -30,6 +30,7 @@ body {
 .vertical {
   display: none;
 }
+
 @media all and (orientation: portrait){
   .contenedor-app {
     display: none;

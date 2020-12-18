@@ -58,6 +58,7 @@ const Horno = React.forwardRef((props, ref) => {
         setAlmacen(almacen + 1); //Incrementa el almacen
         setEstampar(false); //Indica que ya no  puede volver a estampar hasta completar nuevamente el ciclo (figura, variante, color)
         setAnimacion(true);
+        setDeshacer(false);
 
       }
 

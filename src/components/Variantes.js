@@ -278,6 +278,7 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
                 break;
         }
     }
+    
 
     return ( 
         <ContenedorVariantes>
