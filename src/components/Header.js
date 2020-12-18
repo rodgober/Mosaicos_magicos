@@ -16,21 +16,14 @@ const Header = () => {
         console.log('cambio de sala: ', valor)
         mostrarSala(valor);
     }
+    console.log('La ruta de la image es:', logo);
     return ( 
-        <header>
-            <img src={logo} />
-            <img
-                            src={logo}
-                            onClick={handleChange}
-                            alt="Mosaicos magicos"
-                        />
-        </header>
-       /* <header className={`${styles.header}`}>
+        <header className={`${styles.header}`}>
            <div className={`${styles.header_contenedor}`}>
                     <div className={`${styles.logo}`}>
                         <img
                            // className={`${styles.img_logo}`}
-                            src={logo}
+                            src={logo.default}
                             onClick={handleChange}
                             alt="Mosaicos mágicos"
                         />
@@ -65,7 +58,7 @@ const Header = () => {
                         ></Player>
                     </div>                    
             </div> 
-        </header>*/
+        </header>
      );
 }
  

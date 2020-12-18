@@ -126,16 +126,16 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
             setinNegroOver(18);
             setinBlanUp(19);
             setinBlanOver(20);   
-            btnCol1.current.src = imgList[inRojoUp];
-            btnCol2.current.src = imgList[inAmaUp];
-            btnCol3.current.src = imgList[inVerdeUp];
-            btnCol4.current.src = imgList[inAzClaroUp];
-            btnCol5.current.src = imgList[inAzulFUp];
-            btnCol6.current.src = imgList[inFucUp];
-            btnCol7.current.src = imgList[inGrisUp];
-            btnCol8.current.src = imgList[inNarUp];
-            btnCol9.current.src = imgList[inNegroUp];
-            btnCol10.current.src = imgList[inBlanUp];
+            btnCol1.current.src = imgList[inRojoUp].default;
+            btnCol2.current.src = imgList[inAmaUp].default;
+            btnCol3.current.src = imgList[inVerdeUp].default;
+            btnCol4.current.src = imgList[inAzClaroUp].default;
+            btnCol5.current.src = imgList[inAzulFUp].default;
+            btnCol6.current.src = imgList[inFucUp].default;
+            btnCol7.current.src = imgList[inGrisUp].default;
+            btnCol8.current.src = imgList[inNarUp].default;
+            btnCol9.current.src = imgList[inNegroUp].default;
+            btnCol10.current.src = imgList[inBlanUp].default;
         }else{
             setinRojoUp(0);
             setinRojoOver(0);
@@ -157,16 +157,16 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
             setinNegroOver(0);
             setinBlanUp(0);
             setinBlanOver(0);  
-            btnCol1.current.src = imgList[0];
-            btnCol2.current.src = imgList[0];
-            btnCol3.current.src = imgList[0];
-            btnCol4.current.src = imgList[0];
-            btnCol5.current.src = imgList[0];
-            btnCol6.current.src = imgList[0];
-            btnCol7.current.src = imgList[0];
-            btnCol8.current.src = imgList[0];
-            btnCol9.current.src = imgList[0];
-            btnCol10.current.src = imgList[0]; 
+            btnCol1.current.src = imgList[0].default;
+            btnCol2.current.src = imgList[0].default;
+            btnCol3.current.src = imgList[0].default;
+            btnCol4.current.src = imgList[0].default;
+            btnCol5.current.src = imgList[0].default;
+            btnCol6.current.src = imgList[0].default;
+            btnCol7.current.src = imgList[0].default;
+            btnCol8.current.src = imgList[0].default;
+            btnCol9.current.src = imgList[0].default;
+            btnCol10.current.src = imgList[0].default; 
         }
     }, [variante]);
 
@@ -176,10 +176,10 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
                 <ImgBotones 
                     id="21"
                     key="21"
-                    src={imgList[inRojoUp]}
+                    src={imgList[inRojoUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inRojoOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inRojoUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inRojoOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inRojoUp].default)}
                     ref={btnCol1}
                 />
             </BotonColores>
@@ -188,10 +188,10 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
                 <ImgBotones 
                     id="22"
                     key="22"
-                    src={imgList[inAmaUp]}
+                    src={imgList[inAmaUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inAmaOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inAmaUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inAmaOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inAmaUp].default)}
                     ref={btnCol2}
                 />
             </BotonColores>
@@ -200,10 +200,10 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
                 <ImgBotones 
                     id="23"
                     key="23"
-                    src={imgList[inVerdeUp]}
+                    src={imgList[inVerdeUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inVerdeOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inVerdeUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inVerdeOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inVerdeUp].default)}
                     ref={btnCol3}
                 />
             </BotonColores>
@@ -212,10 +212,10 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
                 <ImgBotones 
                     id="24"
                     key="24"
-                    src={imgList[inAzClaroUp]}
+                    src={imgList[inAzClaroUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inAzClaroOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inAzClaroUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inAzClaroOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inAzClaroUp].default)}
                     ref={btnCol4}
                 />
             </BotonColores>
@@ -224,10 +224,10 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
                 <ImgBotones 
                     id="25"
                     key="25"
-                    src={imgList[inAzulFUp]}
+                    src={imgList[inAzulFUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inAzulFOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inAzulFUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inAzulFOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inAzulFUp].default)}
                     ref={btnCol5}
                 />
             </BotonColores>
@@ -237,10 +237,10 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
                 <ImgBotones 
                     id="26"
                     key="26"
-                    src={imgList[inFucUp]}
+                    src={imgList[inFucUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inFucOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inFucUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inFucOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inFucUp].default)}
                     ref={btnCol6}
                 />
             </BotonColores>
@@ -249,10 +249,10 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
                 <ImgBotones 
                     id="27"
                     key="27"
-                    src={imgList[inGrisUp]}
+                    src={imgList[inGrisUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inGrisOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inGrisUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inGrisOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inGrisUp].default)}
                     ref={btnCol7}
                 />
             </BotonColores>   
@@ -261,10 +261,10 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
                 <ImgBotones 
                     id="28"
                     key="28"
-                    src={imgList[inNarUp]}
+                    src={imgList[inNarUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inNarOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inNarUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inNarOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inNarUp].default)}
                     ref={btnCol8}
                 />
             </BotonColores>
@@ -273,10 +273,10 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
                 <ImgBotones 
                     id="29"
                     key="29"
-                    src={imgList[inNegroUp]}
+                    src={imgList[inNegroUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inNegroOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inNegroUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inNegroOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inNegroUp].default)}
                     ref={btnCol9}
                 />
             </BotonColores>
@@ -285,10 +285,10 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
                 <ImgBotones 
                     id="30"
                     key="30"
-                    src={imgList[inBlanUp]}
+                    src={imgList[inBlanUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inBlanOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inBlanUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inBlanOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inBlanUp].default)}
                     ref={btnCol10}
                 />
             </BotonColores>

@@ -91,12 +91,12 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             setinHexadOver(13);
             setinLineaUp(15);
             setinLineaOver(16);
-            btnCirc.current.src = circUp;
-            btnCuad.current.src = cuadUp;
-            btnTria.current.src = triaUp;
-            btnRombo.current.src = romboUp;
-            btnHexa.current.src = hexaUp;
-            btnLinea.current.src = lineaUp;             
+            btnCirc.current.src = circUp.default;
+            btnCuad.current.src = cuadUp.default;
+            btnTria.current.src = triaUp.default;
+            btnRombo.current.src = romboUp.default;
+            btnHexa.current.src = hexaUp.default;
+            btnLinea.current.src = lineaUp.default;             
         }else{
             setinCircUp(2);
             setinCircOver(2);
@@ -110,45 +110,45 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             setinHexadOver(14);
             setinLineaUp(17);
             setinLineaOver(17);
-            btnCirc.current.src = circDis;
-            btnCuad.current.src = cuadDis;
-            btnTria.current.src = triaDis;
-            btnRombo.current.src = romboDis;
-            btnHexa.current.src = hexaDis;
-            btnLinea.current.src = lineaDis;
+            btnCirc.current.src = circDis.default;
+            btnCuad.current.src = cuadDis.default;
+            btnTria.current.src = triaDis.default;
+            btnRombo.current.src = romboDis.default;
+            btnHexa.current.src = hexaDis.default;
+            btnLinea.current.src = lineaDis.default;
             switch (figura) {
                 case 1:
-                    btnCirc.current.src = circUp;
+                    btnCirc.current.src = circUp.default;
                     setinCircUp(0);
                     setinCircOver(1);
                     break;
                 case 2:
                     setinCuadUp(3);
                     setinCuadOver(4);
-                    btnCuad.current.src = cuadUp;
+                    btnCuad.current.src = cuadUp.default;
                     break;
                 case 3:
-                    btnTria.current.src = triaUp;
+                    btnTria.current.src = triaUp.default;
                     setinTriaUp(6);
                     setinTriaOver(7);
                     break;
                 case 4:
-                    btnRombo.current.src = romboUp;
+                    btnRombo.current.src = romboUp.default;
                     setinRomboUp(9);
                     setinRomboOver(10);
                     break;
                 case 5:
-                    btnHexa.current.src = hexaUp;
+                    btnHexa.current.src = hexaUp.default;
                     setinHexadUp(12);
                     setinHexadOver(13);
                     break;
                 case 6:
-                    btnLinea.current.src = lineaUp;
+                    btnLinea.current.src = lineaUp.default;
                     setinLineaUp(15);
                     setinLineaOver(16);
                     break;                    
                 default:
-                    btnCirc.current.src = circUp;
+                    btnCirc.current.src = circUp.default;
                     setinCircUp(0);
                     setinCircOver(1);
                     break;
@@ -162,7 +162,8 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             setFigura(Number(e.target.id));
         }
     }
-
+    
+    console.log("Ruta de la imagen del boton del círculo up: ", imgList[inCircUp].default);
 
     return ( 
         <div className={`${styles.cont_figuras}`}>
@@ -170,10 +171,10 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                 <ImgBotones
                     id="1"
                     key="1"
-                    src={imgList[inCircUp]}
+                    src={imgList[inCircUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inCircOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inCircUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inCircOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inCircUp].default)}
                     ref={btnCirc}
                 />
             </BotonFiguras>
@@ -182,10 +183,10 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                 <ImgBotones 
                     id="2"
                     key="2"
-                    src={imgList[inCuadUp]}
+                    src={imgList[inCuadUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inCuadOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inCuadUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inCuadOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inCuadUp].default)}
                     ref={btnCuad}
                 />
             </BotonFiguras>
@@ -194,10 +195,10 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                 <ImgBotones 
                     id="3"
                     key="3"
-                    src={imgList[inTriaUp]}
+                    src={imgList[inTriaUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inTriaOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inTriaUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inTriaOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inTriaUp].default)}
                     ref={btnTria}
                 />                
             </BotonFiguras>
@@ -206,10 +207,10 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                 <ImgBotones 
                     id="4"
                     key="4"
-                    src={imgList[inRomboUp]}
+                    src={imgList[inRomboUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inRomboOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inRomboUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inRomboOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inRomboUp].default)}
                     ref={btnRombo}
                 /> 
             </BotonFiguras>
@@ -218,10 +219,10 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                 <ImgBotones 
                     id="5"
                     key="5"
-                    src={imgList[inHexadUp]}
+                    src={imgList[inHexadUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inHexadOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inHexadUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inHexadOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inHexadUp].default)}
                     ref={btnHexa}
                 />
             </BotonFiguras>
@@ -230,10 +231,10 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                 <ImgBotones 
                     id="6"
                     key="6"
-                    src={imgList[inLineaUp]}
+                    src={imgList[inLineaUp].default}
                     onClick={handleChange} 
-                    onMouseOver={e => (e.currentTarget.src = imgList[inLineaOver])}
-                    onMouseLeave={e => (e.currentTarget.src = imgList[inLineaUp])}
+                    onMouseOver={e => (e.currentTarget.src = imgList[inLineaOver].default)}
+                    onMouseLeave={e => (e.currentTarget.src = imgList[inLineaUp].default)}
                     ref={btnLinea}
                 />
             </BotonFiguras>
@@ -243,7 +244,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                 <ImgBotones 
                     id="7"
                     key="7"
-                    src={btnDis}
+                    src={btnDis.default}
                 />
             </BotonFiguras>
             <BotonFiguras
@@ -251,7 +252,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                 <ImgBotones 
                     id="8"
                     key="8"
-                    src={btnDis}
+                    src={btnDis.default}
                 />
             </BotonFiguras> 
             <BotonFiguras
@@ -259,7 +260,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                 <ImgBotones 
                     id="9"
                     key="9"
-                    src={btnDis}
+                    src={btnDis.default}
                 />
             </BotonFiguras> 
             <BotonFiguras
@@ -267,7 +268,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                 <ImgBotones
                     id="10"
                     key="10"
-                    src={btnDis}
+                    src={btnDis.default}
                 />
             </BotonFiguras>               
 

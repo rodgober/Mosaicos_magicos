@@ -31,10 +31,10 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages}) => {
                     <img 
                         id="1"
                         key="1"
-                        src={imgList[0]}
+                        src={imgList[0].default}
                         onClick={e => onClickMostrarSala(1)}
-                        onMouseOver={e => (e.currentTarget.src = imgList[2])}
-                        onMouseLeave={e => (e.currentTarget.src = imgList[0])}
+                        onMouseOver={e => (e.currentTarget.src = imgList[2].default)}
+                        onMouseLeave={e => (e.currentTarget.src = imgList[0].default)}
                         ref={btnMosaicos}
                         alt="Sala de mosaicos"
                     />
@@ -44,10 +44,10 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages}) => {
                     <img 
                         id="2"
                         key="2"
-                        src={imgList[3]}
+                        src={imgList[3].default}
                         onClick={e => onClickMostrarSala(2)}
-                        onMouseOver={e => (e.currentTarget.src = imgList[5])}
-                        onMouseLeave={e => (e.currentTarget.src = imgList[3])}
+                        onMouseOver={e => (e.currentTarget.src = imgList[5].default)}
+                        onMouseLeave={e => (e.currentTarget.src = imgList[3].default)}
                         ref={btnMurales}
                         alt="Sala de murales"
                     />
@@ -57,10 +57,10 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages}) => {
                     <img 
                         id="3"
                         key="3"
-                        src={imgList[6]}
+                        src={imgList[6].default}
                         onClick={e => onClickMostrarSala(3)}
-                        onMouseOver={e => (e.currentTarget.src = imgList[8])}
-                        onMouseLeave={e => (e.currentTarget.src = imgList[6])}
+                        onMouseOver={e => (e.currentTarget.src = imgList[8].default)}
+                        onMouseLeave={e => (e.currentTarget.src = imgList[6].default)}
                         ref={btnCollages}
                         alt="Sala de collages"
                     />
