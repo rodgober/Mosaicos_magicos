@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Mosaicos_magicos/static/css/main.8967e24b.chunk.css",
-    "main.js": "/Mosaicos_magicos/static/js/main.6d6f3416.chunk.js",
-    "main.js.map": "/Mosaicos_magicos/static/js/main.6d6f3416.chunk.js.map",
+    "main.css": "/Mosaicos_magicos/static/css/main.492dd346.chunk.css",
+    "main.js": "/Mosaicos_magicos/static/js/main.e93a95f8.chunk.js",
+    "main.js.map": "/Mosaicos_magicos/static/js/main.e93a95f8.chunk.js.map",
     "runtime-main.js": "/Mosaicos_magicos/static/js/runtime-main.35b1db52.js",
     "runtime-main.js.map": "/Mosaicos_magicos/static/js/runtime-main.35b1db52.js.map",
     "static/js/2.6557c5da.chunk.js": "/Mosaicos_magicos/static/js/2.6557c5da.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.f51dabe0.chunk.js": "/Mosaicos_magicos/static/js/3.f51dabe0.chunk.js",
     "static/js/3.f51dabe0.chunk.js.map": "/Mosaicos_magicos/static/js/3.f51dabe0.chunk.js.map",
     "index.html": "/Mosaicos_magicos/index.html",
-    "static/css/main.8967e24b.chunk.css.map": "/Mosaicos_magicos/static/css/main.8967e24b.chunk.css.map",
+    "static/css/main.492dd346.chunk.css.map": "/Mosaicos_magicos/static/css/main.492dd346.chunk.css.map",
     "static/js/2.6557c5da.chunk.js.LICENSE.txt": "/Mosaicos_magicos/static/js/2.6557c5da.chunk.js.LICENSE.txt",
     "static/media/LogoMM.png": "/Mosaicos_magicos/static/media/LogoMM.06d3b768.png",
     "static/media/SalidasHorno.png": "/Mosaicos_magicos/static/media/SalidasHorno.014fe552.png",
@@ -23,7 +23,7 @@
   "entrypoints": [
     "static/js/runtime-main.35b1db52.js",
     "static/js/2.6557c5da.chunk.js",
-    "static/css/main.8967e24b.chunk.css",
-    "static/js/main.6d6f3416.chunk.js"
+    "static/css/main.492dd346.chunk.css",
+    "static/js/main.e93a95f8.chunk.js"
   ]
 }
