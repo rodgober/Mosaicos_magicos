@@ -6,9 +6,9 @@ import Variantes from './Variantes';
 import Colores from './Colores';
 import Amosaico from './Amosaico';
 import salaContext from '../context/salas/salaContext'
-import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import ReplayIcon from '@material-ui/icons/Replay';
+import PropTypes from 'prop-types';
 
 const Horno = React.forwardRef((props, ref) => {
 
@@ -85,19 +85,17 @@ const Horno = React.forwardRef((props, ref) => {
                         />
                     </div>
                 </div>
-
+                
                 <div className={`${styles.tablero}`} >
                     <Figuras
                         figura={figura}
                         setFigura={setFigura}
                     />
-
-                    <Variantes
+                   <Variantes
                         figura={figura}
                         variante={variante}
                         setVariante={setVariante}
-                    />
-
+                    /> 
                     <Colores
                         figura={figura}
                         variante={variante}
@@ -106,19 +104,16 @@ const Horno = React.forwardRef((props, ref) => {
                         setPintar={setPintar}
                         setEstampar={setEstampar}
                         setFigura={setFigura}
-                    />
+                 /> 
                 </div>
                 <div>
-
-                    <Tooltip title="Deshacer" arrow>
                     <Button
-                                type="button"
-                                onClick={e => undo()}
-                                disabled={!deshacer}
-                            >
+                        type="button"
+                        onClick={e => undo()}
+                        disabled={!deshacer}
+                    >
                         <ReplayIcon></ReplayIcon>
                     </Button>
-                </Tooltip>
                 </div> 
             </div>
             <div className={`${styles.div_estampar}`}  >
@@ -136,10 +131,14 @@ const Horno = React.forwardRef((props, ref) => {
                     setAnimacion={setAnimacion}
                     ref={canvasTrans}
                 />
-            </div> 
+            </div>
         </Fragment>
 
      );
 });
+
+Horno.protoTypes = {
+    ref: PropTypes.node.isRequired 
+}
  
 export default Horno;

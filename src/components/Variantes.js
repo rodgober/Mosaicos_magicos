@@ -7,6 +7,7 @@ import {btnDis, cir1Up, cir1Over, cir1Dis, cir2Up, cir2Over, cir2Dis, cir3Up, ci
     hex1Up, hex1Over, hex1Dis, hex2Up, hex2Over, hex2Dis,
     lin1Up, lin1Over, lin1Dis, lin2Up, lin2Over, lin2Dis, lin3Up, lin3Over, lin3Dis, lin4Up, lin4Over, lin4Dis
  } from '../types/imgbotones';
+ import PropTypes from 'prop-types';
 
 
 const ContenedorVariantes = styled.div`
@@ -145,6 +146,7 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
             btnVar9.current.src = imgListV9[(figura * 3) - 2].default;
             btnVar10.current.src = imgListV10[(figura * 3) - 2].default;
         }
+        // eslint-disable-next-line
     }, [figura]); 
 
     useEffect(() => {
@@ -153,6 +155,7 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
         }else{
             iniciarVariantes();
         }
+        // eslint-disable-next-line
     }, [variante]);
     
     function iniciarVariantes(){
@@ -417,4 +420,10 @@ const Variantes = ({figura, variante, setVariante, btnVar1,btnVar2, btnVar3, btn
      );
 }
  
+Variantes.protoTypes = {
+    figura: PropTypes.number.isRequired,
+    variante: PropTypes.number.isRequired,
+    setVariante: PropTypes.func.isRequired,
+}
+
 export default Variantes;

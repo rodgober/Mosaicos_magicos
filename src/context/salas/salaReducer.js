@@ -1,6 +1,6 @@
 import { SALA_HABILITADA, SET_ALMACEN, SET_MOSSELECCIONADO, SET_ALMACEN_COLLAGE } from '../../types';
 
-export default (state, action) => {
+export default function salaReducer(state, action)  {
     switch(action.type) {
         case SALA_HABILITADA:
             return{

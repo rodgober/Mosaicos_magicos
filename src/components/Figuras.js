@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import {btnDis, circUp, circOver, circDis, cuadUp, cuadOver, cuadDis, triaUp, triaOver, triaDis, romboUp, romboOver, romboDis, hexaUp, hexaOver, hexaDis, lineaUp, lineaOver, lineaDis
 } from '../types/imgbotones';
 import styles from './Figuras.module.css';
+import PropTypes from 'prop-types';
 
 
 const BotonFiguras = styled.button`
@@ -154,6 +155,7 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
                     break;
             }   
         }
+        // eslint-disable-next-line
     }, [figura]); 
 
     //Funcion que pone en el STATE el ID de la figura presionada
@@ -273,6 +275,11 @@ const Figuras = ({figura, setFigura, btnCirc, btnCuad, btnTria, btnRombo, btnHex
             
         </div>
      );
+}
+
+Figuras.protoTypes = {
+    figura: PropTypes.number.isRequired,
+    setFigura: PropTypes.func.isRequired
 }
  
 export default Figuras;

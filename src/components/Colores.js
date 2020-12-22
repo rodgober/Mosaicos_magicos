@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { rojoUp, rojoOver, amaUp, amaOver, verdeUp, verdeOver, azClaroUp, azClaroOver, azFuerteUp, azFuerteOver, fucUp, fucOver, grisUp, 
     grisOver,narUp,narOver,negUp,negOver,blaUp,blaOver,btnDis } from '../types';
-
-
+import PropTypes from 'prop-types';
 
 const ContenedorColores = styled.div`
     display: flex;
@@ -168,6 +167,7 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
             btnCol9.current.src = imgList[0].default;
             btnCol10.current.src = imgList[0].default; 
         }
+        // eslint-disable-next-line
     }, [variante]);
 
     return ( 
@@ -297,4 +297,14 @@ const Colores = ({figura, variante, color, setColor, pintar, setPintar, setEstam
      );
 }
  
+Colores.protoTypes = {
+    figura: PropTypes.number.isRequired,
+    variante: PropTypes.number.isRequired,
+    color: PropTypes.number.isRequired,
+    setColor: PropTypes.func.isRequired,
+    setPintar: PropTypes.func.isRequired,
+    setEstampar: PropTypes.func.isRequired,   
+    setFigura: PropTypes.func.isRequired,    
+}
+
 export default Colores;

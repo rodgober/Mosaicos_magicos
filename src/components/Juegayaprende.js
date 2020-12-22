@@ -5,8 +5,6 @@ import Sala from './Sala';
 
 
 const Juegayaprende = () => {
-    
-
     return ( 
         <Fragment>
             <div className="vertical" ></div>
@@ -15,7 +13,7 @@ const Juegayaprende = () => {
             </Header>
             <div className="contenedor-app">
                 <Secciones>
-                </Secciones>
+                </Secciones> 
                 <Sala>
                 </Sala>
             </div>

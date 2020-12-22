@@ -12,7 +12,7 @@ const BotonSalas = styled.button`
     padding: 0px;
 `;
 
-const Secciones = ({btnMosaicos, btnMurales, btnCollages}) => {
+const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
     btnMosaicos = React.createRef();
     btnMurales = React.createRef();
     btnCollages = React.createRef();
@@ -63,6 +63,19 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages}) => {
                         onMouseLeave={e => (e.currentTarget.src = imgList[6].default)}
                         ref={btnCollages}
                         alt="Sala de collages"
+                    />
+                </BotonSalas>
+
+                <BotonSalas>
+                    <img 
+                        id="1"
+                        key="1"
+                        src={imgList[0].default}
+                        onClick={e => onClickMostrarSala(4)}
+                        onMouseOver={e => (e.currentTarget.src = imgList[2].default)}
+                        onMouseLeave={e => (e.currentTarget.src = imgList[0].default)}
+                        ref={btnProgramacion}
+                        alt="Sala de programacion"
                     />
                 </BotonSalas>
 

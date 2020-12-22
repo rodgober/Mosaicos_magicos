@@ -1,11 +1,12 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import styles from './Sala.module.css';
-import Almacenes from './Almacenes';
-import Almacencollages from './Almacencollages';
 import Horno from './Horno';
-import Murales from './Murales'
-import Collages from './Collages'
-import Programacion from './Programacion'
+import Almacenes from './Almacenes';
+//import Almacencollages from './Almacencollages';
+
+//import Murales from './Murales'
+//import Collages from './Collages'
+//import Programacion from './Programacion'
 
 import salaContext from '../context/salas/salaContext'
 
@@ -16,7 +17,6 @@ const Sala = () => {
     const canvasAlmcollages = React.createRef();
 
     const mostrarSala = () => {
-
         switch (sala) {
             case 1:
                 return <div className={`${styles.mosaicos}`}>
@@ -26,9 +26,9 @@ const Sala = () => {
                             <Almacenes
                                 ref = {canvasAlmacenes}
                             >
-                            </Almacenes>  
+                            </Almacenes>
                         </div>;
-            case 2:
+            { /* case 2:
                 return  <div className={`${styles.murales}`}>
                             <Murales
                                 ref = {canvasAlmacenes}
@@ -49,18 +49,19 @@ const Sala = () => {
                         </Almacencollages>
                         </div>;
             case 4:
-                return <Programacion> </Programacion>;
+            return <Programacion> </Programacion>; */ }
             default:
-                return <Fragment>
+                return <div className={`${styles.mosaicos}`}>
                             <Horno
                                 ref = {canvasAlmacenes}
                             > </Horno>
                             <Almacenes
                                 ref = {canvasAlmacenes}
                             >
-                            </Almacenes> 
-                        </Fragment>;
+                            </Almacenes>     
+                        </div>;
         }
+
     }
     return ( 
         <div className="seccion-principal">

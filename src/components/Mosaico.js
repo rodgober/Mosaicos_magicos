@@ -1,13 +1,14 @@
-import React, {useEffect, useContext, useState } from 'react';
+import React, {useEffect, useContext } from 'react';
 import salaContext from '../context/salas/salaContext'
 import styles from './Mosaico.module.css';
+import PropTypes from 'prop-types';
 
 const Mosaico = React.forwardRef((props, ref) => {
 
     const copia = React.createRef(); //Canvas a utilizar en caso de deshacer la última acción
 
     const salaContexto = useContext(salaContext);
-    const { alto, largo } = salaContexto;
+    const { alto, largo } = salaContexto; //alto y largo del mosaico
 
     const col = ['red', 'yellow', 'green', 'aqua', 'blue', 'fuchsia', 'gray', 'orange', 'black', 'white'];
     let {figura, variante, color, pintar, setPintar, setFigura, setVariante, deshacer, setDeshacer } = props;
@@ -28,72 +29,73 @@ const Mosaico = React.forwardRef((props, ref) => {
         ctx2.fillStyle = 'white'; //Estblece color de relleno blanco
         ctx2.strokeStyle = 'white'; //Estblece color de relleno blanco
         ctx2.fillRect(0, 0, largo, alto);
-
-    }, []);
+        // eslint-disable-next-line
+    }, [alto,largo]);
 
     useEffect(e => {
         if (!deshacer){
-            const canvasRef = ref;
-            const canvasCopia = copia;
+            const canvasRef = ref; //Mosaico
+            const canvasMos = canvasRef.current; //Mosaico
+            const ctx1 = canvasMos.getContext('2d'); //Mosaico
+            const canvasCopia = copia; //Mosaico oculto Deshacer
+            const canvasDes = canvasCopia.current; //Mosaico oculto Deshacer
+            const ctx2 = canvasDes.getContext('2d'); //Mosaico oculto Deshacer
 
-            const canvasMos = canvasRef.current;
-            const canvasDes = canvasCopia.current;
-
-            const ctx1 = canvasMos.getContext('2d');
+            ctx1.clearRect(0, 0, largo, alto);  //Limpia el mosaico de arriba para crear un nuevo mosaic
+            ctx1.fillStyle = 'white'; //Estblece color de relleno blanco
+            ctx1.strokeStyle = 'white'; //Estblece color de relleno blanco
+            ctx1.fillRect(0, 0, largo, alto);
             ctx1.drawImage(canvasDes, 0, 0);
 
-
-
-            const ctx2 = canvasDes.getContext('2d');
-            ctx2.clearRect(0, 0, largo, alto);  //Limpia el mosaico de arriba para crear un nuevo mosaic
-            ctx2.fillStyle = 'white'; //Estblece color de relleno blanco
-            ctx2.strokeStyle = 'white'; //Estblece color de relleno blanco
-            ctx2.fillRect(0, 0, largo, alto);
+            ctx1.beginPath();
+            ctx2.beginPath();
         }
+        // eslint-disable-next-line
     }, [deshacer]);
 
     useEffect(e => {
         if(pintar){
-            const canvasRef = ref;
-
-            const canvas = canvasRef.current;
-            const ctx = canvas.getContext('2d');
-            ctx.lineWidth = 2;
-            ctx.lineCap = 'butt';
-            ctx.fill('nonzero');
-            ctx.fillStyle = col[color-21];
-            ctx.strokeStyle = col[color-21];
-            ctx.beginPath();
+            const canvasRef = ref; //Mosaico
+            const canvasMos = canvasRef.current; //Mosaico
+            const ctx1 = canvasMos.getContext('2d'); //Mosaico
             //Respaldar lo que tien para el Deshacer
-            const canvasCopia = copia;
-            const canvasDes = canvasCopia.current;
-            const ctx2 = canvasDes.getContext('2d');
-            ctx2.drawImage(canvas, 0, 0);
+            const canvasCopia = copia; //Mosaico oculto Deshacer
+            const canvasDes = canvasCopia.current; //Mosaico oculto Deshacer
+            const ctx2 = canvasDes.getContext('2d'); //Mosaico oculto Deshacer
+            ctx2.drawImage(canvasMos, 0, 0); //Copia el contenido del mosaico
+
+            ctx1.lineWidth = 2;
+            ctx1.lineCap = 'butt';
+            ctx1.fill('nonzero');
+            ctx1.fillStyle = col[color-21];
+            ctx1.strokeStyle = col[color-21];
+            ctx1.beginPath();
+            
             //Ya hizo copia de lo que tenía, se puede proceder a estampar
             switch (figura) {
                 case 1:
-                    fig1(ctx);//Circulo
+                    fig1(ctx1);//Circulo
                     break;
                 case 2:
-                    fig2(ctx);//Cuadrado
+                    fig2(ctx1);//Cuadrado
                     break;
                 case 3:
-                    fig3(ctx);//Triangulo
+                    fig3(ctx1);//Triangulo
                     break;
                 case 4:
-                    fig4(ctx);//Rombo
+                    fig4(ctx1);//Rombo
                     break;
                 case 5:
-                    fig5(ctx);//Hexagono
+                    fig5(ctx1);//Hexagono
                     break;
                 case 6:
-                    fig6(ctx);//Linea
+                    fig6(ctx1);//Linea
                     break;
                 default:
-                    fig1(ctx);//Circulo
+                    fig1(ctx1);//Circulo
                     break;
             }
-            superRelleno(ctx);//la peor función de mi vida :()
+            superRelleno(ctx1);//la peor función de mi vida :()
           //  ctx.stroke();
             setPintar(false);
             setFigura(0);
@@ -101,6 +103,7 @@ const Mosaico = React.forwardRef((props, ref) => {
             setDeshacer(true);
             return;
         }        
+        // eslint-disable-next-line
     }, [pintar]);
 
     function superRelleno(ctx){
@@ -325,15 +328,6 @@ const Mosaico = React.forwardRef((props, ref) => {
         ctx.lineTo(pto2[0], pto2[1]);
     }    
 
-    /*
-                        <canvas
-                        className={`${styles.cvs_mosaico}`}
-                        ref={ref}
-                        width={alto}
-                        height={largo}
-                    />
-    * */
-
     return ( 
         <div className={`${styles.cont_mosaico}`} >
             <canvas
@@ -351,5 +345,18 @@ const Mosaico = React.forwardRef((props, ref) => {
         </div>
      );
 });
+
+Mosaico.protoTypes = {
+    figura: PropTypes.number.isRequired,
+    variante: PropTypes.number.isRequired,
+    color: PropTypes.number.isRequired,
+    pintar: PropTypes.bool.isRequired,
+    deshacer: PropTypes.bool.isRequired,
+    setPintar: PropTypes.func.isRequired,
+    setFigura: PropTypes.func.isRequired,
+    setVariante: PropTypes.func.isRequired,
+    setDeshacer: PropTypes.func.isRequired,
+    ref: PropTypes.node.isRequired
+  }
  
 export default Mosaico;

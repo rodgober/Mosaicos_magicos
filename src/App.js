@@ -11,5 +11,4 @@ function App() {
     </SalaState>
   );
 }
-
 export default App;
