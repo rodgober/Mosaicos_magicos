@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react';
 import salaContext from '../context/salas/salaContext'
+import PropTypes from 'prop-types';
 
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import PrintIcon from '@material-ui/icons/Print';
 
@@ -19,16 +19,14 @@ const Collages = React.forwardRef((props,ref) => {
     const [filas, setFilas] = useState(3);
     const [columnas, setColumnas] = useState(3);
     const salaContexto = useContext(salaContext);
-    const {altoCollage, largoCollage, separacion } = salaContexto;
+    const {altoCollage, largoCollage } = salaContexto;
     const canvasCollage = React.createRef(); //Crea la referencia del canvas del Collage donde se pegan los murales
     const refInput = React.createRef(); //Crea la referencia al input que permite abrir el mural
 
     const handleChange = e => {
         const canvasAlm = canvasAlmaCollage.current; //El current del Almacen
         const canvasMu = canvasCollage.current;       //El current del Mural
-        const ctxAlm = canvasAlm.getContext('2d');  //Crea el contexto donde tomará el mosaico seleccionado
         const ctxMural = canvasMu.getContext('2d'); //Crea el contexto donde pintará el mosaico seleccionado
-        var imgMosaico = ctxAlm.getImageData(0, 0, canvasAlm.width-1, canvasAlm.height-1);//Toma el mosaico del almacen
         let rect = canvasMu.getBoundingClientRect();
         let x = e.clientX - rect.left; //Obtiene coordenada X donde el usuario dio clic
         let y = e.clientY - rect.top; // Obtiene coordenada Y donde el usuario dio clic
@@ -135,7 +133,8 @@ const Collages = React.forwardRef((props,ref) => {
     }
 
     useEffect(() => {   
-        limpiaColage();        
+        limpiaColage();    
+        // eslint-disable-next-line
     }, [filas, columnas])
 
     return ( 
@@ -170,7 +169,6 @@ const Collages = React.forwardRef((props,ref) => {
             <option value="5">5</option>
         </select>
 
-        <Tooltip title="Abrir collage" arrow>
                     <Button
                         component="label"
                     >
@@ -183,9 +181,7 @@ const Collages = React.forwardRef((props,ref) => {
                         />
                         <FolderOpenIcon></FolderOpenIcon>
                     </Button>
-                </Tooltip>
 
-<Tooltip title="Guardar collage" arrow>
                     <Button
                         type="button"
                         onClick={ () => guardar() }
@@ -193,27 +189,26 @@ const Collages = React.forwardRef((props,ref) => {
                     <SaveIcon>
                     </SaveIcon>
                     </Button>
-                </Tooltip>
 
-        <Tooltip title="Limpiar el collage" arrow>
                     <Button
                                 type="button"
                                 onClick={ () => limpiaColage() }
                             >
                         <DeleteOutlineIcon></DeleteOutlineIcon>
                     </Button>
-                </Tooltip>
-    
-        <Tooltip title="Imprimir collage" arrow>
+
                     <Button
                                 type="button"
                                 onClick={ () => imprimir() }
                             >
                         <PrintIcon></PrintIcon>
-                    </Button>
-                </Tooltip>             
+                    </Button>          
         </div>
      );
 });
+
+Collages.protoTypes = {
+    ref: PropTypes.node.isRequired 
+}
  
 export default Collages;

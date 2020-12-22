@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import styles from './Sala.module.css';
 import Horno from './Horno';
+import Murales from './Murales';
+import Collages from './Collages';
 import Almacenes from './Almacenes';
-//import Almacencollages from './Almacencollages';
-
-//import Murales from './Murales'
-//import Collages from './Collages'
-//import Programacion from './Programacion'
+import Almacencollages from './Almacencollages';
+import Programacion from './Programacion'
 
 import salaContext from '../context/salas/salaContext'
 
@@ -28,7 +27,7 @@ const Sala = () => {
                             >
                             </Almacenes>
                         </div>;
-            { /* case 2:
+            case 2:
                 return  <div className={`${styles.murales}`}>
                             <Murales
                                 ref = {canvasAlmacenes}
@@ -49,7 +48,7 @@ const Sala = () => {
                         </Almacencollages>
                         </div>;
             case 4:
-            return <Programacion> </Programacion>; */ }
+            return <Programacion> </Programacion>; 
             default:
                 return <div className={`${styles.mosaicos}`}>
                             <Horno
@@ -61,7 +60,6 @@ const Sala = () => {
                             </Almacenes>     
                         </div>;
         }
-
     }
     return ( 
         <div className="seccion-principal">

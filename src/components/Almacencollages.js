@@ -1,16 +1,12 @@
-import React, { useState, useContext, useEffect, Component } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import salaContext from '../context/salas/salaContext';
 import styles from './Almacencollages.module.css';
+import PropTypes from 'prop-types';
 
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import SaveIcon from '@material-ui/icons/Save';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
-
-
-import { obtenerXInicialMos, obtenerYInicialMos, obtenerMosXSeleccionado, obtenerXDelMosSeleccionado, obtenerLargoAlmacen, obtenerAltoAlmacen, obtenerNumMosaicosXLargoImagen } from '../helper';
 
 const Almacencollages = React.forwardRef((props,ref) => {
 
@@ -27,7 +23,7 @@ const Almacencollages = React.forwardRef((props,ref) => {
     const mural10 = React.createRef();
 
     const salaContexto = useContext(salaContext);
-    const { alto, largo, separacion, almacenCollages, setAlmacenCollages, mosSeleccionado, setMosSeleccionado } = salaContexto;
+    const { almacenCollages, setAlmacenCollages} = salaContexto;
     const canvasRef = ref;
     const componentsMap = [ mural1, mural2, mural3, mural4, mural5, mural6, mural7, mural8, mural9, mural10 ];
 
@@ -259,7 +255,6 @@ const Almacencollages = React.forwardRef((props,ref) => {
             </div>
 
             <div>
-            <Tooltip title="Abrir mural" arrow>
                     <Button
                         component="label"
                     >
@@ -272,10 +267,7 @@ const Almacencollages = React.forwardRef((props,ref) => {
                         />
                         <FolderOpenIcon></FolderOpenIcon>
                     </Button>
-                </Tooltip>
 
-           
-            <Tooltip title="Eliminar 1 mural" arrow>
                     <Button
                             type="button"
                             onClick={ () => borrarMural() }
@@ -287,16 +279,13 @@ const Almacencollages = React.forwardRef((props,ref) => {
                     
                         ></HighlightOffIcon>
                     </Button>
-                </Tooltip>
-
-                <Tooltip title="Eliminar todos los mosaicos" arrow>
+    
                     <Button
                                 type="button"
                                 onClick={ () => eliminartodos() }
                             >
                         <DeleteOutlineIcon></DeleteOutlineIcon>
                     </Button>
-                </Tooltip>
 
             </div>
             <canvas className={`${styles.mural_oculto}`}
@@ -308,5 +297,9 @@ const Almacencollages = React.forwardRef((props,ref) => {
         </div>
      );
 });
+
+Almacencollages.protoTypes = {
+    ref: PropTypes.node.isRequired 
+}
  
 export default Almacencollages;

@@ -6,8 +6,8 @@ import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 import { obtenerXInicialMos, obtenerYInicialMos, obtenerMosXSeleccionado, obtenerXDelMosSeleccionado, obtenerLargoAlmacen, obtenerAltoAlmacen, obtenerNumMosaicosXLargoImagen } from '../helper';
 
@@ -29,6 +29,7 @@ const Almacenes = React.forwardRef((props,ref) => {
             setAlmacen(0);
             setMosSeleccionado(0);
         }
+        // eslint-disable-next-line
     }, [almacen]);
 
 
@@ -51,7 +52,6 @@ const Almacenes = React.forwardRef((props,ref) => {
             ctx.strokeRect(xInicialMos, yInicialMos, separacion + largo + separacion, separacion + alto + separacion); //Se pinta el marco negro 
             setMosSeleccionado(numMos);//Guarda el nuevo mosaico seleccionado   
             }
-     
     }
 
     const abrirAlmacen = e => {
@@ -82,7 +82,6 @@ const Almacenes = React.forwardRef((props,ref) => {
         console.log(img.naturalWidth);
     }
         
-
     const eliminartodos = () => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
@@ -134,7 +133,6 @@ const Almacenes = React.forwardRef((props,ref) => {
             downloadLink.setAttribute('href',url);
             downloadLink.click();
         }
-
     }
 
     return ( 
@@ -150,8 +148,6 @@ const Almacenes = React.forwardRef((props,ref) => {
             </div>
 
             <div>
-
-            <Tooltip title="Abrir almacen" arrow>
                     <Button
                         component="label"
                     >
@@ -164,9 +160,7 @@ const Almacenes = React.forwardRef((props,ref) => {
                         />
                         <FolderOpenIcon></FolderOpenIcon>
                     </Button>
-                </Tooltip>
- 
-                <Tooltip title="Guardar almacen" arrow>
+
                     <Button
                         type="button"
                         onClick={ () => guardar() }
@@ -174,9 +168,7 @@ const Almacenes = React.forwardRef((props,ref) => {
                     <SaveIcon>
                     </SaveIcon>
                     </Button>
-                </Tooltip>
 
-                <Tooltip title="Eliminar 1 mosaico" arrow>
                     <Button
                             type="button"
                             onClick={ () => borrarMos() }
@@ -188,20 +180,20 @@ const Almacenes = React.forwardRef((props,ref) => {
                     
                         ></HighlightOffIcon>
                     </Button>
-                </Tooltip>
 
-                <Tooltip title="Eliminar todos los mosaicos" arrow>
                     <Button
                                 type="button"
                                 onClick={ () => eliminartodos() }
                             >
                         <DeleteOutlineIcon></DeleteOutlineIcon>
                     </Button>
-                </Tooltip>
-
             </div>
         </div> 
      );
 });
+
+Almacenes.protoTypes = {
+    ref: PropTypes.node.isRequired 
+}
  
 export default Almacenes;
