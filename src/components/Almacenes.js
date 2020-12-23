@@ -16,21 +16,45 @@ const Almacenes = React.forwardRef((props,ref) => {
     const refInput = React.createRef();
 
     const salaContexto = useContext(salaContext);
-    const { alto, largo, separacion, almacen, setAlmacen, mosSeleccionado, setMosSeleccionado } = salaContexto;
+    const { alto, largo, separacion, almacen, setAlmacen, mosSeleccionado, setMosSeleccionado, guardarAlmacen, setGuardarAlmacen } = salaContexto;
     const canvasRef = ref;
 
-    useEffect (()=>{
-        if (almacen<=0){
-            const canvas = canvasRef.current;
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'white';
-            ctx.strokeStyle = 'white';            
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            setAlmacen(0);
+    useEffect(() => {
+        const almacenMos = localStorage.getItem('almacenMos');  //lee de localStorage la variable
+        if(almacenMos != null){   
+            const canvasAlm = canvasRef.current;
+            const ctxAlm = canvasAlm.getContext('2d'); //Crea el contexto donde pintará el mosaico seleccionado 
+            ctxAlm.restore();
+            ctxAlm.fillStyle = 'white';
+            ctxAlm.strokeStyle = 'white';  
+            ctxAlm.fillRect(0, 0, canvasAlm.width, canvasAlm.height);
             setMosSeleccionado(0);
+
+            let img = new Image();
+            img.src = almacenMos;
+
+            img.onload = function() {
+                let numMos = obtenerNumMosaicosXLargoImagen(img.naturalWidth, largo, separacion);
+                setAlmacen(numMos);
+                ctxAlm.drawImage(img, 0, 0, img.width, img.height);
+            }
         }
-        // eslint-disable-next-line
-    }, [almacen]);
+    }, []);
+
+
+    useEffect (()=>{
+        if (guardarAlmacen){
+            const canvas = canvasRef.current;
+            let canvasdwn = document.createElement('canvas');
+            canvasdwn.width = obtenerLargoAlmacen(almacen, largo, separacion); //le coloca el largo del canvas dependiendo de los mosaicos
+            canvasdwn.height = obtenerAltoAlmacen(alto, separacion);//coloca el alto del canvas
+            var destCtx = canvasdwn.getContext('2d');
+            destCtx.drawImage(canvas, 0, 0); //Copia la imagen del canvas del almacen al canvas que va a descargar con el tamaño mínimo necesario
+            let dataImg = canvasdwn.toDataURL(); //convierte la imagen a una cadena base 64
+            localStorage.setItem('almacenMos', dataImg); //guarda la cadena en base 64 en el Local Storage
+            setGuardarAlmacen(false);
+        }
+    }, [guardarAlmacen]);
 
 
     const handleChange = e => {
@@ -51,7 +75,7 @@ const Almacenes = React.forwardRef((props,ref) => {
             const yInicialMos = obtenerYInicialMos(y, alto, separacion); //Se obtiene la coordenada Y del marco a pintar 
             ctx.strokeRect(xInicialMos, yInicialMos, separacion + largo + separacion, separacion + alto + separacion); //Se pinta el marco negro 
             setMosSeleccionado(numMos);//Guarda el nuevo mosaico seleccionado   
-            }
+        }
     }
 
     const abrirAlmacen = e => {

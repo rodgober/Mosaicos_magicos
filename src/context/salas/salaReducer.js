@@ -1,4 +1,4 @@
-import { SALA_HABILITADA, SET_ALMACEN, SET_MOSSELECCIONADO, SET_ALMACEN_COLLAGE } from '../../types';
+import { SALA_HABILITADA, SET_ALMACEN, SET_MOSSELECCIONADO, SET_ALMACEN_COLLAGE, SET_GUARDAR_ALMACEN } from '../../types';
 
 export default function salaReducer(state, action)  {
     switch(action.type) {
@@ -21,6 +21,11 @@ export default function salaReducer(state, action)  {
             return{
                 ...state,
                 almacenCollages: action.payload
+            }
+        case SET_GUARDAR_ALMACEN:
+            return{
+                ...state,
+                guardarAlmacen: action.payload
             }
         default:
             return state;

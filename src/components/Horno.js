@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 const Horno = React.forwardRef((props, ref) => {
 
     const salaContexto = useContext(salaContext);
-    const { alto, largo, separacion, almacen, setAlmacen } = salaContexto;
+    const { alto, largo, separacion, almacen, setAlmacen, setGuardarAlmacen } = salaContexto;
 
     const [figura, setFigura] = useState(0); //Establece el tipo de figura seleccionada
     const [variante, setVariante] = useState(0); //Establece la variante de la figura seleccionada
@@ -56,6 +56,7 @@ const Horno = React.forwardRef((props, ref) => {
         ctxAlmacenes.putImageData(imgData, x, 0 + separacion); //Estampa el mosaico en el almacén //
 
         setAlmacen(almacen + 1); //Incrementa el almacen
+        setGuardarAlmacen(true);
         setEstampar(false); //Indica que ya no  puede volver a estampar hasta completar nuevamente el ciclo (figura, variante, color)
         setAnimacion(true);
         setDeshacer(false);
@@ -120,7 +121,7 @@ const Horno = React.forwardRef((props, ref) => {
                 <button
                     className={`${styles.btn_estampar}`}
                     type="button"
-                    onClick={handleChange}
+                    onClick={e => handleChange()}
                     disabled={!estampar}
                 >Estampar  
                  </button>

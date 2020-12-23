@@ -1,7 +1,9 @@
 export const SALA_HABILITADA = 'SALA_HABILITADA';
 export const SET_ALMACEN = 'SET_ALMACEN';
+export const SET_GUARDAR_ALMACEN = 'SET_GUARDAR_ALMACEN';
 export const SET_MOSSELECCIONADO = 'SET_MOSSELECCIONADO';
 export const SET_ALMACEN_COLLAGE ='SET_ALMACEN_COLLAGE';
+
 
 export const rojoUp = require('../components/images/botones/colores/btnRojoUp.jpg');
 export const rojoOver = require('../components/images/botones/colores/btnRojoOver.jpg');

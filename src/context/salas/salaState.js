@@ -4,6 +4,7 @@ import salaReducer from './salaReducer';
 import { 
         SALA_HABILITADA,
         SET_ALMACEN,
+        SET_GUARDAR_ALMACEN,
         SET_MOSSELECCIONADO,
         SET_ALMACEN_COLLAGE
         } from '../../types';
@@ -18,7 +19,8 @@ const SalaState = props => {
         mosSeleccionado :0,
         almacenCollages: 0,
         altoCollage: 329, 
-        largoCollage: 493
+        largoCollage: 493,
+        guardarAlmacen: false
     }
 
     //Dispatch para ejecutar las acciones
@@ -34,6 +36,13 @@ const SalaState = props => {
     const setAlmacen = n => {
         dispatch({
             type: SET_ALMACEN,
+            payload: n
+        })
+    }
+
+    const setGuardarAlmacen = n => {
+        dispatch({
+            type: SET_GUARDAR_ALMACEN,
             payload: n
         })
     }
@@ -64,9 +73,11 @@ const SalaState = props => {
                 almacenCollages: state.almacenCollages,
                 altoCollage:  state.altoCollage, 
                 largoCollage: state.largoCollage,
+                guardarAlmacen: state.guardarAlmacen,
                 setMosSeleccionado, 
                 mostrarSala,
                 setAlmacen,
+                setGuardarAlmacen,
                 setAlmacenCollages
             }}
         >
