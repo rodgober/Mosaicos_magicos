@@ -30,38 +30,37 @@ const Horno = React.forwardRef((props, ref) => {
 
     const handleChange = e => { 
        
+        if (almacen < 20){
+            const canvas1 = canvasMos.current;  //Asigna la referencia del mosaico de arriba del horno (tablero)
+            const canvas2 = canvasTrans.current;//Asigna la refrencia del mosaico que se mueve
+            const ctxM1 = canvas1.getContext('2d');
+            const ctxM2 = canvas2.getContext('2d');
+            
 
-        const canvas1 = canvasMos.current;  //Asigna la referencia del mosaico de arriba del horno (tablero)
-        const canvas2 = canvasTrans.current;//Asigna la refrencia del mosaico que se mueve
-        const ctxM1 = canvas1.getContext('2d');
-        const ctxM2 = canvas2.getContext('2d');
-        
+            ctxM2.drawImage(canvas1, 0, 0); //Dibuja el mosaico que se mueve
 
-        ctxM2.drawImage(canvas1, 0, 0); //Dibuja el mosaico que se mueve
+            ///////////////////////////////////////////////////
+            //     Copiar al almacen
+            ///////////////////////////////////////////////////
+            const canvas4 = canvasAlmacenes.current; //
+            const ctxAlmacenes = canvas4.getContext('2d'); //
+            var imgData = ctxM2.getImageData(0, 0, largo, alto); //Obtiene la imagen  del canvas del mosaico en TRANSICION    
+            var x =  ((separacion + largo + separacion)*almacen)+separacion; // Calcula x en el cual se estampará el mosaico en el almacen
 
-        ctxM1.clearRect(0, 0, largo, alto);  //Limpia el mosaico de arriba para crear un nuevo mosaico
-        ctxM1.fillStyle = 'white'; //Estblece color de relleno blanco
-        ctxM1.fillRect(0, 0, largo, alto);  //Pinta un cuadro blanco del tamaño del canvas para que no sea transparente
+            ctxAlmacenes.putImageData(imgData, x, 0 + separacion); //Estampa el mosaico en el almacén //
 
-        
-
-        ///////////////////////////////////////////////////
-        //     Copiar al almacen
-        ///////////////////////////////////////////////////
-        const canvas4 = canvasAlmacenes.current; //
-        const ctxAlmacenes = canvas4.getContext('2d'); //
-        var imgData = ctxM2.getImageData(0, 0, largo, alto); //Obtiene la imagen  del canvas del mosaico en TRANSICION    
-        var x =  ((separacion + largo + separacion)*almacen)+separacion; // Calcula x en el cual se estampará el mosaico en el almacen
-
-        ctxAlmacenes.putImageData(imgData, x, 0 + separacion); //Estampa el mosaico en el almacén //
-
-        setAlmacen(almacen + 1); //Incrementa el almacen
-        setGuardarAlmacen(true);
-        setEstampar(false); //Indica que ya no  puede volver a estampar hasta completar nuevamente el ciclo (figura, variante, color)
-        setAnimacion(true);
-        setDeshacer(false);
-
-      }
+            setAlmacen(almacen + 1); //Incrementa el almacen
+            setGuardarAlmacen(true);
+            setEstampar(false); //Indica que ya no  puede volver a estampar hasta completar nuevamente el ciclo (figura, variante, color)
+            setAnimacion(true);
+        //  setDeshacer(false);
+            ctxM1.clearRect(0, 0, largo, alto);  //Limpia el mosaico de arriba para crear un nuevo mosaico
+            ctxM1.fillStyle = 'white'; //Estblece color de relleno blanco
+            ctxM1.fillRect(0, 0, largo, alto);  //Pinta un cuadro blanco del tamaño del canvas para que no sea transparente      alert("Ya debe estar limpio");
+        }else{
+            alert('Debes eliminar mosaicos para seguir fabricando nuevos');
+        }
+    }
 
     const undo = e => {
         setDeshacer(false);
