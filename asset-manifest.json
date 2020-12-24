@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Mosaicos_magicos/static/css/main.45591000.chunk.css",
-    "main.js": "/Mosaicos_magicos/static/js/main.87bfebbc.chunk.js",
-    "main.js.map": "/Mosaicos_magicos/static/js/main.87bfebbc.chunk.js.map",
+    "main.js": "/Mosaicos_magicos/static/js/main.badc4b60.chunk.js",
+    "main.js.map": "/Mosaicos_magicos/static/js/main.badc4b60.chunk.js.map",
     "runtime-main.js": "/Mosaicos_magicos/static/js/runtime-main.b0764322.js",
     "runtime-main.js.map": "/Mosaicos_magicos/static/js/runtime-main.b0764322.js.map",
     "static/js/2.2bfd5d93.chunk.js": "/Mosaicos_magicos/static/js/2.2bfd5d93.chunk.js",
@@ -25,6 +25,6 @@
     "static/js/runtime-main.b0764322.js",
     "static/js/2.2bfd5d93.chunk.js",
     "static/css/main.45591000.chunk.css",
-    "static/js/main.87bfebbc.chunk.js"
+    "static/js/main.badc4b60.chunk.js"
   ]
 }
