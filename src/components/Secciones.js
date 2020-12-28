@@ -5,11 +5,22 @@ import styled from '@emotion/styled';
 import { salaMosUp, salaMosOver, salaMosDown, salaMurUp, salaMurOver, salaMurDown, salaCollUp, salaCollOver, salaCollDown } from '../types/imgbotones';
 
 const BotonSalas = styled.button`
-    cursor:pointer;
+    position:relative;
     border:none;
-    flex-grow: 1;
     flex-basis: auto; //1 grow, 2 shrink, 3 basis 
-    padding: 0px;
+    padding: 10px;
+    background-color: rgb(206, 215, 222);
+`;
+
+const ImgSecciones = styled.img`
+    cursor:pointer;
+`;
+
+const Etiqueta = styled.div`
+    position:absolute;
+    top:24px;
+    left:60px;
+    cursor:pointer;
 `;
 
 const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
@@ -28,7 +39,7 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
     return(
         <aside className={`${styles.menu_izq}`}>
                 <BotonSalas>
-                    <img 
+                    <ImgSecciones 
                         id="1"
                         key="1"
                         src={imgList[0].default}
@@ -38,10 +49,13 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
                         ref={btnMosaicos}
                         alt="Sala de mosaicos"
                     />
+                    <Etiqueta 
+                        onClick={e => onClickMostrarSala(1)}
+                    >Sala de mosaicos</Etiqueta>
                 </BotonSalas>
                 
                 <BotonSalas>
-                    <img 
+                    <ImgSecciones 
                         id="2"
                         key="2"
                         src={imgList[3].default}
@@ -51,10 +65,13 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
                         ref={btnMurales}
                         alt="Sala de murales"
                     />
+                    <Etiqueta 
+                        onClick={e => onClickMostrarSala(2)}
+                    >Sala de murales</Etiqueta>
                 </BotonSalas>
 
                 <BotonSalas>
-                    <img 
+                    <ImgSecciones 
                         id="3"
                         key="3"
                         src={imgList[6].default}
@@ -64,10 +81,13 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
                         ref={btnCollages}
                         alt="Sala de collages"
                     />
+                    <Etiqueta 
+                        onClick={e => onClickMostrarSala(3)}
+                    >Sala de collages</Etiqueta>
                 </BotonSalas>
 
                 <BotonSalas>
-                    <img 
+                    <ImgSecciones 
                         id="1"
                         key="1"
                         src={imgList[0].default}
@@ -77,8 +97,10 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
                         ref={btnProgramacion}
                         alt="Sala de programacion"
                     />
+                    <Etiqueta 
+                        onClick={e => onClickMostrarSala(4)}
+                    >Programación</Etiqueta>
                 </BotonSalas>
-
         </aside>
     )
 }

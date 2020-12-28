@@ -1,34 +1,39 @@
 .menu_izq  {
+    display: inline-flex;
+    flex-direction: column;
+    /*border: 3px solid black; */
     padding: 1rem;
-    background-color: #90abc0;
+    background-color: rgb(206, 215, 222);
     flex: 0 0 30px;
+    justify-content: top;
   }
 
 
   /*320px — 480px: Mobile devices. */
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 760px) {
     .menu_izq  {
       display: none;
     }
   }
 
-  /*    481px — 768px: iPads, Tablets.*/
+  /*    481px — 768px: iPads, Tablets.
   @media screen and (min-width: 481px) and (max-width: 768px) {
     .menu_izq {
       display: none;
     }
-  }
-/* 769px — 1024px: Small screens, laptops. */
+  } */
+
+/* 769px — 1024px: Small screens, laptops. 
   @media screen and (min-width: 769px) and (max-width: 1024px) {
     .menu_izq {
-      display: none;
-    }
-  }
+      padding: 1rem;
+    } 
+  }*/
 
 
-    /* 1201px and more — Extra large screens, TV. */
+    /* 1201px and more — Extra large screens, TV. 
     @media screen and (min-width: 1201px) {
       .menu_izq  {
-        padding: 5rem;
-      }
-    }
+        padding: 1rem;
+      } 
+    }*/
