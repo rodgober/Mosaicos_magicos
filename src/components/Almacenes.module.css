@@ -1,0 +1,89 @@
+/*Div quecontiene el almacen*/
+.tercera_seccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor_almacen {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+  } 
+
+.contenedor_botones {
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+    width: 796px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 40px;
+
+}
+
+  
+/*320px — 480px: Mobile devices. */
+/* fourth breakpoint */
+@media screen and (max-width: 480px) {
+    .tercera_seccion {
+        width: 300px;
+        height: 80px; 
+        padding-top: 16px;
+        padding-left: 5px;  
+    }
+    .contenedor_almacen{
+        width: 264px;
+        height: 33px;
+    }
+  }
+
+  /*    481px — 768px: iPads, Tablets.*/
+  /* Third breakpoint */
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    .tercera_seccion {
+        width: 400px;
+        height: 107px;
+        padding-top: 21px;
+        padding-left: 7px;  
+    }
+    .contenedor_almacen{
+        width: 354px;
+        height: 38px;
+    }
+  }
+/* 769px — 1024px: Small screens, laptops. */
+/* Second breakpoint */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .tercera_seccion {
+        width: 690px;
+        height: 183px;
+        padding-top: 37px;
+        padding-left: 17px; 
+    }
+    .contenedor_almacen{
+        width: 610px;
+        height: 67px;
+    }  
+  }
+
+  /* 1025px — 1200px: Desktops, large screens. */
+  /* First breakpoint */
+  @media screen and (min-width: 1025px)  {
+    .tercera_seccion {
+        width: 900px;
+        height: 240px; 
+        padding-top: 50px;
+        padding-left: 20px;
+    }
+    .contenedor_almacen{
+        width: 796px;
+        height: 86px;
+    }
+  }
+  /* 1201px and more — Extra large screens, TV. */

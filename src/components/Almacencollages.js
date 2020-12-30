@@ -29,6 +29,10 @@ const Almacencollages = React.forwardRef((props,ref) => {
 
     const [muralSeleccionado, setMuralSeleccionado] = useState(0);
 
+    useEffect(() => {
+        eliminartodos();
+    }, [])
+
     useEffect (()=>{
         if (almacenCollages<=0){
             setAlmacenCollages(0);
@@ -265,7 +269,9 @@ const Almacencollages = React.forwardRef((props,ref) => {
                             onChange={abrirAlmacen}
                             ref={refInput}
                         />
-                        <FolderOpenIcon></FolderOpenIcon>
+                        <FolderOpenIcon
+                            style={{ fontSize: 35 }}
+                        ></FolderOpenIcon>
                     </Button>
 
                     <Button
@@ -273,10 +279,7 @@ const Almacencollages = React.forwardRef((props,ref) => {
                             onClick={ () => borrarMural() }
                         >
                         <HighlightOffIcon
-                            type="button"
-                            fontSize="small"
-                            style={{ color: 'blue' }}
-                    
+                            style={{ fontSize: 35 }}                    
                         ></HighlightOffIcon>
                     </Button>
     
@@ -284,7 +287,9 @@ const Almacencollages = React.forwardRef((props,ref) => {
                                 type="button"
                                 onClick={ () => eliminartodos() }
                             >
-                        <DeleteOutlineIcon></DeleteOutlineIcon>
+                        <DeleteOutlineIcon
+                            style={{ fontSize: 35 }}
+                        ></DeleteOutlineIcon>
                     </Button>
 
             </div>

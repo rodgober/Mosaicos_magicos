@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import salaContext from '../context/salas/salaContext'
-import styles from './Sala.module.css';
+import styles from './Almacenes.module.css';
 
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import SaveIcon from '@material-ui/icons/Save';
@@ -171,7 +171,7 @@ const Almacenes = React.forwardRef((props,ref) => {
                 />
             </div>
 
-            <div>
+            <div className={`${styles.contenedor_botones}`}>
                     <Button
                         component="label"
                     >
@@ -182,14 +182,18 @@ const Almacenes = React.forwardRef((props,ref) => {
                             onChange={abrirAlmacen}
                             ref={refInput}
                         />
-                        <FolderOpenIcon></FolderOpenIcon>
+                        <FolderOpenIcon
+                            style={{ fontSize: 35 }}
+                        ></FolderOpenIcon>
                     </Button>
 
                     <Button
                         type="button"
                         onClick={ () => guardar() }
                     >
-                    <SaveIcon>
+                    <SaveIcon
+                        style={{ fontSize: 35 }}
+                    >
                     </SaveIcon>
                     </Button>
 
@@ -201,6 +205,7 @@ const Almacenes = React.forwardRef((props,ref) => {
                             type="button"
                             fontSize="small"
                             style={{ color: 'blue' }}
+                            style={{ fontSize: 35 }}
                     
                         ></HighlightOffIcon>
                     </Button>
@@ -209,7 +214,9 @@ const Almacenes = React.forwardRef((props,ref) => {
                                 type="button"
                                 onClick={ () => eliminartodos() }
                             >
-                        <DeleteOutlineIcon></DeleteOutlineIcon>
+                        <DeleteOutlineIcon
+                            style={{ fontSize: 35 }}
+                        ></DeleteOutlineIcon>
                     </Button>
             </div>
         </div> 

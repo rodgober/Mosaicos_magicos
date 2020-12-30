@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import salaContext from '../context/salas/salaContext'
-import styles from './Sala.module.css';
+import styles from './Murales.module.css';
 
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import SaveIcon from '@material-ui/icons/Save';
@@ -34,6 +34,7 @@ const Murales = React.forwardRef((props,ref) => {
             xx = obtenerXDelMosSeleccionadoMu(numMosX, largo, separacion); //Obtiene la coordenada X del mosaico seleccionado
             let numMosY = obtenerMosYSeleccionadoMu(y, alto, separacion); //Obtenemos el numero de mosaico seleccionado
             let yy = obtenerYDelMosSeleccionadoMu(numMosY, alto, separacion); //Obtiene la coordenada X del mosaico seleccionado
+            console.log('La Y del mosaico que le diste clic ', yy)
             ctxMural.putImageData(imgMosaico, xx+1 , yy+1); //Estampa el mosaico en el Mural
             let dataImg = canvasMu.toDataURL(); //convierte la imagen a una cadena base 64
             localStorage.setItem('mural', dataImg); //guarda la cadena en base 64 en el Local Storage
@@ -51,12 +52,12 @@ const Murales = React.forwardRef((props,ref) => {
         ctx.fillRect(0, 0, (12*largo)+13, (8*largo)+9);
         ctx.lineWidth = 1;
         ctx.strokeStyle = 'white';
-        for (let xx = 0; xx < 12; xx++) {
+        for (let xx = 0; xx <= 12; xx++) {
             ctx.moveTo((alto * xx)+xx,0);
             ctx.lineTo((alto * xx)+xx, (8*alto)+9);
             ctx.stroke();
         }
-        for (let xx = 0; xx < 8; xx++) {
+        for (let xx = 0; xx <= 8; xx++) {
             ctx.moveTo(0,(largo * xx)+xx);
             ctx.lineTo((largo * 12 ) + 12,(largo * xx)+xx);
             ctx.stroke();
@@ -168,6 +169,7 @@ const Murales = React.forwardRef((props,ref) => {
                     width={(12*largo)+13}
                     height={(8*largo)+9}
                     onClick={handleChange}
+                    className={`${styles.canvas_mural}`}
                 />
             </div>
             <div className={`${styles.toolbar}`}  >
@@ -181,28 +183,36 @@ const Murales = React.forwardRef((props,ref) => {
                             onChange={abrirMuralBtn}
                             ref={refInput}
                         />
-                        <FolderOpenIcon></FolderOpenIcon>
+                        <FolderOpenIcon
+                            style={{ fontSize: 35 }}
+                        ></FolderOpenIcon>
                     </Button>
 
                     <Button
                         type="button"
                         onClick={ () => guardar() }
                     >
-                        <SaveIcon></SaveIcon>
+                        <SaveIcon
+                            style={{ fontSize: 35 }}
+                        ></SaveIcon>
                     </Button>
 
                     <Button
                         type="button"
                         onClick={ () => limpiaMuralBtn() }
                     >
-                        <DeleteOutlineIcon></DeleteOutlineIcon>
+                        <DeleteOutlineIcon
+                            style={{ fontSize: 35 }}
+                        ></DeleteOutlineIcon>
                     </Button>
 
                     <Button
                         type="button"
                         onClick={ () => imprimir() }
                     >
-                        <PrintIcon></PrintIcon>
+                        <PrintIcon
+                            style={{ fontSize: 35 }}
+                        ></PrintIcon>
                     </Button>
             </div>
         </div>

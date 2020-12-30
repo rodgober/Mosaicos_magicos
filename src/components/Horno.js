@@ -1,5 +1,5 @@
 import React, {Fragment, useState, useContext } from 'react';
-import styles from './Sala.module.css';
+import styles from './Horno.module.css';
 import Mosaico from './Mosaico';
 import Figuras from './Figuras';
 import Variantes from './Variantes';
@@ -106,13 +106,15 @@ const Horno = React.forwardRef((props, ref) => {
                         setFigura={setFigura}
                  /> 
                 </div>
-                <div>
+                <div className={`${styles.deshacer}`}>
                     <Button
                         type="button"
                         onClick={e => undo()}
                         disabled={!deshacer}
                     >
-                        <ReplayIcon></ReplayIcon>
+                        <ReplayIcon
+                            style={{ fontSize: 35 }}
+                        ></ReplayIcon>
                     </Button>
                 </div> 
             </div>

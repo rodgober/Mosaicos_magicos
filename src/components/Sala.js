@@ -38,7 +38,7 @@ const Sala = () => {
                             </Almacenes>
                         </div>;
             case 3:
-                return <div className={`${styles.murales}`}>
+                return <div className={`${styles.collages}`}>
                         <Collages
                                 ref = {canvasAlmcollages}
                         > </Collages>

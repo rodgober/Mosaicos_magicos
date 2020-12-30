@@ -1,0 +1,33 @@
+.collages_y_toolbar{
+    display: flex;
+    flex-direction: row;
+}
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    background-color: #25557e;
+    padding-top: 30px;
+    border-radius: 0px 50px 50px 0px;
+}
+
+.selector {
+    width: 40px;
+    display: flex;
+    align-self: center;
+}
+.cont_collage {
+ /*     
+
+    padding-left: 10px;
+    padding-top: 10px;
+    display: block;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #7c99b2; 
+    height: 559px;
+    width: 836px; 
+}
+.canvas_collage {
+
+}

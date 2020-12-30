@@ -1,0 +1,216 @@
+/*Div que contiene el tablero, botón de estampar y el contenedor del mosaico*/
+.primera_seccion {
+	display: flex;
+    flex-direction: row;
+  	justify-content: stretch;
+}
+
+/*Div que contiene el contenedor del canvas del mosaico que se está contruyendo*/
+.cont_mosaico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Div que contiene el canvas del mosaico que se está construyendo */
+.mosaico {
+    display: flex;
+    width: 83px;
+    height:86px;
+}
+
+/*Div que contiene los botones de las figuras, variantes y colores*/
+.tablero {
+    display: flex;
+    padding-top: 21px;
+    padding-bottom: 14px;
+    padding-left: 24px;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/*Div que  contiene el botón estampar*/
+.div_estampar {
+    height: 35px;
+    padding-left: 89px;
+    padding-top: 5px;
+}
+.btn_estampar {
+	box-shadow: 0px 0px 0px 1px #9fb4f2;
+	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	background-color:#7892c2;
+	border-radius:5px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:10px;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+}
+.btn_estampar:hover {
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	background-color:#476e9e;
+}
+.btn_estampar:active {
+	position:relative;
+	top:1px;
+}
+
+/*Div que contiene el horno que se calienta */
+.segunda_seccion {
+    display: flex;
+}
+
+.deshacer {
+    padding-top: 137px;
+    padding-left: 21px;
+}
+
+/*320px — 480px: Mobile devices. */
+/* fourth breakpoint */
+@media screen and (max-width: 480px) {
+    .primera_seccion {
+        width: 300px;
+        height: 80px;
+        padding-top: 9px;
+    }
+    .cont_mosaico {
+        width: 81px;
+        height: 70px;
+    }
+    .mosaico {
+        width: 29px;
+        height:29px;
+    }
+    .tablero {
+        width: 185px;
+        height:70px;
+        padding-top: 9px;
+        padding-bottom: 6px;
+        padding-left: 9px;
+    }
+    .div_estampar {
+        height: 11px;
+        padding-left: 25px;
+        padding-top: 0px;
+    }
+    .btn_estampar {
+        font-size:3px;
+        padding:0px 2px;
+        text-decoration:none;
+    }
+    .segunda_seccion {
+        width: 300px;
+        height: 94px;  
+    }
+  }
+
+  /*    481px — 768px: iPads, Tablets.*/
+  /* Third breakpoint */
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    .primera_seccion {
+        width: 400px;
+        height: 107px;
+        padding-top: 13px;
+    }    
+    .cont_mosaico {
+        width: 109px;
+        height: 93px;
+    }
+    .mosaico {
+        width: 38px;
+        height:38px;
+    }
+    .tablero {
+        width: 245px;
+        height:93px;
+        padding-top: 13px;
+        padding-bottom: 9px;
+        padding-left: 12px;
+    }
+    .div_estampar {
+        height: 15px;
+        padding-left: 33px;
+        padding-top: 0px;
+    }
+    .btn_estampar {
+        font-size:6px;
+        padding:2px 5px;
+        text-decoration:none;
+    }
+    .segunda_seccion {
+        width: 400px;
+        height: 126px;  
+    }
+  }
+/* 769px — 1024px: Small screens, laptops. */
+/* Second breakpoint */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .primera_seccion {
+        width: 690px;
+        height: 185px;
+        padding-top: 24px;
+    }
+    .cont_mosaico {
+        width: 186px;
+        height: 160px;
+    }
+    .mosaico {
+        width: 63px;
+        height:66px;
+    }    
+    .tablero {
+        width: 427px;
+        height:160px;
+        padding-top: 21px;
+        padding-bottom: 14px;
+        padding-left: 24px;
+    }
+    .div_estampar {
+        height: 26px;
+        padding-left: 63px;
+        padding-top: 0px;
+    }
+    .btn_estampar {
+        font-size:8px;
+        padding:6px 15px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #283966;
+    }
+    .segunda_seccion {
+        width: 690px;
+        height: 217px;  
+    }   
+  }
+
+  /* 1025px — 1200px: Desktops, large screens. */
+  /* First breakpoint */
+  @media screen and (min-width: 1025px)  {
+    .primera_seccion {
+        width: 900px;
+        height: 240px;
+        padding-top: 33px;
+    }
+    .cont_mosaico {
+        width: 244px;
+        height: 207px;
+    }
+    .mosaico {
+        width: 83px;
+        height:86px;
+    }
+    .tablero {
+        width: 551px;
+        height:207px;
+    }
+    .segunda_seccion {
+        width: 900px;
+        height: 284px;
+    }
+  }
+  /* 1201px and more — Extra large screens, TV. */
+
+

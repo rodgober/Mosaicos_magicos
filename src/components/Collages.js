@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import salaContext from '../context/salas/salaContext'
 import PropTypes from 'prop-types';
+import styles from './Collages.module.css';
 
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import SaveIcon from '@material-ui/icons/Save';
@@ -35,6 +36,8 @@ const Collages = React.forwardRef((props,ref) => {
         let xFinCollage = obtenerLargoSeccionCollage(x, columnas, largoCollage);
         let yFinCollage = obtenerAltoSeccionCollage(y, filas, altoCollage);
         ctxMural.drawImage(canvasAlm, 0, 0, canvasAlm.width-1, canvasAlm.height-1, xIniCollage, yIniCollage, xFinCollage, yFinCollage); //Estampa el mosaico en el Mural
+        let dataImg = canvasMu.toDataURL(); //convierte la imagen a una cadena base 64
+        localStorage.setItem('collage', dataImg); //guarda la cadena en base 64 en el Local Storage
     }
 
     function limpiaColage(){
@@ -131,79 +134,113 @@ const Collages = React.forwardRef((props,ref) => {
     const asignarColumnas = e => {
         setColumnas(e.target.value);
     }
+    
+    useEffect(() => {
+        const collage = localStorage.getItem('collage');
+        const canvasRef = canvasCollage;
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        if(collage === null){
+            console.log('No hay nada en Storage')
+            limpiaColage();  
+        }else{
+            console.log('Si hay algo');
+            let img = new Image();
+            img.src = collage;
+            ctx.restore();
+            ctx.drawImage(img, 0,0,canvas.width, canvas.height)
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            }
+        } 
+    }, [])
 
     useEffect(() => {   
-        limpiaColage();    
+        limpiaColage(); 
         // eslint-disable-next-line
     }, [filas, columnas])
 
     return ( 
-        <div>
-            <canvas
-                ref={canvasCollage}
-                width={largoCollage}
-                height={altoCollage}
-                onClick={handleChange}
-            />
-        <p>Filas.</p>
-        <select 
-            id='filas'
-            onChange={asignarFilas}
-            defaultValue= "3">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+        <div className={`${styles.collages_y_toolbar}`}  >
+            <div className={`${styles.cont_collage}`}  >
+                <canvas
+                    ref={canvasCollage}
+                    width={largoCollage}
+                    height={altoCollage}
+                    onClick={handleChange}
+                />
+            </div>
+            <div className={`${styles.toolbar}`}  >
+                <p>Filas.</p>
+                <select 
+                    id='filas'
+                    onChange={asignarFilas}
+                    className={`${styles.selector}`}
+                    defaultValue= "3">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
 
-        <p>Columnas.</p>
-        <select 
-            id='columnas' 
-            onChange={asignarColumnas}
-            defaultValue= "3">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+                <p>Columnas.</p>
+                <select 
+                    id='columnas' 
+                    onChange={asignarColumnas}
+                    className={`${styles.selector}`}
+                    defaultValue= "3">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
 
-                    <Button
-                        component="label"
-                    >
-                        <input
-                            type="file"
-                            id="fileUpload"
-                            style={{ display: "none" }}
-                            onChange={abrirCollageBtn}
-                            ref={refInput}
-                        />
-                        <FolderOpenIcon></FolderOpenIcon>
-                    </Button>
-
-                    <Button
-                        type="button"
-                        onClick={ () => guardar() }
-                    >
-                    <SaveIcon>
-                    </SaveIcon>
-                    </Button>
-
-                    <Button
-                                type="button"
-                                onClick={ () => limpiaColage() }
+                            <Button
+                                component="label"
                             >
-                        <DeleteOutlineIcon></DeleteOutlineIcon>
-                    </Button>
+                                <input
+                                    type="file"
+                                    id="fileUpload"
+                                    style={{ display: "none" }}
+                                    onChange={abrirCollageBtn}
+                                    ref={refInput}
+                                />
+                                <FolderOpenIcon
+                                    style={{ fontSize: 35 }}
+                                ></FolderOpenIcon>
+                            </Button>
 
-                    <Button
+                            <Button
                                 type="button"
-                                onClick={ () => imprimir() }
+                                onClick={ () => guardar() }
                             >
-                        <PrintIcon></PrintIcon>
-                    </Button>          
-        </div>
+                            <SaveIcon
+                                style={{ fontSize: 35 }}
+                            >
+                            </SaveIcon>
+                            </Button>
+
+                            <Button
+                                        type="button"
+                                        onClick={ () => limpiaColage() }
+                                    >
+                                <DeleteOutlineIcon
+                                    style={{ fontSize: 35 }}
+                                ></DeleteOutlineIcon>
+                            </Button>
+
+                            <Button
+                                        type="button"
+                                        onClick={ () => imprimir() }
+                                    >
+                                <PrintIcon
+                                    style={{ fontSize: 35 }}
+                                ></PrintIcon>
+                            </Button>          
+                </div>
+            </div>
      );
 });
 
