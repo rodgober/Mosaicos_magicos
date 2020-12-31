@@ -48,7 +48,15 @@ const Sala = () => {
                         </Almacencollages>
                         </div>;
             case 4:
-            return <Programacion> </Programacion>; 
+            return <div className={`${styles.programacion}`}>
+                        <Programacion
+                            ref = {canvasAlmacenes}
+                        > </Programacion>
+                        <Almacenes
+                            ref = {canvasAlmacenes}
+                        >
+                        </Almacenes>
+                    </div>;
             default:
                 return <div className={`${styles.mosaicos}`}>
                             <Horno

@@ -24,6 +24,13 @@
   background-color: #7c99b2;
 }
 
+.programacion {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  background-color: #7c99b2;
+}
+
 /*320px — 480px: Mobile devices. */
 /* fourth breakpoint */
 @media screen and (max-width: 480px) {
@@ -45,8 +52,8 @@
 /* Second breakpoint */
   @media screen and (min-width: 769px) and (max-width: 1024px) {
     .mosaicos {
-        width: 690px;
-    	height: 615px;
+      width: 690px;
+    	height: 305px;
     }    
   }
 
@@ -54,12 +61,12 @@
   /* First breakpoint */
   @media screen and (min-width: 1025px)  {
     .mosaicos {
-        width: 900px;
+      width: 900px;
     	height: 805px;
     }
     .murales {
-        width: 900px;
-    	height: 805px;
+      width: 900px;
+    	height: 305px;
     } 
   }
   /* 1201px and more — Extra large screens, TV. */

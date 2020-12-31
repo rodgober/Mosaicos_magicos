@@ -1,0 +1,18 @@
+.nuevaInstruccion{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-content: space-between;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    width: 200px;
+}
+
+.tipoinstruccion{
+    display: inline;
+}
+
+.tituloInstruccion {
+    font-weight:bold;
+}

@@ -1,0 +1,15 @@
+.canvas_mural{
+    background-color: black;
+}
+
+.cont_programacion {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.toolbar {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
