@@ -7,6 +7,8 @@ import Almacenes from './Almacenes';
 import Almacencollages from './Almacencollages';
 import Programacion from './Programacion'
 
+import ProgramaState from '../context/programa/programaState';
+
 import salaContext from '../context/salas/salaContext'
 
 const Sala = () => {
@@ -49,13 +51,15 @@ const Sala = () => {
                         </div>;
             case 4:
             return <div className={`${styles.programacion}`}>
-                        <Programacion
-                            ref = {canvasAlmacenes}
-                        > </Programacion>
-                        <Almacenes
-                            ref = {canvasAlmacenes}
-                        >
-                        </Almacenes>
+                        <ProgramaState>
+                            <Programacion
+                                ref = {canvasAlmacenes}
+                            > </Programacion>
+                            <Almacenes
+                                ref = {canvasAlmacenes}
+                            >
+                            </Almacenes>
+                        </ProgramaState>
                     </div>;
             default:
                 return <div className={`${styles.mosaicos}`}>

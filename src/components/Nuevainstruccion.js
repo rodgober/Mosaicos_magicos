@@ -1,4 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
+import Instruccionclass from './Instruccionclass';
+import Errorinput from './Errorinput';
+import programaContext from '../context/programa/programaContext';
 
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
@@ -6,10 +9,23 @@ import Button from '@material-ui/core/Button';
 import styles from './Nuevainstruccion.module.css';
 
 const Nuevainstruccion = (props) => {
+
+    const instruccionesContext = useContext(programaContext);
+    const { programa, agregarInstruccion } = instruccionesContext;
+
+
     let {nvaInstruccion, setnvaInstruccion} = props;
     const [tipoInstruccion, settipoInstruccion] = useState(0);
     const [tituloInstruccion, setTituloInstruccion] = useState('');
+    const [parametron, setParametron] = useState(0);
+    const [errorinput, setErrorinput] = useState(false);
+    const [mensajeerror, setMensajeerror] = useState('');
     /*Hay 11 tipos de instrucciónes */
+
+    useEffect(() => {
+        setErrorinput(false);
+        setParametron(0);
+    }, [tipoInstruccion]);//Cuando se cambia el tipo de instrucción (cambio en el select )
 
     const asignarInstruccion = e => {
         settipoInstruccion(parseInt(e.target.value));
@@ -56,76 +72,94 @@ const Nuevainstruccion = (props) => {
     }
 
     const gotoMosaicoN = e => {
-        console.log('Ir al mosaico: ',parseInt(e.target.value));
+        setParametron(parseInt(e.target.value, 10));
     }
 
     const giraRobot = e => {
-        console.log('Gira el Robot:', parseInt(e.target.value) * 90, ' grados')
+        setParametron(parseInt(e.target.value, 10) * 90);
     }
 
     const giramosaico = e => {
-        console.log('Gira el mosaico:', parseInt(e.target.value) * 90, ' grados');
+        setParametron(parseInt(e.target.value, 10) * 90);
     }
 
     const avanzaRobot = e => {
-        console.log('Avanza el robot: ', parseInt(e.target.value), ' casillas')
+        setParametron(parseInt(e.target.value, 10));
     }
 
     function validarParametros(){
+        let error = false;
+        let mensaje = '';
         switch (tipoInstruccion) {
-            case 1:
-                console.log('Origen');
+            case 0: //No hay instrucción seleccionada
+                error = true;
+                mensaje = 'Selecciona la instrucción que deseas agregar';
                 break;
-            case 2:
-                console.log('Mosaico n');
+            case 1: //No necesita parámetros ir al Origen
                 break;
-            case 3:
-                console.log('Carga mosaico');
+            case 2: //Ir al Mosaico N del almacen ahorita está limitado a 10 mosaicos
+                if ((parametron <= 0) || (parametron > 10)){
+                    error = true;
+                    mensaje = 'Selecciona un mosaico que exista en el almacen';
+                }
                 break;
-            case 4:
-                console.log('Descarga mosaico');
+            case 3: //Carga mosaico no necesita parámetros
                 break;
-            case 5:
-                console.log('Gira Robot');
+            case 4: //Descarga mosaicos no necesita parámetros
                 break;
-            case 6:
-                console.log('Gira Mosaico');
+            case 5: // Gira Robot necesita parámetros
+                if((parametron <= 0)||(parametron > 360)){
+                    error = true;
+                    mensaje = 'El giro debe ser mayor a 0 grados y menor a 360 grados';
+                }
                 break;
-            case 7:
-                console.log('Avanza Robot');
+            case 6: // Gira Mosaico necesita parámetros
+                if((parametron <= 0)||(parametron > 360)){
+                    error = true;
+                    mensaje = 'El giro debe ser mayor a 0 grados y menor a 360 grados';
+                }
+                break;
+            case 7: // Avanza Robot necesita parámetros de numero de casillas
+                if((parametron <= 0)||(parametron > 30)){
+                    error = true;
+                    mensaje = 'El robot solo se puede mover en un valor menor a 30';
+                }
                 break;
             case 8:
-                console.log('Mientras');
+                error = true;
+                mensaje = 'La instrucción Mientras no ha sido implementada';
                 break;
             case 9:
-                console.log('Repite');
+                error = true;
+                mensaje = 'La instrucción Repite no ha sido implementada';
                 break;
             case 10:
-                console.log('Condicion IF');
+                error = true;
+                mensaje = 'La instrucción IF no ha sido implementada';
                 break;
             case 11:
-                console.log('Subrutina');
+                error = true;
+                mensaje = 'La instrucción Subrutina no ha sido implementada';
                 break;
             default:
-                console.log('Debes seleccionar una instrucción');
+                setErrorinput(true);
+                setMensajeerror('Selecciona la instrucción que deseas agregar');
                 break;
-        } 
+        }
+        setErrorinput(error);
+        setMensajeerror(mensaje);
+        if(!error){
+            let ins = new Instruccionclass(programa.length, tipoInstruccion, parametron);
+            agregarInstruccion(ins);
+            setnvaInstruccion(false);
+        }
     }
     
     return ( 
         <Fragment>
             <div className={`${styles.nuevaInstruccion}`}>
                 <div>
-                    [icon] 
                    <label className={`${styles.tituloInstruccion}`}>{tituloInstruccion}</label> 
-                    <Button
-                        type="button"
-                        onClick={ () => setnvaInstruccion(false) }
-                    >
-                        <DeleteIcon
-                            style={{ fontSize: 35 }}
-                        ></DeleteIcon>
-                    </Button>
                 </div>
                 <div className={`${styles.tipoinstruccion}`}>
                     <select 
@@ -150,7 +184,8 @@ const Nuevainstruccion = (props) => {
                     <select 
                     id='mosaicoalmacen' 
                     onChange={gotoMosaicoN}
-                    defaultValue= "1">
+                    defaultValue= "0">
+                    <option value="0">Selecciona un valor</option>
                     <option value="1">Ir al mosaico 1</option>
                     <option value="2">Ir al mosaico 2</option>
                     <option value="3">Ir al mosaico 3</option>
@@ -169,7 +204,8 @@ const Nuevainstruccion = (props) => {
                     <select 
                     id='girarobot' 
                     onChange={giraRobot}
-                    defaultValue= "1">
+                    defaultValue= "0">
+                    <option value="0">Selecciona un valor</option>
                     <option value="1">Gira Robot 90 grados</option>
                     <option value="2">Gira Robot 180 grados</option>
                     <option value="3">Gira Robot 270 grados</option>
@@ -181,7 +217,8 @@ const Nuevainstruccion = (props) => {
                     <select 
                     id='giramosaico' 
                     onChange={giramosaico}
-                    defaultValue= "1">
+                    defaultValue= "0">  
+                    <option value="0">Selecciona un valor</option>
                     <option value="1">Gira el mosaico 90 grados</option>
                     <option value="2">Gira el mosaico 180 grados</option>
                     <option value="3">Gira el mosaico 270 grados</option>
@@ -193,7 +230,8 @@ const Nuevainstruccion = (props) => {
                     <select 
                     id='avanza' 
                     onChange={avanzaRobot}
-                    defaultValue= "1">
+                    defaultValue= "0">
+                    <option value="0">Selecciona un valor</option>
                     <option value="1">1 casilla</option>
                     <option value="2">2 casilla</option>
                     <option value="3">3 casilla</option>
@@ -208,6 +246,7 @@ const Nuevainstruccion = (props) => {
                 :null}
 
                 <div>
+                    {(errorinput) ? <Errorinput mensaje = {mensajeerror} /> : null}
                     <Button
                         type="button"
                         onClick={ () => setnvaInstruccion(false) }
