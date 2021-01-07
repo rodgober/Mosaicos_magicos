@@ -4,7 +4,10 @@ export const SET_GUARDAR_ALMACEN = 'SET_GUARDAR_ALMACEN';
 export const SET_MOSSELECCIONADO = 'SET_MOSSELECCIONADO';
 export const SET_ALMACEN_COLLAGE ='SET_ALMACEN_COLLAGE';
 export const AGREGAR_INSTRUCCION = 'AGREGAR_INSTRUCCION';
-
+export const SET_XX = 'SET_XX';
+export const SET_YY = 'SET_YY';
+export const DIRECCION = 'DIRECCION';
+export const SET_DIRECCION = 'SET_DIRECCION';
 
 export const rojoUp = require('../components/images/botones/colores/btnRojoUp.jpg');
 export const rojoOver = require('../components/images/botones/colores/btnRojoOver.jpg');

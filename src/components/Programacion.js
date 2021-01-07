@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import salaContext from '../context/salas/salaContext'
 import styles from './Programacion.module.css';
 import Controles from './Controles';
+import Controlmanual from './Controlmanual';
 import Panelprograma from './Panelprograma';
 
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
@@ -111,6 +112,9 @@ const Programacion = React.forwardRef((props,ref) => {
             <Controles>
 
             </Controles>
+            <Controlmanual>
+
+            </Controlmanual>
             <div className={`${styles.cont_programacion}`}  >
                 <canvas
                         ref={canvasMural}

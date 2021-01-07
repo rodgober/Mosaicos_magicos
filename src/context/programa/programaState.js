@@ -1,11 +1,19 @@
 import React, { useReducer } from 'react';
 import programaContext from './programaContext';
 import programaReducer from './programaReducer';
-import { AGREGAR_INSTRUCCION } from '../../types';
+import { 
+        AGREGAR_INSTRUCCION,
+        SET_XX,
+        SET_YY,
+        SET_DIRECCION
+        } from '../../types';
 
 const ProgramaState = props => {
     const initialState = {
         programa: [],
+        xx:0,
+        yy:50,
+        direccion:2
     }
 
     const [state, dispatch] = useReducer(programaReducer, initialState);
@@ -17,11 +25,37 @@ const ProgramaState = props => {
         })
     }
 
+    const setXX = valor => {
+        dispatch({
+            type: SET_XX,
+            payload: valor
+        })
+    }
+
+    const setYY = valor => {
+        dispatch({
+            type: SET_YY,
+            payload: valor
+        })
+    }
+
+    const setDireccion = valor => {
+        dispatch({
+            type: SET_DIRECCION,
+            payload: valor
+        })
+    }
     return (
         <programaContext.Provider
             value={{
                 programa: state.programa,
-                agregarInstruccion
+                xx: state.xx,
+                yy: state.yy,
+                direccion: state.direccion,
+                agregarInstruccion,
+                setXX,
+                setYY,
+                setDireccion
             }}
         >
             {props.children}

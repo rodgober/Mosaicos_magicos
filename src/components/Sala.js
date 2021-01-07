@@ -6,6 +6,7 @@ import Collages from './Collages';
 import Almacenes from './Almacenes';
 import Almacencollages from './Almacencollages';
 import Programacion from './Programacion'
+import Robot from './Robot'
 
 import ProgramaState from '../context/programa/programaState';
 
@@ -52,13 +53,16 @@ const Sala = () => {
             case 4:
             return <div className={`${styles.programacion}`}>
                         <ProgramaState>
-                            <Programacion
-                                ref = {canvasAlmacenes}
-                            > </Programacion>
-                            <Almacenes
-                                ref = {canvasAlmacenes}
-                            >
-                            </Almacenes>
+                            <Robot>
+                            </Robot>
+                                <Programacion
+                                    ref = {canvasAlmacenes}
+                                > </Programacion>
+                                <Almacenes
+                                    ref = {canvasAlmacenes}
+                                >
+                                </Almacenes>
+                            
                         </ProgramaState>
                     </div>;
             default:
