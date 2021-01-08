@@ -1,8 +1,16 @@
+import React from 'react';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 //Dada una coordenada en X, devuelve el valor en X donde inicia el mosaico
 export function obtenerXInicialMos(x, largo, separacion){
     const largoMosaico = separacion + largo + separacion;
     return (Math.floor(x / largoMosaico) * largoMosaico);
 }
+
+export function SimpleMediaQuery(query) {
+    const matches = useMediaQuery(query);
+    return (matches);
+  }
 
 //Dada una coordenada en Y, devuelve el valor en Y donde inicia el mosaico
 export function obtenerYInicialMos(y, alto, separacion){

@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import PrintIcon from '@material-ui/icons/Print';
 import PropTypes from 'prop-types';
 
-import { obtenerXDelMosSeleccionado, obtenerMosXSeleccionadoMu, obtenerXDelMosSeleccionadoMu, obtenerMosYSeleccionadoMu, obtenerYDelMosSeleccionadoMu } from '../helper';
+import { SimpleMediaQuery, obtenerXDelMosSeleccionado, obtenerMosXSeleccionadoMu, obtenerXDelMosSeleccionadoMu, obtenerMosYSeleccionadoMu, obtenerYDelMosSeleccionadoMu } from '../helper';
 
 const Murales = React.forwardRef((props,ref) => {
 
@@ -159,6 +159,12 @@ const Murales = React.forwardRef((props,ref) => {
         }
         // eslint-disable-next-line
     }, []);
+
+    console.log(SimpleMediaQuery('(max-width: 600px)'));
+    console.log(SimpleMediaQuery('(max-width: 700px)'));
+    console.log(SimpleMediaQuery('(max-width: 800px)'));
+    console.log(SimpleMediaQuery('(max-width: 900px)'));
+    console.log(SimpleMediaQuery('(max-width: 1000px)'));
 
 
     return ( 

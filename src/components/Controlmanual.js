@@ -14,22 +14,22 @@ const Controlmanual = () => {
     const { xx, setXX, yy, setYY, setDireccion } = instruccionesContext;
 
     const left = e => { 
-        setXX(xx - 100);
+        setXX(xx - 40);
         setDireccion(3);
     }
 
     const right = e => { 
-        setXX(xx + 100)
+        setXX(xx + 40)
         setDireccion(1);
     }
 
     const up = e => { 
-        setYY(yy - 100)
+        setYY(yy - 40)
         setDireccion(4);
     }
 
     const down = e => { 
-        setYY(yy + 100)
+        setYY(yy + 40)
         setDireccion(2);
     }
     return ( 

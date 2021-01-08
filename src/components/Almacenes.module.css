@@ -2,7 +2,6 @@
 .tercera_seccion {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .contenedor_almacen {
@@ -34,8 +33,7 @@
     .tercera_seccion {
         width: 300px;
         height: 80px; 
-        padding-top: 16px;
-        padding-left: 5px;  
+        padding-top: 16px; 
     }
     .contenedor_almacen{
         width: 264px;
@@ -50,7 +48,6 @@
         width: 400px;
         height: 107px;
         padding-top: 21px;
-        padding-left: 7px;  
     }
     .contenedor_almacen{
         width: 354px;
@@ -64,7 +61,6 @@
         width: 690px;
         height: 183px;
         padding-top: 37px;
-        padding-left: 17px; 
     }
     .contenedor_almacen{
         width: 610px;
@@ -79,7 +75,6 @@
         width: 900px;
         height: 240px; 
         padding-top: 50px;
-        padding-left: 20px;
     }
     .contenedor_almacen{
         width: 796px;

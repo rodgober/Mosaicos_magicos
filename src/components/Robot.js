@@ -37,6 +37,7 @@ const Robot = () => {
                         className={`${styles.color}`}
                         style={{ fontSize: 35   }}
                     ></AndroidIcon>
+                    <p>Etiqueta</p>
                     {(1 === direccion)?(
                         <ArrowRightIcon
                             className={`${styles.color}`}
