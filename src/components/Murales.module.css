@@ -1,6 +1,8 @@
 .mural_y_toolbar{
     display: flex;
     flex-direction: row;
+    width: 800px;
+    height: 576;
 }
 .toolbar {
     display: flex;
@@ -19,42 +21,28 @@
     align-items: center;
     justify-content: center;
     background-color: #7c99b2; 
-    height: 559px;
-    width: 836px; 
-}
-.canvas_mural {
-
+    width: 735px;
+    height: 576px;
+     
 }
 
-/*320px — 480px: Mobile devices. */
-/* fourth breakpoint */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
+    .mural_y_toolbar{
+        width: 600px;
+    }
+    .cont_mural {
+        height: 527px;
+    }
+}
 
-  }
-
-  /*    481px — 768px: iPads, Tablets.*/
-  /* Third breakpoint */
-  @media screen and (min-width: 481px) and (max-width: 768px) {
-
-  }
-/* 769px — 1024px: Small screens, laptops. */
-/* Second breakpoint */
-  @media screen and (min-width: 769px) and (max-width: 1024px) {
- 
-  }
 
   /* 1025px — 1200px: Desktops, large screens. */
   /* First breakpoint */
-  @media screen and (min-width: 1025px)  {
-  /*  .mural_y_toolbar{
-        height: 559px;
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .mural_y_toolbar{
+        width: 750px;
     }
     .cont_mural {
-        height: 559px;
-        width: 836px;
+        height: 537px;
     }
-    .toolbar {
-        height: 559px;
-    }    */
   }
-  /* 1201px and more — Extra large screens, TV. */

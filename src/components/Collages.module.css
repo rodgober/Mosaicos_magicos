@@ -16,11 +16,6 @@
     align-self: center;
 }
 .cont_collage {
- /*     
-
-    padding-left: 10px;
-    padding-top: 10px;
-    display: block;*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,6 +23,24 @@
     height: 559px;
     width: 836px; 
 }
-.canvas_collage {
 
+@media screen and (max-width: 768px) {
+    .collages_y_toolbar{
+        flex-direction: column-reverse;
+        height: 527px;
+    }
+    .cont_collage{
+        width: 600px;
+    }
+    .toolbar {
+        flex-direction: row;
+        border-radius: 0px;
+        height: 34px;
+        padding-top: 0px;        
+    }
+    .selector {
+        width: 35px;
+        display: flex;
+        align-self: center;
+    }
 }

@@ -2,12 +2,15 @@
 .mosaicos {
     display: flex;
     flex-direction: column;
-  	justify-content: stretch;
+    justify-content: stretch;
+    background-color: #7c99b2;
     background-image: url('./images/horno.svg');
     background-repeat: no-repeat;
-    background-position: center top;  
+    background-position: left;  
     padding-left: 0px;
     padding: 0px; 
+    width: 800px;
+    height: 800px;
 }
 
 .murales {
@@ -15,6 +18,12 @@
     flex-direction: column;
     justify-content: stretch;
     background-color: #7c99b2;
+    background-repeat: no-repeat;
+    background-position: left;  
+    padding-left: 0px;
+    padding: 0px; 
+    width: 800px;
+    height: 800px;
 }
 
 .collages {
@@ -22,6 +31,8 @@
   flex-direction: column;
   justify-content: stretch;
   background-color: #7c99b2;
+  width: 800px;
+  height: 800px;
 }
 
 .programacion {
@@ -29,44 +40,48 @@
   flex-direction: column;
   justify-content: stretch;
   background-color: #7c99b2;
+  width: 800px;
+  height: 800px;
 }
 
-/*320px — 480px: Mobile devices. */
-/* fourth breakpoint */
-@media screen and (max-width: 480px) {
-    .mosaicos {
-        width: 300px;
-    	height: 270px;
-    }
+/*    481px — 768px: iPads, Tablets.*/
+/* Third breakpoint */
+@media screen and (max-width: 768px) {
+  .mosaicos {
+    width: 600px;
+    height: 600px;
   }
+  .murales {
+    width: 600px;
+    height: 600px;
+  }
+  .collages {
+    width: 600px;
+    height: 600px;
+  }
+  .programacion {
+    width: 600px;
+    height: 600px;
+  }
+}
 
-  /*    481px — 768px: iPads, Tablets.*/
-  /* Third breakpoint */
-  @media screen and (min-width: 481px) and (max-width: 768px) {
-    .mosaicos {
-        width: 400px;
-    	height: 358px;
-    }
-  }
 /* 769px — 1024px: Small screens, laptops. */
 /* Second breakpoint */
-  @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .mosaicos {
-      width: 690px;
-    	height: 305px;
-    }    
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .mosaicos {
+    width: 750px;
+    height: 750px;
   }
-
-  /* 1025px — 1200px: Desktops, large screens. */
-  /* First breakpoint */
-  @media screen and (min-width: 1025px)  {
-    .mosaicos {
-      width: 900px;
-    	height: 805px;
-    }
-    .murales {
-      width: 900px;
-    	height: 305px;
-    } 
+  .murales {
+    width: 750px;
+    height: 750px;
   }
-  /* 1201px and more — Extra large screens, TV. */
+  .collages {
+    width: 700px;
+    height: 700px;
+  }
+  .programacion {
+    width: 700px;
+    height: 700px;
+  }
+}

@@ -28,7 +28,7 @@ const Sala = () => {
                             <Almacenes
                                 ref = {canvasAlmacenes}
                             >
-                            </Almacenes>
+                        </Almacenes> 
                         </div>;
             case 2:
                 return  <div className={`${styles.murales}`}>
@@ -38,7 +38,7 @@ const Sala = () => {
                             <Almacenes
                                 ref = {canvasAlmacenes}
                             >
-                            </Almacenes>
+                            </Almacenes> 
                         </div>;
             case 3:
                 return <div className={`${styles.collages}`}>
@@ -48,12 +48,12 @@ const Sala = () => {
                         <Almacencollages
                                 ref = {canvasAlmcollages}
                         >
-                        </Almacencollages>
+                        </Almacencollages> 
                         </div>;
             case 4:
             return <div className={`${styles.programacion}`}>
-                        <ProgramaState>
-                            <Robot>
+                      {/*   <ProgramaState>
+                           <Robot>
                             </Robot>
                                 <Programacion
                                     ref = {canvasAlmacenes}
@@ -61,19 +61,19 @@ const Sala = () => {
                                 <Almacenes
                                     ref = {canvasAlmacenes}
                                 >
-                                </Almacenes>
+                                </Almacenes> 
                             
-                        </ProgramaState>
+                        </ProgramaState> */}
                     </div>;
             default:
                 return <div className={`${styles.mosaicos}`}>
-                            <Horno
+                         {/*   <Horno
                                 ref = {canvasAlmacenes}
                             > </Horno>
                             <Almacenes
                                 ref = {canvasAlmacenes}
                             >
-                            </Almacenes>     
+                         </Almacenes>     */} 
                         </div>;
         }
     }

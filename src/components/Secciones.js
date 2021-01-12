@@ -4,22 +4,7 @@ import styles from './Secciones.module.css';
 import styled from '@emotion/styled';
 import { salaMosUp, salaMosOver, salaMosDown, salaMurUp, salaMurOver, salaMurDown, salaCollUp, salaCollOver, salaCollDown } from '../types/imgbotones';
 
-const BotonSalas = styled.button`
-    position:relative;
-    border:none;
-    flex-basis: auto; //1 grow, 2 shrink, 3 basis 
-    padding: 10px;
-    background-color: rgb(206, 215, 222);
-`;
-
 const ImgSecciones = styled.img`
-    cursor:pointer;
-`;
-
-const Etiqueta = styled.div`
-    position:absolute;
-    top:24px;
-    left:60px;
     cursor:pointer;
 `;
 
@@ -30,7 +15,7 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
 
     const imgList = [salaMosUp, salaMosOver, salaMosDown, salaMurUp, salaMurOver, salaMurDown, salaCollUp, salaCollOver, salaCollDown];
     const salaContexto = useContext(salaContext);
-    const { mostrarSala } = salaContexto;
+    const { mostrarSala, sala } = salaContexto;
 
     const onClickMostrarSala = (valor) => {
         mostrarSala(valor);
@@ -38,69 +23,70 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
 
     return(
         <aside className={`${styles.menu_izq}`}>
-                <BotonSalas>
+                <button className={`${styles.btnSalas}`}>
                     <ImgSecciones 
                         id="1"
                         key="1"
-                        src={imgList[0].default}
+                        src={(sala === 1)? imgList[2].default : imgList[0].default}
                         onClick={e => onClickMostrarSala(1)}
                         onMouseOver={e => (e.currentTarget.src = imgList[2].default)}
-                        onMouseLeave={e => (e.currentTarget.src = imgList[0].default)}
+                        onMouseLeave= {(sala === 1)? (e => (e.currentTarget.src = imgList[2].default)): e => (e.currentTarget.src = imgList[0].default)}
                         ref={btnMosaicos}
-                        alt="Sala de mosaicos"
+                        alt= "Sala de Mosaicos"
+             
                     />
-                    <Etiqueta 
+                    <div className={`${styles.txtBtnSala}`}
                         onClick={e => onClickMostrarSala(1)}
-                    >Sala de mosaicos</Etiqueta>
-                </BotonSalas>
+                    >Sala de mosaicos</div>
+                </button>
                 
-                <BotonSalas>
+                <button className={`${styles.btnSalas}`}>
                     <ImgSecciones 
                         id="2"
                         key="2"
-                        src={imgList[3].default}
+                        src={(sala === 2)? imgList[5].default : imgList[3].default}
                         onClick={e => onClickMostrarSala(2)}
                         onMouseOver={e => (e.currentTarget.src = imgList[5].default)}
-                        onMouseLeave={e => (e.currentTarget.src = imgList[3].default)}
+                        onMouseLeave= {(sala === 2)? (e => (e.currentTarget.src = imgList[5].default)): e => (e.currentTarget.src = imgList[3].default)}
                         ref={btnMurales}
                         alt="Sala de murales"
                     />
-                    <Etiqueta 
+                    <div className={`${styles.txtBtnSala}`}
                         onClick={e => onClickMostrarSala(2)}
-                    >Sala de murales</Etiqueta>
-                </BotonSalas>
+                    >Sala de murales</div>
+                </button>
 
-                <BotonSalas>
+                <button className={`${styles.btnSalas}`}>
                     <ImgSecciones 
                         id="3"
                         key="3"
-                        src={imgList[6].default}
+                        src={(sala === 3)? imgList[8].default : imgList[6].default}
                         onClick={e => onClickMostrarSala(3)}
                         onMouseOver={e => (e.currentTarget.src = imgList[8].default)}
-                        onMouseLeave={e => (e.currentTarget.src = imgList[6].default)}
+                        onMouseLeave= {(sala === 3)? (e => (e.currentTarget.src = imgList[8].default)): e => (e.currentTarget.src = imgList[6].default)}
                         ref={btnCollages}
                         alt="Sala de collages"
                     />
-                    <Etiqueta 
+                    <div className={`${styles.txtBtnSala}`}
                         onClick={e => onClickMostrarSala(3)}
-                    >Sala de collages</Etiqueta>
-                </BotonSalas>
+                    >Sala de collages</div>
+                </button>
 
-                <BotonSalas>
+                <button className={`${styles.btnSalas}`}>
                     <ImgSecciones 
                         id="1"
                         key="1"
-                        src={imgList[0].default}
+                        src={(sala === 4)? imgList[2].default : imgList[0].default}
                         onClick={e => onClickMostrarSala(4)}
                         onMouseOver={e => (e.currentTarget.src = imgList[2].default)}
-                        onMouseLeave={e => (e.currentTarget.src = imgList[0].default)}
+                        onMouseLeave= {(sala === 4)? (e => (e.currentTarget.src = imgList[2].default)): e => (e.currentTarget.src = imgList[0].default)}
                         ref={btnProgramacion}
                         alt="Sala de programacion"
                     />
-                    <Etiqueta 
+                    <div className={`${styles.txtBtnSala}`}
                         onClick={e => onClickMostrarSala(4)}
-                    >Programación</Etiqueta>
-                </BotonSalas>
+                    >Programación</div>
+                </button>
         </aside>
     )
 }

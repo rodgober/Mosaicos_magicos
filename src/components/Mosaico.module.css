@@ -13,31 +13,19 @@
 
 .cont_mosaico {
     padding-left: 10px;
-    padding-top: 10px;
-    height: 80px;
-    width: 80px;
+    padding-top: 7px;
+    height: 78px;
+    width: 78px;
     display: block;
 }
 
- /*320px — 480px: Mobile devices. */
-    /* fourth breakpoint */
-    @media screen and (max-width: 480px) {
-        .cont_mosaico {
-            padding-left: 5px;
-            padding-top: 8px;
-            height: 26px;
-            width: 26px;
-        }
-    }
   
     /*    481px — 768px: iPads, Tablets.*/
     /* Third breakpoint */
     @media screen and (min-width: 481px) and (max-width: 768px) {
         .cont_mosaico {
-            padding-left: 4px;
-            padding-top: 4px;
-            height: 60px;
-            width: 60px;
+            padding-left: 3px;
+            padding-top: 5px;
         }
     }
   
@@ -45,17 +33,8 @@
   /* Second breakpoint */
   @media screen and (min-width: 769px) and (max-width: 1024px) {
     .cont_mosaico {
-        padding-left: 10px;
-        padding-top: 10px;
+        padding-left: 5px;
+        padding-top: 4px;
     }
   }
   
-    /* 1025px — 1200px: Desktops, large screens. */
-    /* First breakpoint */
-  @media screen and (min-width: 1025px)  {
-    .cont_mosaico {
-        padding-left: 10px;
-        padding-top: 10px;
-    }
-
-  }

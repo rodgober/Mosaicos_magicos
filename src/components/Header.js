@@ -22,6 +22,7 @@ const Header = () => {
            <div className={`${styles.header_contenedor}`}>
                     <div className={`${styles.logo}`}>
                         <img
+                            className={`${styles.img_logo}`}
                             src={logo.default}
                             onClick={handleChange}
                             alt="Mosaicos mágicos"
@@ -32,28 +33,28 @@ const Header = () => {
                         <button
                             type="button"
                             onClick={e => onClickMostrarSala(1)}
-                            className={(1 === sala) ? `${styles.presionado}` : `${styles.myButton}`}
+                            className={(1 === sala) ? `${styles.presionado}` : `${styles.btnSalashdr}`}
                             disabled={(sala === 1)}
                         >Mosaicos  
                         </button>
                         <button
                             type="button"
                             onClick={e => onClickMostrarSala(2)}
-                            className={(2 === sala)?`${styles.presionado}`: `${styles.myButton}`}
+                            className={(2 === sala)?`${styles.presionado}`: `${styles.btnSalashdr}`}
                             disabled={(sala === 2)}
                         >Murales  
                         </button>
                         <button
                             type="button"
                             onClick={e => onClickMostrarSala(3)}
-                            className={(3 === sala)?`${styles.presionado}`: `${styles.myButton}`}
+                            className={(3 === sala)?`${styles.presionado}`: `${styles.btnSalashdr}`}
                             disabled={(sala === 3)}
                         >Collages  
                         </button>
                         <button
                             type="button"
                             onClick={e => onClickMostrarSala(4)}
-                            className={(4 === sala)?`${styles.presionado}`: `${styles.myButton}`}
+                            className={(4 === sala)?`${styles.presionado}`: `${styles.btnSalashdr}`}
                             disabled={(sala === 4)}
                         >Programación  
                         </button>

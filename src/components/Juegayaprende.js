@@ -11,12 +11,13 @@ const Juegayaprende = () => {
             <Header>
 
             </Header>
+            
             <div className="contenedor-app">
                 <Secciones>
                 </Secciones> 
                 <Sala>
                 </Sala>
-            </div>
+            </div> 
         </Fragment>
      );
 }

@@ -106,6 +106,7 @@ const Horno = React.forwardRef((props, ref) => {
                         setFigura={setFigura}
                  /> 
                 </div>
+                <div>
                 <div className={`${styles.deshacer}`}>
                     <Button
                         type="button"
@@ -116,6 +117,7 @@ const Horno = React.forwardRef((props, ref) => {
                             style={{ fontSize: 35 }}
                         ></ReplayIcon>
                     </Button>
+                </div>
                 </div> 
             </div>
             <div className={`${styles.div_estampar}`}  >

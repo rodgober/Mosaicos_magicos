@@ -5,6 +5,7 @@
 html {
   box-sizing: border-box;
   height: 100%;
+  width: fit-content;
   font-size: 62.5%; 
 }
 
@@ -16,13 +17,13 @@ body {
 .contenedor-app {
   display: flex;
   min-height: 100%;
+  min-width: 100%;
 }
 
 .seccion-principal {
   display: flex;
   width: 100%;
   padding-left: 0px;
-
   align-items: top;
 }
 

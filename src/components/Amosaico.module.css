@@ -14,7 +14,6 @@
 .huecos {
 position: absolute; 
 width: 880px;
-height: 284px;
   left: 100; 
   top: 0;
   z-index: 2;
@@ -67,15 +66,14 @@ display: none; /*quitar esta linea*/
 @media screen and (max-width: 480px) {
 .horno {
   width: 303px;
-  height: 94px; 
 }
 .cftop {
   width: 303px;
-  height: 94px; 
+
 }
 .cfimg {
   width: 303px;
-  height: 94px; 
+
 }
 .mosaicotran {
   left: 10px;
@@ -95,16 +93,13 @@ display: none; /*quitar esta linea*/
 /* Third breakpoint */
 @media screen and (min-width: 481px) and (max-width: 768px) {
 .horno {
-  width: 405px;
-  height: 126px;  
+  width: 405px; 
 }
 .cftop {
-  width: 405px;
-  height: 126px;  
+  width: 405px;  
 }
 .cfimg {
   width: 405px;
-  height: 126px; 
 }
 .mosaicotran {
   left: 30px;
@@ -125,11 +120,9 @@ display: none; /*quitar esta linea*/
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 .horno {
   width: 700px;
-  height: 217px;
 }
 .cftop {
   width: 700px;
-  height: 217px;
 }
 .cfimg {
   width: 700px;
@@ -155,15 +148,12 @@ display: none; /*quitar esta linea*/
 @media screen and (min-width: 1025px)  {
 .horno {
   width: 910px;
-  height: 284px;
 }
 .cftop {
   width: 910px;
-  height: 284px;
 }
 .cfimg {
   width: 910px;
-  height: 284px;
 }
 .mosaicotran {
   left: 110px;

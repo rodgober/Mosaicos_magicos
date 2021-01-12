@@ -11,15 +11,17 @@ import {
 
 const SalaState = props => {
     const initialState ={
-        sala : 4,
+        sala : 1,
         alto: 40,
         largo: 40,
         separacion: 5,
         almacen: 0,
         mosSeleccionado :0,
+        columnas: 12, //cantidad de mosaicos en murales a lo largo
+        filas: 12,    //cantidad de mosaicos en murales a lo ancho
         almacenCollages: 0,
-        altoCollage: 329, 
-        largoCollage: 493,
+        altoCollage: 429, 
+        largoCollage: 593,
         guardarAlmacen: false
     }
 
@@ -70,6 +72,8 @@ const SalaState = props => {
                 separacion: state.separacion,
                 almacen: state.almacen,
                 mosSeleccionado: state.mosSeleccionado,  
+                columnas: state.columnas,
+                filas: state.filas,
                 almacenCollages: state.almacenCollages,
                 altoCollage:  state.altoCollage, 
                 largoCollage: state.largoCollage,
