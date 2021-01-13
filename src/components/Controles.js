@@ -1,31 +1,41 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import Button from '@material-ui/core/Button';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import StopIcon from '@material-ui/icons/Stop';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import ReplayIcon from '@material-ui/icons/Replay';
+import styles from './Controles.module.css';
 
 const Controles = () => {
     return ( 
-        <div>
-            <Button>
+        <div className={`${styles.cont_controles}`}  >
+            <Button 
+                style={{minWidth: '24px'}}
+            >
                 <StopIcon
-                    style={{ fontSize: 35 }}
+                    style={{ minWidth: '24px', fontSize: 35 }}
                 ></StopIcon>
             </Button>
-            <Button>
+            <Button
+                style={{minWidth: '24px'}}
+            >
                 <PlayArrowIcon
-                    style={{ fontSize: 35 }}
+                    style={{ minWidth: '24px', fontSize: 35  }}
                 ></PlayArrowIcon>
             </Button>
-            <Button>
+            <Button
+                style={{minWidth: '24px'}}
+            >
                 <SkipNextIcon
-                    style={{ fontSize: 35 }}
+                    style={{ minWidth: '24px', fontSize: 35  }}
                 ></SkipNextIcon>
             </Button>
-            <Button>
+            <Button
+                style={{minWidth: '24px'}}
+            >
                 <ReplayIcon
-                    style={{ fontSize: 35 }}
+                    
+                    style={{ minWidth: '24px', fontSize: 35 }}
                 ></ReplayIcon>
             </Button>
         </div>

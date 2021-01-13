@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { Fragment, useState, useContext, useEffect } from 'react';
 import programaContext from '../context/programa/programaContext';
 
 
@@ -23,7 +23,11 @@ const Robot = () => {
     const {xyz} = useSpring({
         from: {xyz: [0, 0, 0]},
         xyz: [xx, yy, 0], config: { duration: 500 }
-      })
+      });
+
+      useEffect(() => {
+          console.log(yy);
+      }, [yy]);
 
     return ( 
         <Fragment>
@@ -37,7 +41,13 @@ const Robot = () => {
                         className={`${styles.color}`}
                         style={{ fontSize: 35   }}
                     ></AndroidIcon>
-                    <p>Etiqueta</p>
+                    <div className={`${styles.mosaicoRobot}`}>
+                        <canvas
+                            width='40px'
+                            height='40px'
+                            className={`${styles.canvas_mosaico_robot}`}
+                        />
+                    </div>
                     {(1 === direccion)?(
                         <ArrowRightIcon
                             className={`${styles.color}`}

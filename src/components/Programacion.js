@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import salaContext from '../context/salas/salaContext'
 import styles from './Programacion.module.css';
 import Controles from './Controles';
@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 
 const Programacion = React.forwardRef((props,ref) => {
     const salaContexto = useContext(salaContext);
-    const { alto, largo, separacion, mosSeleccionado } = salaContexto;
+    const { alto, largo, separacion, mosSeleccionado, columnas, filas } = salaContexto;
     const canvasAlmacenes = ref;  // Toma la referencia del canvas del Almacen que se pasa por parámetro en la llamada del componente
     const canvasMural = React.createRef(); //Crea la referencia del canvas del Mural donde se pegan los mosaicos
     const refInput = React.createRef(); //Crea la referencia al input que permite abrir el mural
@@ -31,17 +31,17 @@ const Programacion = React.forwardRef((props,ref) => {
 
     function limpiaMural(ctx){
         ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, (12*largo)+13, (8*largo)+9);
+        ctx.fillRect(0, 0, (columnas*largo)+(columnas+1), (filas*largo)+(filas+1));
         ctx.lineWidth = 1;
         ctx.strokeStyle = 'white';
-        for (let xx = 0; xx <= 12; xx++) {
+        for (let xx = 0; xx <= columnas; xx++) {
             ctx.moveTo((alto * xx)+xx,0);
-            ctx.lineTo((alto * xx)+xx, (8*alto)+9);
+            ctx.lineTo((alto * xx)+xx, (filas*alto)+(filas+1));
             ctx.stroke();
         }
-        for (let xx = 0; xx <= 8; xx++) {
+        for (let xx = 0; xx <= filas; xx++) {
             ctx.moveTo(0,(largo * xx)+xx);
-            ctx.lineTo((largo * 12 ) + 12,(largo * xx)+xx);
+            ctx.lineTo((largo * columnas ) + columnas,(largo * xx)+xx);
             ctx.stroke();
         }
     }
@@ -73,8 +73,8 @@ const Programacion = React.forwardRef((props,ref) => {
     const guardar = () => {
             const canvas = canvasMural.current;
             let canvasdwn = document.createElement('canvas'); //Crea el canvas que va a descargar
-            canvasdwn.width = (12*largo)+13; //le coloca el largo del canvas dependiendo de los mosaicos
-            canvasdwn.height = (8*alto)+9;//coloca el alto del canvas
+            canvasdwn.width = (columnas*largo)+(columnas+1); //le coloca el largo del canvas dependiendo de los mosaicos
+            canvasdwn.height = (filas*alto)+(filas+1);//coloca el alto del canvas
             var destCtx = canvasdwn.getContext('2d');
             destCtx.drawImage(canvas, 0, 0); //Copia la imagen del canvas del almacen al canvas que va a descargar con el tamaño mínimo necesario
             let downloadLink = document.createElement('a');
@@ -88,8 +88,8 @@ const Programacion = React.forwardRef((props,ref) => {
     const imprimir = () => {
         const canvas = canvasMural.current;
         let canvasdwn = document.createElement('canvas'); //Crea el canvas que va a descargar
-        canvasdwn.width = (12*largo)+13; //le coloca el largo del canvas dependiendo de los mosaicos
-        canvasdwn.height = (8*alto)+9;//coloca el alto del canvas
+        canvasdwn.width = (columnas*largo)+(columnas+1); //le coloca el largo del canvas dependiendo de los mosaicos
+        canvasdwn.height = (filas*alto)+(filas+1);//coloca el alto del canvas
         var destCtx = canvasdwn.getContext('2d');
         destCtx.drawImage(canvas, 0, 0); //Copia la imagen del canvas del almacen al canvas que va a descargar con el tamaño mínimo necesario
         let downloadLink = document.createElement('a');
@@ -103,26 +103,44 @@ const Programacion = React.forwardRef((props,ref) => {
         printWin.focus();
         printWin.print();
     }
+
+    useEffect (()=>{
+        const mural1 = localStorage.getItem('mural');
+        const canvasMu = canvasMural.current;
+        const ctxMural = canvasMu.getContext('2d'); //Crea el contexto donde pintará el mosaico seleccionado    
+        if(mural1 === null){
+            limpiaMural(ctxMural);
+        }else{
+            let img = new Image();
+            img.src = mural1;
+            ctxMural.restore();
+            ctxMural.drawImage(img, 0, 0, canvasMu.width, canvasMu.height);
+            img.onload = function() {
+                ctxMural.drawImage(img, 0, 0, canvasMu.width, canvasMu.height);
+            }
+        }
+        // eslint-disable-next-line
+    }, []);
     /* ********************************* */
     /* FIN DE LAS FUNCIONES DE MURALES */
     /* ********************************* */
-
-    return ( 
-        <div>
-            <Controles>
-
-            </Controles>
-            <Controlmanual>
-
-            </Controlmanual>
-            <div className={`${styles.cont_programacion}`}  >
-                <canvas
-                        ref={canvasMural}
-                        width={(12*largo)+13}
-                        height={(8*largo)+9}
-                        className={`${styles.canvas_mural}`}
-                />
-                <div className={`${styles.toolbar}`}  >
+    
+    return (
+        <div className={`${styles.cont_programacion}`}  >
+            <div className={`${styles.ctr_mural}`}  >
+                <Controlmanual>
+                </Controlmanual>
+                
+                <div className={`${styles.mural_y_toolbar}`}  >
+                    <div className={`${styles.cont_mural}`}  >
+                        <canvas
+                            ref={canvasMural}
+                            width={(columnas*largo)+(columnas+1)}
+                            height={(filas*largo)+(filas+1)}
+                            className={`${styles.canvas_mural}`}
+                        />
+                    </div>
+                    <div className={`${styles.toolbar}`}  >
                         <Button
                             component="label"
                         >
@@ -137,7 +155,6 @@ const Programacion = React.forwardRef((props,ref) => {
                                 style={{ fontSize: 35 }}
                             ></FolderOpenIcon>
                         </Button>
-
                         <Button
                             type="button"
                             onClick={ () => guardar() }
@@ -146,7 +163,6 @@ const Programacion = React.forwardRef((props,ref) => {
                                 style={{ fontSize: 35 }}
                             ></SaveIcon>
                         </Button>
-
                         <Button
                             type="button"
                             onClick={ () => limpiaMuralBtn() }
@@ -155,7 +171,6 @@ const Programacion = React.forwardRef((props,ref) => {
                                 style={{ fontSize: 35 }}
                             ></DeleteOutlineIcon>
                         </Button>
-
                         <Button
                             type="button"
                             onClick={ () => imprimir() }
@@ -164,12 +179,17 @@ const Programacion = React.forwardRef((props,ref) => {
                                 style={{ fontSize: 35 }}
                             ></PrintIcon>
                         </Button>
+                    </div>
                 </div>
-                <Panelprograma>
-
-                </Panelprograma>
             </div>
-        </div> 
+            <div className={`${styles.pnl_programa}`}  >
+                    <Controles>
+                    </Controles>
+                    <Panelprograma>
+                    </Panelprograma>             
+            </div>
+             
+        </div>
     );
 });
  

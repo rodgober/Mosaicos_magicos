@@ -37,9 +37,14 @@
 
 .programacion {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: stretch;
   background-color: #7c99b2;
+  background-repeat: no-repeat;
+  background-position: left;  
+  padding-left: 0px;
+  padding: 0px; 
   width: 800px;
   height: 800px;
 }
@@ -77,11 +82,11 @@
     height: 750px;
   }
   .collages {
-    width: 700px;
-    height: 700px;
+    width: 750px;
+    height: 750px;
   }
   .programacion {
-    width: 700px;
-    height: 700px;
+    width: 750px;
+    height: 750px;
   }
 }

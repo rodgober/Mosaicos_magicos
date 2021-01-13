@@ -258,7 +258,7 @@ const Almacencollages = React.forwardRef((props,ref) => {
                 </div>
             </div>
 
-            <div>
+            <div className={`${styles.contenedor_botones}`}>
                     <Button
                         component="label"
                     >

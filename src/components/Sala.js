@@ -52,7 +52,7 @@ const Sala = () => {
                         </div>;
             case 4:
             return <div className={`${styles.programacion}`}>
-                      {/*   <ProgramaState>
+                         <ProgramaState>
                            <Robot>
                             </Robot>
                                 <Programacion
@@ -63,17 +63,17 @@ const Sala = () => {
                                 >
                                 </Almacenes> 
                             
-                        </ProgramaState> */}
+                        </ProgramaState>
                     </div>;
             default:
                 return <div className={`${styles.mosaicos}`}>
-                         {/*   <Horno
+                            <Horno
                                 ref = {canvasAlmacenes}
                             > </Horno>
                             <Almacenes
                                 ref = {canvasAlmacenes}
                             >
-                         </Almacenes>     */} 
+                         </Almacenes>     
                         </div>;
         }
     }

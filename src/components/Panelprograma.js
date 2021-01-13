@@ -15,12 +15,12 @@ const Panelprograma = () => {
 
     const [nvaInstruccion, setnvaInstruccion] = useState(false);
     return ( 
-        <div>
+        <div className={`${styles.cont_panelprograma}`}  >
             <div className={`${styles.inicio}`}>
                 Inicio del programa
             </div>
 
-            <ul>
+            <ul className={`${styles.instrucciones}`}>
                 {programa.length === 0 
                 ? null
                 : (programa.map(instruccion => (
@@ -36,21 +36,23 @@ const Panelprograma = () => {
                 Fin del programa
             </div>
 
-
+            <div className={`${styles.nvaInstruccion}`}>
 
                 {(nvaInstruccion)?(<Nuevainstruccion
                                         nvaInstruccion = {nvaInstruccion}
                                         setnvaInstruccion = {setnvaInstruccion}
                                     ></Nuevainstruccion>)
                 :null}
-                <Button
-                    type="button"
-                    onClick={ () => setnvaInstruccion(true) }
-                >
-                    <AddIcon
-                        style={{ fontSize: 35 }}
-                    ></AddIcon> Agregar instrucción
-                </Button>
+                
+                    <Button
+                        type="button"
+                        onClick={ () => setnvaInstruccion(true) }
+                    >
+                        <AddIcon
+                            style={{ minWidth: '72px', fontSize: 35 }}
+                        ></AddIcon> Agregar instrucción
+                    </Button>
+                </div>
             
         </div>
      );

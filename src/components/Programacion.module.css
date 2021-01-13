@@ -1,15 +1,66 @@
-.canvas_mural{
-    background-color: black;
-}
-
-.cont_programacion {
+.cont_programacion{
     display: flex;
-    flex-flow: row wrap;
-  /*  justify-content: space-around;*/
+    flex-direction: row;
+    width: 800px;
+}
+.ctr_mural{
+    display: flex;
+    flex-direction: column;
 }
 
+.pnl_programa{
+    display: flex;
+    flex-direction: column;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.mural_y_toolbar{
+    display: flex;
+    flex-direction: row;
+
+}
 .toolbar {
     display: flex;
-    flex-flow: column;
-    justify-content: space-around;
+    flex-direction: column;
+    background-color: #25557e;
+    padding-top: 30px;
+    border-radius: 0px 50px 50px 0px;
+
 }
+.cont_mural {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-color: #7c99b2; 
+    width: auto;
+    height: auto; 
+
+}
+.controles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .mural_y_toolbar{
+        width: 600px;
+    }
+    .cont_mural {
+        height: 527px;
+    }
+}
+
+
+  /* 1025px — 1200px: Desktops, large screens. */
+  /* First breakpoint */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .mural_y_toolbar{
+        width: 750px;
+    }
+    .cont_mural {
+        height: 537px;
+    }
+  }

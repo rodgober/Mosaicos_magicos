@@ -1,15 +1,27 @@
 .robot{
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
-    width: 36px;
-    height: 36px;
-    top: 83px;
-    position: relative;
+    width: 30px;
+    height: 30px;
+    top: -25px;
+    position: absolute;
+    z-index: 2;
 }
-
 .color{
     color: white;
     font-size: 1.5rem;
+}
+.mosaicoRobot{
+    padding-left: 10px;
+    padding-top: 7px;
+    height: 78px;
+    width: 78px;
+    display: block;
+}
+.canvas_mosaico_robot {
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
 }
 

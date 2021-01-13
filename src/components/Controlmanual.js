@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import programaContext from '../context/programa/programaContext';
-
+import styles from './Controlmanual.module.css';
 import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -13,27 +13,35 @@ const Controlmanual = () => {
     const instruccionesContext = useContext(programaContext);
     const { xx, setXX, yy, setYY, setDireccion } = instruccionesContext;
 
-    const left = e => { 
-        setXX(xx - 40);
-        setDireccion(3);
+    const left = e => {
+        if(xx > 0 ) {
+            setXX(xx - 40);
+            setDireccion(3);
+        }
     }
 
     const right = e => { 
-        setXX(xx + 40)
-        setDireccion(1);
+        if(xx < 480 ) {
+            setXX(xx + 40);
+            setDireccion(1);
+        }
     }
 
     const up = e => { 
-        setYY(yy - 40)
-        setDireccion(4);
+        if(yy > 50 ) {
+            setYY(yy - 40)
+            setDireccion(4);
+        }
     }
 
     const down = e => { 
-        setYY(yy + 40)
-        setDireccion(2);
+        if(yy < 570){
+            setYY(yy + 40)
+            setDireccion(2);
+        }
     }
     return ( 
-        <div>
+        <div className={`${styles.ctrl_manual}`}  >
             <Button
                 type="button"
                 onClick={e => left()}
