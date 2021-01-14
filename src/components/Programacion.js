@@ -11,6 +11,8 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Button from '@material-ui/core/Button';
 import PrintIcon from '@material-ui/icons/Print';
 import PropTypes from 'prop-types';
+import { SimpleMediaQuery } from '../helper';
+
 
 
 
@@ -20,6 +22,7 @@ const Programacion = React.forwardRef((props,ref) => {
     const canvasAlmacenes = ref;  // Toma la referencia del canvas del Almacen que se pasa por parámetro en la llamada del componente
     const canvasMural = React.createRef(); //Crea la referencia del canvas del Mural donde se pegan los mosaicos
     const refInput = React.createRef(); //Crea la referencia al input que permite abrir el mural
+    let fontsize = 35; //el tamaño de los botones del toolbar y depende del tamaño de pantalla
     /***********************************/  
     /*FUNCIONES DE LA SALA MURALES */
     /******************************** */
@@ -105,6 +108,7 @@ const Programacion = React.forwardRef((props,ref) => {
     }
 
     useEffect (()=>{
+        
         const mural1 = localStorage.getItem('mural');
         const canvasMu = canvasMural.current;
         const ctxMural = canvasMu.getContext('2d'); //Crea el contexto donde pintará el mosaico seleccionado    
@@ -124,10 +128,19 @@ const Programacion = React.forwardRef((props,ref) => {
     /* ********************************* */
     /* FIN DE LAS FUNCIONES DE MURALES */
     /* ********************************* */
+
+    if (SimpleMediaQuery('(max-width: 1024px)')){
+        fontsize = 20;
+    }
     
+   /* 
+        console.log(SimpleMediaQuery('(max-width: 700px)'));
+        console.log(SimpleMediaQuery('(max-width: 800px)'));
+        console.log(SimpleMediaQuery('(max-width: 900px)'));
+        console.log(SimpleMediaQuery('(max-width: 1000px)')); */
     return (
         <div className={`${styles.cont_programacion}`}  >
-            <div className={`${styles.ctr_mural}`}  >
+            <div className={`${styles.ctr_y_mural}`}  >
                 <Controlmanual>
                 </Controlmanual>
                 
@@ -143,6 +156,7 @@ const Programacion = React.forwardRef((props,ref) => {
                     <div className={`${styles.toolbar}`}  >
                         <Button
                             component="label"
+                            style={{minWidth: '24px'}}
                         >
                             <input
                                 type="file"
@@ -152,31 +166,34 @@ const Programacion = React.forwardRef((props,ref) => {
                                 ref={refInput}
                             />
                             <FolderOpenIcon
-                                style={{ fontSize: 35 }}
+                                style={{ fontSize: fontsize }}
                             ></FolderOpenIcon>
                         </Button>
                         <Button
                             type="button"
                             onClick={ () => guardar() }
+                            style={{minWidth: '24px'}}
                         >
                             <SaveIcon
-                                style={{ fontSize: 35 }}
+                                style={{ fontSize: fontsize }}
                             ></SaveIcon>
                         </Button>
                         <Button
                             type="button"
                             onClick={ () => limpiaMuralBtn() }
+                            style={{minWidth: '24px'}}
                         >
                             <DeleteOutlineIcon
-                                style={{ fontSize: 35 }}
+                                style={{ fontSize: fontsize }}
                             ></DeleteOutlineIcon>
                         </Button>
                         <Button
                             type="button"
                             onClick={ () => imprimir() }
+                            style={{minWidth: '24px'}}
                         >
                             <PrintIcon
-                                style={{ fontSize: 35 }}
+                                style={{ fontSize: fontsize }}
                             ></PrintIcon>
                         </Button>
                     </div>

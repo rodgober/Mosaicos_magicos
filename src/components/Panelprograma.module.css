@@ -1,8 +1,8 @@
 .cont_panelprograma{
     display: flex;
     flex-direction: column;
-    height: 495px;
-    width: 228px;
+    height: 493px;
+    width: 214px;
     
 }
 .inicio {
@@ -39,4 +39,41 @@
     background-color: #ced7de;
     margin-block-start: 0em;
     margin-block-end: 0em;
+}
+.btnAgregarInst{
+
+}
+@media screen and (max-width: 768px) {
+    .cont_panelprograma{
+      /*  width: 106px; este es el tamaño ideal si logro hacer modal nvaInstruccion*/
+        width: 157px;
+        height: 528px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .inicio {
+        height: 22px;
+        font-size: 8px;
+        border-radius: 10px 10px 0px 0px;  
+    }
+    .fin {
+        height: 22px;
+        font-size: 8px;
+        border-radius: 0px 0px 10px 10px;  
+    }
+    .nvaInstruccion{
+        width: 157px;
+    }
+    .instrucciones{
+        margin-left: 0px;
+        padding-left: 10px;
+        font-size: 8px;
+    }
+}
+
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .cont_panelprograma{
+        width: 182px;
+    }
 }

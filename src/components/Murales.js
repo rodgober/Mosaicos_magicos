@@ -160,11 +160,11 @@ const Murales = React.forwardRef((props,ref) => {
         // eslint-disable-next-line
     }, []);
 
-    console.log(SimpleMediaQuery('(max-width: 600px)'));
+   /* console.log(SimpleMediaQuery('(max-width: 600px)'));
     console.log(SimpleMediaQuery('(max-width: 700px)'));
     console.log(SimpleMediaQuery('(max-width: 800px)'));
     console.log(SimpleMediaQuery('(max-width: 900px)'));
-    console.log(SimpleMediaQuery('(max-width: 1000px)'));
+    console.log(SimpleMediaQuery('(max-width: 1000px)'));*/
 
 
     return ( 

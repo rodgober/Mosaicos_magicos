@@ -1,9 +1,17 @@
 import React from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
+import { SimpleMediaQuery } from '../helper';
 
 
 const Instruccion = ({instruccion}) => {
+    let fontsize = 15;
+    let minimo = '72px';
+
+    if (SimpleMediaQuery('(max-width: 768px)')){
+        fontsize = 8;
+        minimo = '20px';
+    }
     return ( 
         <li
             key={instruccion.id}
@@ -40,7 +48,7 @@ const Instruccion = ({instruccion}) => {
                 type="button"
             >
                 <DeleteIcon
-                    style={{ fontSize: 15 }}
+                    style={{ minWidth: minimo, fontSize: fontsize }}
                 ></DeleteIcon>
             </Button>
         </li>

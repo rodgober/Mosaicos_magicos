@@ -23,7 +23,7 @@
     padding-left: 0px;
     padding: 0px; 
     width: 800px;
-    height: 800px;
+    height: 770px;
 }
 
 .collages {
@@ -32,7 +32,7 @@
   justify-content: stretch;
   background-color: #7c99b2;
   width: 800px;
-  height: 800px;
+  height: 730px;
 }
 
 .programacion {
@@ -46,7 +46,7 @@
   padding-left: 0px;
   padding: 0px; 
   width: 800px;
-  height: 800px;
+  height: 735px;
 }
 
 /*    481px — 768px: iPads, Tablets.*/
@@ -58,14 +58,14 @@
   }
   .murales {
     width: 600px;
-    height: 600px;
+    height: 670px;;
   }
   .collages {
     width: 600px;
     height: 600px;
   }
   .programacion {
-    width: 600px;
+    width: 650px;
     height: 600px;
   }
 }

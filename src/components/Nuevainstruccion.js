@@ -166,7 +166,7 @@ const Nuevainstruccion = (props) => {
                         id='tipoinstruccion' 
                         onChange={asignarInstruccion}
                         defaultValue= "0">
-                        <option value="0">Selecciona la instrucción</option>
+                        <option value="0">Selecciona</option>
                         <option value="1">Origen</option>
                         <option value="2">Mosaico n</option>
                         <option value="3">Carga mosaico</option>
@@ -250,6 +250,7 @@ const Nuevainstruccion = (props) => {
                     <Button
                         type="button"
                         onClick={ () => setnvaInstruccion(false) }
+                        style={{minWidth: '4px'}}
                     >Cancelar</Button>
                     <Button
                         type="button"

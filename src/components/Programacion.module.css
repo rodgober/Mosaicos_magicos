@@ -3,7 +3,7 @@
     flex-direction: row;
     width: 800px;
 }
-.ctr_mural{
+.ctr_y_mural{
     display: flex;
     flex-direction: column;
 }
@@ -45,11 +45,29 @@
 
 
 @media screen and (max-width: 768px) {
+    .cont_programacion{
+        width: 650px;
+    }
     .mural_y_toolbar{
-        width: 600px;
+        width: 493px;
+        flex-direction: column-reverse;
     }
     .cont_mural {
-        height: 527px;
+        height: 493px;
+    }
+    .toolbar {
+        flex-direction: row;
+        border-radius: 0px;
+        height: 34px;
+        width: 493px;
+        padding-top: 0px;        
+    }
+    .pnl_programa{
+        padding-left: 0px;
+        padding-right: 0px;
+        /*width: 106px; Este es ideal si logro hacer modal el nvainstruccion */
+        width: 157px;
+
     }
 }
 
@@ -57,10 +75,19 @@
   /* 1025px — 1200px: Desktops, large screens. */
   /* First breakpoint */
   @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .mural_y_toolbar{
+    .cont_programacion{
         width: 750px;
     }
+    .mural_y_toolbar{
+        width: 540px;
+    }
     .cont_mural {
-        height: 537px;
+        height: 494px;
+    }
+    .toolbar{
+        width: 50px;
+    }
+    .pnl_programa{
+        width: 230px;
     }
   }

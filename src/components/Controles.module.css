@@ -1,3 +1,10 @@
 .cont_controles{
     display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .cont_controles{
+        height: 46px;
+    }
 }

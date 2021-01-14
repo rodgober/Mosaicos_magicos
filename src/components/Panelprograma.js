@@ -6,14 +6,22 @@ import programaContext from '../context/programa/programaContext';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import styles from './Panelprograma.module.css';
+import { SimpleMediaQuery } from '../helper';
 
 const Panelprograma = () => {
 
 
     const programaContexto = useContext(programaContext);
     const { programa } = programaContexto;
+    let minwidth = '72px'; //el tamaño de los botones del toolbar y depende del tamaño de pantalla
 
     const [nvaInstruccion, setnvaInstruccion] = useState(false);
+
+    if (SimpleMediaQuery('(max-width: 768px)')){
+        minwidth = '22px';
+    }
+
+
     return ( 
         <div className={`${styles.cont_panelprograma}`}  >
             <div className={`${styles.inicio}`}>
@@ -49,7 +57,7 @@ const Panelprograma = () => {
                         onClick={ () => setnvaInstruccion(true) }
                     >
                         <AddIcon
-                            style={{ minWidth: '72px', fontSize: 35 }}
+                            style={{ minWidth: minwidth, fontSize: 35 }}
                         ></AddIcon> Agregar instrucción
                     </Button>
                 </div>
