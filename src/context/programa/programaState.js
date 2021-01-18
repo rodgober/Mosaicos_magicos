@@ -11,8 +11,8 @@ import {
 const ProgramaState = props => {
     const initialState = {
         programa: [],
-        xx:0,
-        yy:50,
+        xx:1,
+        yy:1,
         direccion:2
     }
 

@@ -1,23 +1,27 @@
-
+/*Mosaico que transita en el horno*/
 .mosaicotran {
   position: relative;
   z-index: 2;
-  animation: mymove 5s;
+  left: 110px;
+  animation: animamosaico 5s;
 }
 
-.mosaicotran1 {
-  position: relative;
-  z-index: -1;
-  display: none;
-}
-
-.huecos {
-position: absolute; 
-width: 880px;
-  left: 100; 
+/* Div que contiene la imagen de los huecos (transparencia) */
+.divhuecos{
+  position: absolute;
+  width: 817px;
+  height: 243px;
+  left: -2px;
   top: 0;
   z-index: 2;
-display: none; /*quitar esta linea*/
+}
+.huecos {
+  position: absolute;
+  width: 817px;
+  height: 243px;
+  left: -2px;
+  top: 0;
+  z-index: 2;
 }
 /*DIV que contiene las imagenes de la pared del horno apgado y encendido*/
 .horno {
@@ -25,35 +29,40 @@ display: none; /*quitar esta linea*/
   left: 0; 
   top: 0;
   z-index: 1;
+  width: 800px;
+  height: 275px;
 }
 
 .ocultar {
   display: none;
 }
 
-/*Imagen del horno apagado*/
+/*Posicion del horno apagado y encendido*/
 .cfimg {
-  display: none; /*Quitar esta linea*/
   position: absolute;
   top: 0px;
-  left: 0px;
+  left: -2px;
+  width: 814px;
   -webkit-transition: opacity 1s ease-in-out;
   -moz-transition: opacity 1s ease-in-out;
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
 }
 
+/*Posicion del horno encendido*/
 .cftop {
   position: absolute;
   top: 0px;
-  left: 0px;
+  left: -2px;
+  width: 814px;
   animation-name: cf3FadeInOut;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 50;
   animation-duration: .1s;
-  animation-direction: alternate;
+  animation-direction: alternate; 
 }
 
+/*Animación de intercambiar imagenes del horno*/
 @keyframes cf3FadeInOut {
       0% {opacity:1;}
       45% {opacity:1;}
@@ -61,110 +70,79 @@ display: none; /*quitar esta linea*/
       100% {opacity:0;}
 }
 
-/*320px — 480px: Mobile devices. */
-/* fourth breakpoint */
-@media screen and (max-width: 480px) {
-.horno {
-  width: 303px;
-}
-.cftop {
-  width: 303px;
-
-}
-.cfimg {
-  width: 303px;
-
-}
-.mosaicotran {
-  left: 10px;
-}
-.mosaicotran1 {
-  left: 10px;
+/*Movimiento del mosaico de arriba a abajo y de izquierda a derecha*/
+@keyframes animamosaico {
+  0%   {left:100px; top:0px;}
+  50%  {left:100px; top:100px;}
+  100% {left:770px; top:100px;}
 }
 
-@keyframes mymove {
-  0%   {left:10px; top:0px;}
-  50%  {left:10px; top:15px;}
-  100% {left:250px; top:15px;}
-}
-}
 
-/*    481px — 768px: iPads, Tablets.*/
-/* Third breakpoint */
+
 @media screen and (min-width: 481px) and (max-width: 768px) {
-.horno {
-  width: 405px; 
-}
-.cftop {
-  width: 405px;  
-}
-.cfimg {
-  width: 405px;
-}
-.mosaicotran {
-  left: 30px;
-}
-.mosaicotran1 {
-  left: 30px;
-}
+  .horno {
+    width: 600px; 
+    height: 202px;
+  }
 
-@keyframes mymove {
-  0%   {left:30px; top:0px;}
-  50%  {left:30px; top:40px;}
-  100% {left:350px; top:40px;}
-}
+  .cfimg {
+    width: 611px;
+    height: 189px;
+    top: -11px;
+  }
+
+  .cftop {
+    width: 611px;
+    height: 189px;
+    top: -11px;  
+  }
+
+  .divhuecos{
+    width: 600px; 
+  }
+
+  .huecos{
+    width: 611px;
+    height: 189px;
+    top: -11px; 
+    left: 0px;
+  }
+
+  @keyframes animamosaico {
+    0%   {left:68px; top:0px;}
+    50%  {left:68px; top:50px;}
+    100% {left:550px; top:50px;}
+  }
 }
 
 /* 769px — 1024px: Small screens, laptops. */
 /* Second breakpoint */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-.horno {
-  width: 700px;
-}
-.cftop {
-  width: 700px;
-}
-.cfimg {
-  width: 700px;
-  height: 217px; 
-}
-.mosaicotran {
-  left: 80px;
-}
-.mosaicotran1 {
-  left: 80px;
-}
-
-@keyframes mymove {
-  0%   {left:80px; top:0px;}
-  50%  {left:80px; top:80px;}
-  100% {left:650px; top:80px;}
-}
-
-}
-
-/* 1025px — 1200px: Desktops, large screens. */
-/* First breakpoint */
-@media screen and (min-width: 1025px)  {
-.horno {
-  width: 910px;
-}
-.cftop {
-  width: 910px;
-}
-.cfimg {
-  width: 910px;
-}
-.mosaicotran {
-  left: 110px;
-}
-.mosaicotran1 {
-  left: 110px;
+  .horno {
+    width: 750px;
+    height: 267px;
+  }
+  .cfimg {
+    width: 763px;
+    height: 237px; 
+  }
+  
+  .cftop {
+    width: 763px;
+    height: 237px; 
+  }
+  .divhuecos{
+    width: 750px;
+  }
+  .huecos{
+    width: 763px;
+    height: 237px;
+    left: 0px;
+  }
+  @keyframes animamosaico {
+    0%   {left:80px; top:0px;}
+    50%  {left:80px; top:85px;}
+    100% {left:650px; top:85px;}
+  }
 }
 
-@keyframes mymove {
-  0%   {left:110px; top:0px;}
-  50%  {left:110px; top:120px;}
-  100% {left:810px; top:120px;}
-}
-}

@@ -28,7 +28,7 @@ const Amosaico = React.forwardRef((props, ref) => {
       <Fragment>
           <div className={`${styles.horno}`} >
                 <div 
-                    className={animacion ? `${styles.mosaicotran}` : `${styles.mosaicotran1}`}
+                    className={animacion ? `${styles.mosaicotran}` : `${styles.ocultar}`}
                 >
                     <canvas
                         ref={ref}
@@ -37,21 +37,23 @@ const Amosaico = React.forwardRef((props, ref) => {
                     />
                 </div>
                     <img className= {`${styles.cfimg}`} 
-                        src={fuente1}
+                        src={fuente1.default}
                         alt="Horno"
                     />
                     <img className={animacion ? `${styles.cfimg}` : `${styles.ocultar}`} 
-                        src={fuente2}
+                        src={fuente2.default}
                         alt="Horno encendido"
                                 />
                     <img className={animacion ? `${styles.cftop}` : `${styles.ocultar}`} 
-                        src={fuente3}
+                        src={fuente3.default}
                         alt="Horno encendido"
                                 />
-                    <img className= {`${styles.huecos}`} 
-                        src={huecos}
-                        alt="Horno"
-                    />
+                    <div className={`${styles.divhuecos}`} >
+                        <img className={animacion ? `${styles.huecos}` : `${styles.ocultar}`} 
+                            src={huecos.default}
+                            alt="Horno"
+                        />
+                    </div>
             </div>
       </Fragment>
      );

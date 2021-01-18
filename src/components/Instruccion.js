@@ -6,22 +6,26 @@ import { SimpleMediaQuery } from '../helper';
 
 const Instruccion = ({instruccion}) => {
     let fontsize = 15;
-    let minimo = '72px';
+    let minimo = '10px';
 
     if (SimpleMediaQuery('(max-width: 768px)')){
         fontsize = 8;
-        minimo = '20px';
+        minimo = '10px';
+    }
+    if (SimpleMediaQuery('(max-width: 1024px)')){
+        fontsize = 10;
+        minimo = '10px';
     }
     return ( 
         <li
             key={instruccion.id}
         >
             {instruccion.tipo === 1
-            ? <b>Ir al origenn</b>
+            ? <b>Ir al origen</b>
             : null}
 
             {instruccion.tipo === 2
-            ? <b>Ir al mosaico {instruccion.n} del almacen</b>
+            ? <b>Ir al mosaico {instruccion.n} </b>
             : null}
 
             {instruccion.tipo === 3
@@ -33,11 +37,11 @@ const Instruccion = ({instruccion}) => {
             : null}
 
             {instruccion.tipo === 5
-            ? <b>Gira el Robot {instruccion.n} grados</b>
+            ? <b>Gira Robot {instruccion.n} grados</b>
             : null}
 
             {instruccion.tipo === 6
-            ? <b>Gira el mosaico {instruccion.n} grados</b>
+            ? <b>Gira mosaico {instruccion.n} grados</b>
             : null}
 
             {instruccion.tipo === 7
@@ -46,6 +50,7 @@ const Instruccion = ({instruccion}) => {
 
             <Button
                 type="button"
+                style={{ minWidth: minimo}}
             >
                 <DeleteIcon
                     style={{ minWidth: minimo, fontSize: fontsize }}

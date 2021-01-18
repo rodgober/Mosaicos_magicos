@@ -14,29 +14,29 @@ const Controlmanual = () => {
     const { xx, setXX, yy, setYY, setDireccion } = instruccionesContext;
 
     const left = e => {
-        if(xx > 0 ) {
-            setXX(xx - 40);
+        if(xx > 1 ) {
+            setXX(xx - 1);
             setDireccion(3);
         }
     }
 
     const right = e => { 
-        if(xx < 480 ) {
-            setXX(xx + 40);
+        if(xx < 12 ) {
+            setXX(xx + 1);
             setDireccion(1);
         }
     }
 
     const up = e => { 
-        if(yy > 50 ) {
-            setYY(yy - 40)
+        if(yy > 1 ) {
+            setYY(yy - 1)
             setDireccion(4);
         }
     }
 
     const down = e => { 
-        if(yy < 570){
-            setYY(yy + 40)
+        if(yy < 12){
+            setYY(yy + 1)
             setDireccion(2);
         }
     }

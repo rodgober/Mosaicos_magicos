@@ -156,4 +156,4 @@ export const salaCollDown = require('../components/images/botones/salas/collages
 export const horno1 = require('../components/images/horno/horno1.jpg'); 
 export const horno2 = require('../components/images/horno/horno2.png'); 
 export const horno3 = require('../components/images/horno/horno3.png');
-export const huecosTrans =  require('../components/images/SalidasHorno.png'); 
+export const huecosTrans =  require('../components/images/horno4.png'); 

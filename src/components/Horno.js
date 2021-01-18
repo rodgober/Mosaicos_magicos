@@ -47,12 +47,22 @@ const Horno = React.forwardRef((props, ref) => {
             var imgData = ctxM2.getImageData(0, 0, largo, alto); //Obtiene la imagen  del canvas del mosaico en TRANSICION    
             var x =  ((separacion + largo + separacion)*almacen)+separacion; // Calcula x en el cual se estampará el mosaico en el almacen
 
-            ctxAlmacenes.putImageData(imgData, x, 0 + separacion); //Estampa el mosaico en el almacén //
+            
+                 //Estampa el mosaico en el almacén //
 
-            setAlmacen(almacen + 1); //Incrementa el almacen
-            setGuardarAlmacen(true);
+            
             setEstampar(false); //Indica que ya no  puede volver a estampar hasta completar nuevamente el ciclo (figura, variante, color)
             setAnimacion(true);
+            
+            setTimeout(() => {
+                ctxAlmacenes.putImageData(imgData, x, 0 + separacion);
+                setAlmacen(almacen + 1); //Incrementa el almacen
+                setGuardarAlmacen(true);
+              }, 5000);
+            
+            
+
+
         //  setDeshacer(false);
             ctxM1.clearRect(0, 0, largo, alto);  //Limpia el mosaico de arriba para crear un nuevo mosaico
             ctxM1.fillStyle = 'white'; //Estblece color de relleno blanco

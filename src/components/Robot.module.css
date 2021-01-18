@@ -1,7 +1,7 @@
 .robot{
     width: 30px;
     height: 30px;
-    top: -25px;
+    top: -39px;
     position: absolute;
     z-index: 2;
 }
@@ -9,11 +9,9 @@
     color: white;
     font-size: 1.5rem;
 }
-.mosaicoRobot{
-    padding-left: 10px;
-    padding-top: 7px;
-    height: 78px;
-    width: 78px;
+.divmosaicoRobot{
+    height: 40px;
+    width: 40px;
     display: block;
 }
 .canvas_mosaico_robot {
