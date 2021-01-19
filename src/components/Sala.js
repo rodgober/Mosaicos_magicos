@@ -56,6 +56,7 @@ const Sala = () => {
                          <ProgramaState>
                            <Robot
                                 ref={canvasRobot}
+
                            />
 
                                 <Programacion

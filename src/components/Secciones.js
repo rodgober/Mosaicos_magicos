@@ -8,10 +8,11 @@ const ImgSecciones = styled.img`
     cursor:pointer;
 `;
 
-const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
+const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion, btnGaleria}) => {
     btnMosaicos = React.createRef();
     btnMurales = React.createRef();
     btnCollages = React.createRef();
+    btnGaleria = React.createRef();
 
     const imgList = [salaMosUp, salaMosOver, salaMosDown, salaMurUp, salaMurOver, salaMurDown, salaCollUp, salaCollOver, salaCollDown];
     const salaContexto = useContext(salaContext);
@@ -86,6 +87,21 @@ const Secciones = ({btnMosaicos, btnMurales, btnCollages, btnProgramacion}) => {
                     <div className={`${styles.txtBtnSala}`}
                         onClick={e => onClickMostrarSala(4)}
                     >Programación</div>
+                </button>
+                <button className={`${styles.btnSalas}`}>
+                    <ImgSecciones 
+                        id="2"
+                        key="2"
+                        src={(sala === 5)? imgList[5].default : imgList[3].default}
+                        onClick={e => onClickMostrarSala(5)}
+                        onMouseOver={e => (e.currentTarget.src = imgList[5].default)}
+                        onMouseLeave= {(sala === 5)? (e => (e.currentTarget.src = imgList[5].default)): e => (e.currentTarget.src = imgList[3].default)}
+                        ref={btnGaleria}
+                        alt="Galeria"
+                    />
+                    <div className={`${styles.txtBtnSala}`}
+                        onClick={e => onClickMostrarSala(5)}
+                    >Galeria</div>
                 </button>
         </aside>
     )

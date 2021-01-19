@@ -16,6 +16,7 @@ const Nuevainstruccion = (props) => {
 
     let {nvaInstruccion, setnvaInstruccion} = props;
     const [tipoInstruccion, settipoInstruccion] = useState(0);
+    const [nombreInstruccion, setnombreInstruccion] = useState('')
     const [tituloInstruccion, setTituloInstruccion] = useState('');
     const [parametron, setParametron] = useState(0);
     const [errorinput, setErrorinput] = useState(false);
@@ -68,6 +69,7 @@ const Nuevainstruccion = (props) => {
                 titulo = 'Ir al origen';
                 break;
         } 
+        setnombreInstruccion(titulo)
         setTituloInstruccion(titulo);
     }
 
@@ -149,7 +151,7 @@ const Nuevainstruccion = (props) => {
         setErrorinput(error);
         setMensajeerror(mensaje);
         if(!error){
-            let ins = new Instruccionclass(programa.length, tipoInstruccion, parametron);
+            let ins = new Instruccionclass(programa.length, tipoInstruccion, parametron, nombreInstruccion);
             agregarInstruccion(ins);
             setnvaInstruccion(false);
         }
@@ -168,16 +170,16 @@ const Nuevainstruccion = (props) => {
                         defaultValue= "0">
                         <option value="0">Selecciona</option>
                         <option value="1">Origen</option>
-                        <option value="2">Mosaico n</option>
-                        <option value="3">Carga mosaico</option>
-                        <option value="4">Descarga mosaico</option>
+                    {/*   <option value="2">Mosaico n</option>  */}
+                    {/*    <option value="3">Carga mosaico</option> */}
+                    {/*    <option value="4">Descarga mosaico</option> */}
                         <option value="5">Gira Robot</option>
-                        <option value="6">Gira Mosaico</option>
+                    {/*    <option value="6">Gira Mosaico</option> */}
                         <option value="7">Avanza Robot</option>
-                        <option value="8">Mientras</option>
+                    {/*    <option value="8">Mientras</option>
                         <option value="9">Repite</option>
                         <option value="10">Si (condicion) entonces</option>
-                        <option value="11">Subrutina</option>
+                        <option value="11">Subrutina</option> */}
                     </select>
                 </div>
                 {(2 === tipoInstruccion)?(

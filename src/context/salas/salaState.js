@@ -11,7 +11,7 @@ import {
 
 const SalaState = props => {
     const initialState ={
-        sala : 4,
+        sala : 1,
         alto: 40,
         largo: 40,
         separacion: 5,

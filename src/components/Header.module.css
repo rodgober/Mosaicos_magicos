@@ -12,7 +12,7 @@
   margin: 0px;
   max-width: 1000px;
   max-height: 100px;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 25% 20% 20% 20% 15%;
   grid-template-areas: "logo" "menu" "configuracion"
 }
 
@@ -22,8 +22,8 @@
 
 .header_contenedor {
   grid-template-areas: 
-  "logo menu menu configuracion";
-  grid-template-columns: 4, 1fr;
+  "logo menu menu menu configuracion";
+  grid-template-columns: 5, 1fr;
   justify-content: center;
 }
 

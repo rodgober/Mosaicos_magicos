@@ -8,11 +8,9 @@ import styles from './Controles.module.css';
 import { SimpleMediaQuery } from '../helper';
 import programaContext from '../context/programa/programaContext';
 
-const Controles = () => {
-
+const Controles = React.forwardRef((props, ref) => {
     const instruccionesContext = useContext(programaContext);
     const { xx, setXX, yy, setYY, direccion, setDireccion, programa } = instruccionesContext;    
-    let equis = xx;
 
     let fontsize = 35;
     if (SimpleMediaQuery('(max-width: 768px)')){
@@ -29,32 +27,45 @@ const Controles = () => {
         setYY(1);
     };
     function giraRobot(grados){
+        console.log('El robot debe girar: ',grados )
         let posicion = (grados / 90) + direccion;
         if (posicion > 4){
             posicion = posicion % 4;
         }
+        console.log('Posicion anterior: ',posicion )
         setDireccion(posicion);
+        console.log('Nueva posicion: ',posicion )
     }
     function avanza(casillas){
+        console.log('Avanza: ',casillas, ' casillas-' )
         switch (direccion) {
             case 1:
-                setXX(equis + casillas);
+                console.log('anterior posicion en xx: ',xx);
+                setXX(xx + casillas);
+                console.log('Nueva posicion en xx: ',xx);
                 break;
             case 2:
+                console.log('anterior posicion en yy: ',yy);
                 setYY(yy + casillas);
+                console.log('Nueva posicion en yy: ',yy);
                 break;
             case 3:
-                setXX(equis - casillas);
+                console.log('anterior posicion en xx: ',xx);
+                setXX(xx - casillas);
+                console.log('Nueva posicion en xx: ',xx);
                 break;
             case 4:
+                console.log('anterior posicion en yy: ',yy);
                 setYY(yy - casillas);
+                console.log('Nueva posicion en yy: ',yy);
                 break;
         }
     }
 
+
     const ejecuta = (instruccion, milliseconds) => {
-        console.log('Direccion: ', direccion, 'Casilla en X: ', equis, 'Casilla en Y: ', yy);
-        console.log('Instruccion id: ', instruccion.id, 'Instrucción tipo: ', instruccion.tipo, 'instruccion n:', instruccion.n);
+        console.log('Direccion: ', direccion, 'Casilla en X: ', xx, 'Casilla en Y: ', yy);
+        console.log('Instruccion id: ', instruccion.id, 'Instrucción tipo: ', instruccion.nombre, 'instruccion n:', instruccion.n);
         switch (instruccion.tipo) {
             case 1:
                 origen();
@@ -67,14 +78,20 @@ const Controles = () => {
                 break;
         }
         return new Promise(resolve => setTimeout(resolve, milliseconds))
-      }
+    }
+
+    const espera = (milliseconds) => {
+        
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
 
     const ejecutar = e => { 
         const doSomething = async () => {
             for (const instruccion of programa) {
-                console.log('antes de ejecutar ', instruccion.tipo)  
-               await ejecuta(instruccion, 5000)
-                console.log('después de ejecutar ', instruccion.tipo)    
+                await espera(2000);
+                console.log('antes de ejecutar ', instruccion.nombre)  
+                await ejecuta(instruccion, 2000)
+                console.log('después de ejecutar ', instruccion.nombre)    
             }
             console.log('FIN');
         }
@@ -138,6 +155,6 @@ const Controles = () => {
             </Button>
         </div>
      );
-}
+});
  
 export default Controles;

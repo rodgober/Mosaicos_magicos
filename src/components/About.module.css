@@ -1,0 +1,38 @@
+.header {
+    background: rgb(33,56,100);
+    background: -moz-linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
+    background: linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#213864",endColorstr="#648baa",GradientType=1);
+  
+  }
+  
+  .header_contenedor{
+    display: grid;
+    margin: 0px;
+    max-width: 1000px;
+    max-height: 100px;
+    grid-template-columns: 25% 20% 20% 20% 15%;
+    grid-template-areas: "logo" "menu" "configuracion"
+  }
+  
+  .header_contenedor > * {
+      padding: 1rem;
+  }
+  
+  .header_contenedor {
+    grid-template-areas: 
+    "logo menu menu menu configuracion";
+    grid-template-columns: 5, 1fr;
+    justify-content: center;
+  }
+  
+  .logo {
+    grid-area: logo;
+    cursor: pointer;
+  }
+  
+  .img_logo {
+    max-width:100%;
+    height:auto;
+  }
