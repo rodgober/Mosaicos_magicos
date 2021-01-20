@@ -62,7 +62,7 @@ const Header = () => {
                             type="button"
                             onClick={e => onClickMostrarSala(5)}
                             className={(5 === sala)?`${styles.presionado}`: `${styles.btnSalashdr}`}
-                            disabled={(sala === 4)}
+                            disabled={(sala === 5)}
                         >Galeria  
                         </button>
                     </nav>

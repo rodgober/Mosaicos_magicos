@@ -62,7 +62,6 @@
   padding:10px 10px;
   text-decoration:none;
   border: none;
-  font-size:17px;
 }
 .btnSalashdr:hover {
   background:linear-gradient(to bottom, #305c83 5%, #648bb3 100%);

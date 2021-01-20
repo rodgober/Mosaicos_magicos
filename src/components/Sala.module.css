@@ -49,6 +49,17 @@
   height: 735px;
 }
 
+.galeria {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  background-color: #7c99b2;
+  padding-left: 0px;
+  padding: 0px; 
+  width: 800px;
+  height: 800px;
+}
+
 /*    481px — 768px: iPads, Tablets.*/
 /* Third breakpoint */
 @media screen and (max-width: 768px) {
@@ -68,6 +79,10 @@
     width: 650px;
     height: 710px;
   }
+  .galeria {
+    width: 600px;
+    height: 600px;
+  }
 }
 
 /* 769px — 1024px: Small screens, laptops. */
@@ -86,6 +101,10 @@
     height: 750px;
   }
   .programacion {
+    width: 750px;
+    height: 750px;
+  }
+  .galeria {
     width: 750px;
     height: 750px;
   }
