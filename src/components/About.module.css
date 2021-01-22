@@ -1,3 +1,4 @@
+
 .header {
     background: rgb(33,56,100);
     background: -moz-linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
@@ -35,4 +36,41 @@
   .img_logo {
     max-width:100%;
     height:auto;
+  }
+
+  .con_creditos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #7c99b2;
+    padding: 10px; 
+    width: 800px;
+    height: 650px;
+
+    color:#ffffff;
+    font-family:Arial;
+  }
+
+  .p{
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .con_creditos {
+      width: 600px;
+      height: 600px;
+    }
+
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .con_creditos {
+      width: 750px;
+      height: 650px;
+    }
+
   }

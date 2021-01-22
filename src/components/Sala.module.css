@@ -23,7 +23,7 @@
     padding-left: 0px;
     padding: 0px; 
     width: 800px;
-    height: 770px;
+    height: 690px;
 }
 
 .collages {
@@ -46,7 +46,7 @@
   padding-left: 0px;
   padding: 0px; 
   width: 800px;
-  height: 735px;
+  height: 700px;
 }
 
 .galeria {
@@ -57,7 +57,7 @@
   padding-left: 0px;
   padding: 0px; 
   width: 800px;
-  height: 800px;
+  height: 650px;
 }
 
 /*    481px — 768px: iPads, Tablets.*/
@@ -94,18 +94,18 @@
   }
   .murales {
     width: 750px;
-    height: 750px;
+    height: 700px;
   }
   .collages {
     width: 750px;
-    height: 750px;
+    height: 705px;
   }
   .programacion {
     width: 750px;
-    height: 750px;
+    height: 690px;
   }
   .galeria {
     width: 750px;
-    height: 750px;
+    height: 650px;
   }
 }

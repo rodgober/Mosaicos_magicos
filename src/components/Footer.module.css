@@ -4,5 +4,45 @@
     background: -webkit-linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
     background: linear-gradient(0deg, rgba(33,56,100,1) 0%, rgba(100,139,170,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#213864",endColorstr="#648baa",GradientType=1);
-  
+  }
+
+  .footer_contenedor{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px;
+    max-width: 1000px;
+    max-height: 100px;
+  }
+
+  .copyright {
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    padding: 10px;
+  }
+
+  .version {
+    color:#ffffff;
+    font-family:Arial;
+    font-size:7px;
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .copyright {
+      font-size:10px;
+    }
+    .footer_contenedor{
+      max-height: 70px;
+    }
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .copyright {
+      font-size:13px;
+    }
+    .footer_contenedor{
+      max-height: 90px;
+    }
   }

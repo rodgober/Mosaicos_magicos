@@ -12,13 +12,13 @@
     overflow-y: hidden;
     white-space: nowrap;
     width: 800px;
-    height: 86px;
+    height: 70px;
     background-color: white;
   } 
 
 .contenedor_botones {
     width: 800px;
-    height: 100px;
+    height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

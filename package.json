@@ -20,6 +20,9 @@
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
+  "engines": {
+    "node": "15.3.0"
+  },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import styles from './Galeria.module.css';
-import { mural1, mural2, mural3, mural4, mural5 } from '../types/imgmuralesgaleria';
+import { mural1, mural2, mural3, mural4, mural5, mural6, mural7 } from '../types/imgmuralesgaleria';
 
 const Galeria = () => {
-    const imgMurales = [ mural1, mural2, mural3, mural4, mural5 ];
-    const titulos = [ "El Pez", "Secuencias", "Casa - Simetría", "Ondas complementarias", "Mariposa" ];
+    const imgMurales = [ mural1, mural2, mural3, mural4, mural5, mural6, mural7 ];
+    const titulos = [ "El Pez", "Secuencias", "Casa - Simetría", "Ondas complementarias", "Mariposa", "Barco", "Reyes magos" ];
 
     const [index, setIndex] = useState(0)
     

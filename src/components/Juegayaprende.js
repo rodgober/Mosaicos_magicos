@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import Header from './Header';
 import Secciones from './Secciones';
 import Sala from './Sala';
+import Footer from './Footer';
 
 
 const Juegayaprende = () => {
@@ -18,6 +19,9 @@ const Juegayaprende = () => {
                 <Sala>
                 </Sala>
             </div> 
+            <Footer>
+                
+            </Footer>
         </Fragment>
      );
 }
