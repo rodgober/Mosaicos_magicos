@@ -6,7 +6,8 @@ import Collages from './Collages';
 import Almacenes from './Almacenes';
 import Almacencollages from './Almacencollages';
 import Programacion from './Programacion'
-import Galeria from './Galeria'
+import Galeria from './Galeria';
+import About from './About'
 import Robot from './Robot'
 
 import ProgramaState from '../context/programa/programaState';
@@ -74,6 +75,11 @@ const Sala = () => {
                 return <div className={`${styles.galeria}`}>
                             <Galeria>
                             </Galeria>
+                        </div>;
+            case 6:
+                return <div className={`${styles.galeria}`}>
+                            <About>
+                            </About>
                         </div>;
             default:
                 return <div className={`${styles.mosaicos}`}>
