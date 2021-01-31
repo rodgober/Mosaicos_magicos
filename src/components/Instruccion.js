@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import { SimpleMediaQuery } from '../helper';
 
 
-const Instruccion = ({instruccion}) => {
+const Instruccion = ({instruccion, eliminarInstruccion, instActual}) => {
     let fontsize = 15;
     let minimo = '10px';
 
@@ -20,6 +20,7 @@ const Instruccion = ({instruccion}) => {
         <li
             key={instruccion.id}
         >
+            {(instActual+1 ===  instruccion.id) ? '>' : null}
             {instruccion.tipo === 1
             ? <b>Ir al origen</b>
             : null}
@@ -54,6 +55,7 @@ const Instruccion = ({instruccion}) => {
             >
                 <DeleteIcon
                     style={{ minWidth: minimo, fontSize: fontsize }}
+                    onClick={ () => eliminarInstruccion(instruccion.id) }
                 ></DeleteIcon>
             </Button>
         </li>

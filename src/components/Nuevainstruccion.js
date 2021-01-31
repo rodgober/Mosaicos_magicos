@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 
 import styles from './Nuevainstruccion.module.css';
 
+import { nanoid } from 'nanoid'; 
+
 const Nuevainstruccion = (props) => {
 
     const instruccionesContext = useContext(programaContext);
@@ -151,7 +153,8 @@ const Nuevainstruccion = (props) => {
         setErrorinput(error);
         setMensajeerror(mensaje);
         if(!error){
-            let ins = new Instruccionclass(programa.length, tipoInstruccion, parametron, nombreInstruccion);
+            let id = nanoid();
+            let ins = new Instruccionclass(id, tipoInstruccion, parametron, nombreInstruccion);
             agregarInstruccion(ins);
             setnvaInstruccion(false);
         }
@@ -168,14 +171,14 @@ const Nuevainstruccion = (props) => {
                         id='tipoinstruccion' 
                         onChange={asignarInstruccion}
                         defaultValue= "0">
-                        <option value="0">Selecciona</option>
-                        <option value="1">Origen</option>
-                    {/*   <option value="2">Mosaico n</option>  */}
+                       <option value="0">Selecciona</option> 
+                        <option value="1">Origen</option> 
+                       <option value="2">Copia Mosaico del almacen</option>  
                     {/*    <option value="3">Carga mosaico</option> */}
-                    {/*    <option value="4">Descarga mosaico</option> */}
-                        <option value="5">Gira Robot</option>
-                    {/*    <option value="6">Gira Mosaico</option> */}
-                        <option value="7">Avanza Robot</option>
+                        <option value="4">Descarga mosaico</option>  
+                        <option value="5">Gira Robot</option> 
+                        <option value="6">Gira Mosaico</option>  
+                        <option value="7">Avanza Robot</option> 
                     {/*    <option value="8">Mientras</option>
                         <option value="9">Repite</option>
                         <option value="10">Si (condicion) entonces</option>

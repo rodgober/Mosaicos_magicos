@@ -5,121 +5,174 @@ import StopIcon from '@material-ui/icons/Stop';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import ReplayIcon from '@material-ui/icons/Replay';
 import styles from './Controles.module.css';
-import { SimpleMediaQuery } from '../helper';
+import { SimpleMediaQuery, obtenerXDelMosSeleccionado } from '../helper';
 import programaContext from '../context/programa/programaContext';
+import salaContext from '../context/salas/salaContext';
 
+
+const milliseconds = 1000;
 const Controles = React.forwardRef((props, ref) => {
+    
     const instruccionesContext = useContext(programaContext);
-    const { xx, setXX, yy, setYY, direccion, setDireccion, programa } = instruccionesContext;    
+    const { xx, setXX, yy, setYY, direccion, setDireccion, programa, instActual, setinstActual } = instruccionesContext;   
+    const canvasAlmacenes = ref;  // Toma la referencia del canvas del Almacen que se pasa por parámetro en la llamada del componente 
+    const canvasMosaico = React.createRef(); //Crea la referencia del canvas del Mural donde se pegan los mosaicos
+    let {setCopia, setPega, setgiraMosaico } = props;
+    const salaContexto = useContext(salaContext);
+    const { largo, separacion, alto, setMosSeleccionado} = salaContexto;
 
     let fontsize = 35;
     if (SimpleMediaQuery('(max-width: 768px)')){
         fontsize = 20;
     }
 
-    const [idInstruccion, setidInstruccion] = useState(-1);
-    const [posCol, setposCol] = useState(1);
-    const [posRen, setposRen] = useState(1);
-    const [posRobot, setposRobot] = useState([1,1]);
 
-    function origen() {
-        setXX(1);
-        setYY(1);
-    };
-    function giraRobot(grados){
-        console.log('El robot debe girar: ',grados )
-        let posicion = (grados / 90) + direccion;
-        if (posicion > 4){
-            posicion = posicion % 4;
-        }
-        console.log('Posicion anterior: ',posicion )
-        setDireccion(posicion);
-        console.log('Nueva posicion: ',posicion )
-    }
-    function avanza(casillas){
+
+    async function avanza(casillas) {
         console.log('Avanza: ',casillas, ' casillas-' )
         switch (direccion) {
             case 1:
-                console.log('anterior posicion en xx: ',xx);
-                setXX(xx + casillas);
-                console.log('Nueva posicion en xx: ',xx);
+                await moverEnX(xx + casillas);
                 break;
             case 2:
-                console.log('anterior posicion en yy: ',yy);
-                setYY(yy + casillas);
-                console.log('Nueva posicion en yy: ',yy);
+                await moverEnY(yy + casillas);
                 break;
             case 3:
-                console.log('anterior posicion en xx: ',xx);
-                setXX(xx - casillas);
-                console.log('Nueva posicion en xx: ',xx);
+                await moverEnX(xx - casillas);
                 break;
             case 4:
-                console.log('anterior posicion en yy: ',yy);
-                setYY(yy - casillas);
-                console.log('Nueva posicion en yy: ',yy);
+                await moverEnY(yy - casillas);
                 break;
         }
     }
 
+    async function iralmacen(posicion) {
+        let tmpX = xx;
+        let tmpY = yy;
+        await moverEnY(14);
+        await moverEnX(posicion);
+        setMosSeleccionado(posicion);
+        await copiadealmacen(true);
+        await copiadealmacen(false);
+        await moverEnX(tmpX);
+        await moverEnY(tmpY);
+    }
 
-    const ejecuta = (instruccion, milliseconds) => {
-        console.log('Direccion: ', direccion, 'Casilla en X: ', xx, 'Casilla en Y: ', yy);
-        console.log('Instruccion id: ', instruccion.id, 'Instrucción tipo: ', instruccion.nombre, 'instruccion n:', instruccion.n);
+    async function ejecutar() {
+        if (programa.length < 1){
+            alert('Programa vacío')
+        }else{ 
+            for (const instruccion of programa) {
+                console.log('antes de ejecutar ', instruccion.nombre)  
+                await ejecuta(instruccion, milliseconds)
+                console.log('después de ejecutar ', instruccion.nombre)    
+            }
+            console.log('Terminó de ejecutar el programa');
+        }
+    }
+
+
+
+    const ejecuta = async (instruccion) => {
+        console.log(instruccion);
         switch (instruccion.tipo) {
             case 1:
-                origen();
+                await moverEnX(1);
+                await moverEnY(1);
+                break; 
+            case 2:
+                await iralmacen(instruccion.n);
+                break;
+            case 4:
+                await pega(true);
+                await pega(false);
                 break;
             case 5:
                 giraRobot(instruccion.n);
                 break;
+            case 6:
+                await giraMosaico(instruccion.n);
+                break; 
             case 7:
                 avanza(instruccion.n);
-                break;
+                break; 
         }
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
+        return Promise.resolve(1);
     }
 
-    const espera = (milliseconds) => {
+    const next = async () => {
         
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
+        await ejecuta(programa[instActual], milliseconds);
+        setinstActual(instActual + 1);
+        console.log('Listo!!!');
     }
 
-    const ejecutar = e => { 
-        const doSomething = async () => {
-            for (const instruccion of programa) {
-                await espera(2000);
-                console.log('antes de ejecutar ', instruccion.nombre)  
-                await ejecuta(instruccion, 2000)
-                console.log('después de ejecutar ', instruccion.nombre)    
-            }
-            console.log('FIN');
-        }
-        if (programa.length < 1){
-            alert('Programa vacío')
-        }else{ 
-            doSomething()
-        }
+    /***** INSTRUCCIONES ASYNCRONAS QUE SIMULAN SER SINCRONAS*/
+    function moverEnX(valor) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                setXX(valor);
+                resolve(valor);
+              }, milliseconds);
+        });
+    }
 
+    function moverEnY(valor) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                setYY(valor);
+                resolve(valor);
+              }, milliseconds);
+        });
     }
-    const stop = e => { 
-        alert('stop');
+
+    function copiadealmacen(bandera){
+        return new Promise(resolve => {
+            setTimeout(() => {
+                setCopia(bandera);
+                resolve(1);
+              }, milliseconds);
+        });
     }
-    const next = e => { 
-        alert('next');
+
+    function pega(bandera) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                setPega(bandera);
+                resolve(1);
+              }, milliseconds);
+        });
     }
-    const reset = e => { 
-        setposCol(1);
-        setposRen(1);
-        setposRobot([1,1]);
+
+    function giraRobot(grados){
+        let posicion = (grados / 90) + direccion;
+        if (posicion > 4){
+            posicion = posicion % 4;
+        }
+        return new Promise(resolve => {
+            setTimeout(() => {
+                setDireccion(posicion);
+                resolve(1);
+              }, milliseconds);
+        });
     }
+
+    function giraMosaico(grados) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                setgiraMosaico(grados);
+                resolve(1);
+              }, milliseconds);
+        });        
+    }
+
+    /***** FIN INSTRUCCIONES ASYNCRONAS QUE SIMULAN SER SINCRONAS*/
 
     return ( 
         <div className={`${styles.cont_controles}`}  >
             <Button 
                 style={{minWidth: '24px'}}
                 type="button"
-                onClick={e => stop()}
             >
                 <StopIcon
                     style={{ minWidth: '24px', fontSize: fontsize }}
@@ -129,6 +182,7 @@ const Controles = React.forwardRef((props, ref) => {
                 style={{minWidth: '24px'}}
                 type="button"
                 onClick={e => ejecutar()}
+                disabled={true}
             >
                 <PlayArrowIcon
                     style={{ minWidth: '24px', fontSize: fontsize  }}
@@ -136,8 +190,9 @@ const Controles = React.forwardRef((props, ref) => {
             </Button>
             <Button
                 type="button"
-                onClick={e => next()}
                 style={{minWidth: '24px'}}
+                onClick={e => next()}
+                disabled={((programa.length === 0) || (instActual >= programa.length))}
             >
                 <SkipNextIcon
                     style={{ minWidth: '24px', fontSize: fontsize  }}
@@ -145,7 +200,6 @@ const Controles = React.forwardRef((props, ref) => {
             </Button>
             <Button
                 type="button"
-                onClick={e => reset()}
                 style={{minWidth: '24px'}}
             >
                 <ReplayIcon

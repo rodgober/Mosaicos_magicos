@@ -13,7 +13,7 @@ const Panelprograma = () => {
 
 
     const programaContexto = useContext(programaContext);
-    const { programa } = programaContexto;
+    const { programa, eliminarInstruccion, instActual } = programaContexto;
     let minwidth = '72px'; //el tamaño de los botones del toolbar y depende del tamaño de pantalla
 
     const [nvaInstruccion, setnvaInstruccion] = useState(false);
@@ -21,7 +21,6 @@ const Panelprograma = () => {
     if (SimpleMediaQuery('(max-width: 768px)')){
         minwidth = '22px';
     }
-
 
     return ( 
         <div className={`${styles.cont_panelprograma}`}  >
@@ -34,8 +33,11 @@ const Panelprograma = () => {
                 ? null
                 : (programa.map(instruccion => (
                     <Instruccion
+
                         key={instruccion.id}
                         instruccion={instruccion}
+                        eliminarInstruccion = {eliminarInstruccion}
+                        instActual = {instActual}
                     ></Instruccion>
                         
                 )))

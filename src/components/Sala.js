@@ -8,7 +8,6 @@ import Almacencollages from './Almacencollages';
 import Programacion from './Programacion'
 import Galeria from './Galeria';
 import About from './About'
-import Robot from './Robot'
 
 import ProgramaState from '../context/programa/programaState';
 
@@ -19,7 +18,8 @@ const Sala = () => {
     const { sala } = salaContexto;
     const canvasAlmacenes = React.createRef();
     const canvasAlmcollages = React.createRef();
-    const canvasRobot = React.createRef(); // Crea la referencia del mosaico que carga el Robot
+
+
 
     const mostrarSala = () => {
         switch (sala) {
@@ -56,11 +56,6 @@ const Sala = () => {
             case 4:
             return <div className={`${styles.programacion}`}>
                          <ProgramaState>
-                           <Robot
-                                ref={canvasRobot}
-
-                           />
-
                                 <Programacion
                                     ref = {canvasAlmacenes}
                                 > </Programacion>

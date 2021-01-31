@@ -3,9 +3,11 @@ import programaContext from './programaContext';
 import programaReducer from './programaReducer';
 import { 
         AGREGAR_INSTRUCCION,
+        ELIMINAR_INSTRUCCION,
         SET_XX,
         SET_YY,
-        SET_DIRECCION
+        SET_DIRECCION,
+        SET_INSTACTUAL
         } from '../../types';
 
 const ProgramaState = props => {
@@ -13,7 +15,8 @@ const ProgramaState = props => {
         programa: [],
         xx:1,
         yy:1,
-        direccion:2
+        direccion:2,
+        instActual:0 //Instrucción que está ejectando en ese momento
     }
 
     const [state, dispatch] = useReducer(programaReducer, initialState);
@@ -22,6 +25,13 @@ const ProgramaState = props => {
         dispatch({
             type: AGREGAR_INSTRUCCION,
             payload: Instruccion
+        })
+    }
+
+    const eliminarInstruccion = id => {
+        dispatch({
+            type: ELIMINAR_INSTRUCCION,
+            payload: id
         })
     }
 
@@ -45,6 +55,13 @@ const ProgramaState = props => {
             payload: valor
         })
     }
+
+    const setinstActual = valor => {
+        dispatch({
+            type: SET_INSTACTUAL,
+            payload: valor
+        })
+    }
     return (
         <programaContext.Provider
             value={{
@@ -52,10 +69,13 @@ const ProgramaState = props => {
                 xx: state.xx,
                 yy: state.yy,
                 direccion: state.direccion,
+                instActual: state.instActual,
                 agregarInstruccion,
+                eliminarInstruccion,
                 setXX,
                 setYY,
-                setDireccion
+                setDireccion,
+                setinstActual
             }}
         >
             {props.children}

@@ -1,9 +1,11 @@
-import React, { Fragment, useEffect, useContext } from 'react';
-import salaContext from '../context/salas/salaContext'
+import React, { Fragment, useEffect, useContext, useState } from 'react';
+import salaContext from '../context/salas/salaContext';
+import programaContext from '../context/programa/programaContext';
 import styles from './Programacion.module.css';
 import Controles from './Controles';
 import Controlmanual from './Controlmanual';
 import Panelprograma from './Panelprograma';
+import Robot from './Robot'
 
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import SaveIcon from '@material-ui/icons/Save';
@@ -11,18 +13,75 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Button from '@material-ui/core/Button';
 import PrintIcon from '@material-ui/icons/Print';
 import PropTypes from 'prop-types';
-import { SimpleMediaQuery } from '../helper';
+import { SimpleMediaQuery, obtenerXDelMosSeleccionado, obtenerXDelMosSeleccionadoMu, obtenerYDelMosSeleccionadoMu, obtenerMosXSeleccionadoMu } from '../helper';
 
 
 
 
 const Programacion = React.forwardRef((props,ref) => {
+    const canvasRobot = React.createRef(); // Crea la referencia del mosaico que carga el Robot
+
     const salaContexto = useContext(salaContext);
-    const { alto, largo, separacion, mosSeleccionado, columnas, filas } = salaContexto;
+    const { alto, largo, separacion, mosSeleccionado, columnas, filas, mosaicoX } = salaContexto;
+
+    const instruccionesContext = useContext(programaContext);
+    const { xx, yy } = instruccionesContext;
+    
     const canvasAlmacenes = ref;  // Toma la referencia del canvas del Almacen que se pasa por parámetro en la llamada del componente
     const canvasMural = React.createRef(); //Crea la referencia del canvas del Mural donde se pegan los mosaicos
     const refInput = React.createRef(); //Crea la referencia al input que permite abrir el mural
     let fontsize = 35; //el tamaño de los botones del toolbar y depende del tamaño de pantalla
+
+    const [copia, setCopia] = useState(false);
+    const [pega, setPega] = useState(false);
+    const [giraMosaico, setgiraMosaico] = useState(0);
+
+    useEffect (()=>{
+        if(copia === true){       
+            const canvasAlm = canvasAlmacenes.current; //El current del Almacen
+            const canvasMos = canvasRobot.current;       //El current del Mural
+            const ctxAlm = canvasAlm.getContext('2d');  //Crea el contexto donde tomará el mosaico seleccionado
+            const ctxMos = canvasMos.getContext('2d'); //Crea el contexto donde pintará el mosaico seleccionado
+            let xMosAlmacen = obtenerXDelMosSeleccionado(mosSeleccionado, largo, separacion); //xx Obtiene la coordenada X del mosaico seleccionado
+            var imgMosaico = ctxAlm.getImageData(xMosAlmacen + separacion, separacion, largo, alto);//Toma el mosaico del almacen
+            ctxMos.putImageData(imgMosaico, 0 , 0); //Copia el mosaico en el Robot
+        }
+    }, [copia]);
+
+    useEffect(() => {
+        if(giraMosaico > 0){
+            const canvas = canvasRobot.current;
+            const ctx = canvas.getContext('2d');
+           //Guarda el contenido del canvas en un canvas temporal
+            var tempCanvas = document.createElement("canvas"),
+            tempCtx = tempCanvas.getContext("2d");
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            tempCtx.drawImage(canvas,0,0,canvas.width,canvas.height);
+            //Rota el canvas usando el centro como su eje de rotación
+            ctx.save();
+            ctx.translate(largo / 2, alto / 2);
+            ctx.rotate(giraMosaico*Math.PI/180);
+            ctx.translate(-(largo / 2), -(alto / 2));
+            ctx.drawImage(tempCanvas,0,0);
+            ctx.restore();
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            setgiraMosaico(0);
+        }
+    }, [giraMosaico])
+
+    useEffect (()=>{
+        if(pega === true){       
+            const canvasMos = canvasRobot.current; //El current del Almacen
+            const canvasMu = canvasMural.current;       //El current del Mural
+            const ctxMos = canvasMos.getContext('2d');  //Crea el contexto donde tomará el mosaico seleccionado
+            const ctxMural = canvasMu.getContext('2d'); //Crea el contexto donde pintará el mosaico seleccionado
+            var imgMosaico = ctxMos.getImageData(0,0, largo, alto);//Toma el mosaico del almacen
+            let xMosaico = obtenerXDelMosSeleccionadoMu(xx, largo, separacion);
+            let yMosaico = obtenerYDelMosSeleccionadoMu(yy, alto, separacion); //Obtiene la coordenada X del mosaico seleccionado
+            ctxMural.putImageData(imgMosaico, xMosaico+1 , yMosaico+1 ); //Estampa el mosaico en el Mural
+        }
+    }, [pega]);
     /***********************************/  
     /*FUNCIONES DE LA SALA MURALES */
     /******************************** */
@@ -139,6 +198,12 @@ const Programacion = React.forwardRef((props,ref) => {
         console.log(SimpleMediaQuery('(max-width: 900px)'));
         console.log(SimpleMediaQuery('(max-width: 1000px)')); */
     return (
+        <Fragment>
+        <Robot
+            ref={canvasRobot}
+            xx={xx}
+            yy={yy}
+        />
         <div className={`${styles.cont_programacion}`}  >
             <div className={`${styles.ctr_y_mural}`}  >
                 <Controlmanual>
@@ -200,13 +265,21 @@ const Programacion = React.forwardRef((props,ref) => {
                 </div>
             </div>
             <div className={`${styles.pnl_programa}`}  >
-                    <Controles>
+                    <Controles
+                        ref = {canvasAlmacenes}
+                        copia={copia}
+                        setCopia={setCopia}
+                        pega={pega}
+                        setPega={setPega}
+                        setgiraMosaico={setgiraMosaico}
+                    >
                     </Controles>
                     <Panelprograma>
                     </Panelprograma>             
             </div>
              
         </div>
+        </Fragment>
     );
 });
  
