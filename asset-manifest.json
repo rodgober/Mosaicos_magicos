@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/Mosaicos_magicos/static/css/main.ac9b396d.chunk.css",
-    "main.js": "/Mosaicos_magicos/static/js/main.916e85e9.chunk.js",
-    "main.js.map": "/Mosaicos_magicos/static/js/main.916e85e9.chunk.js.map",
-    "runtime-main.js": "/Mosaicos_magicos/static/js/runtime-main.3f07601c.js",
-    "runtime-main.js.map": "/Mosaicos_magicos/static/js/runtime-main.3f07601c.js.map",
-    "static/js/2.32d04a05.chunk.js": "/Mosaicos_magicos/static/js/2.32d04a05.chunk.js",
-    "static/js/2.32d04a05.chunk.js.map": "/Mosaicos_magicos/static/js/2.32d04a05.chunk.js.map",
-    "static/js/3.7043c146.chunk.js": "/Mosaicos_magicos/static/js/3.7043c146.chunk.js",
-    "static/js/3.7043c146.chunk.js.map": "/Mosaicos_magicos/static/js/3.7043c146.chunk.js.map",
+    "main.css": "/Mosaicos_magicos/static/css/main.845bfc13.chunk.css",
+    "main.js": "/Mosaicos_magicos/static/js/main.a20a1239.chunk.js",
+    "main.js.map": "/Mosaicos_magicos/static/js/main.a20a1239.chunk.js.map",
+    "runtime-main.js": "/Mosaicos_magicos/static/js/runtime-main.b5655de2.js",
+    "runtime-main.js.map": "/Mosaicos_magicos/static/js/runtime-main.b5655de2.js.map",
+    "static/js/2.49c55691.chunk.js": "/Mosaicos_magicos/static/js/2.49c55691.chunk.js",
+    "static/js/2.49c55691.chunk.js.map": "/Mosaicos_magicos/static/js/2.49c55691.chunk.js.map",
+    "static/js/3.fd16a433.chunk.js": "/Mosaicos_magicos/static/js/3.fd16a433.chunk.js",
+    "static/js/3.fd16a433.chunk.js.map": "/Mosaicos_magicos/static/js/3.fd16a433.chunk.js.map",
     "index.html": "/Mosaicos_magicos/index.html",
-    "static/css/main.ac9b396d.chunk.css.map": "/Mosaicos_magicos/static/css/main.ac9b396d.chunk.css.map",
-    "static/js/2.32d04a05.chunk.js.LICENSE.txt": "/Mosaicos_magicos/static/js/2.32d04a05.chunk.js.LICENSE.txt",
+    "static/css/main.845bfc13.chunk.css.map": "/Mosaicos_magicos/static/css/main.845bfc13.chunk.css.map",
+    "static/js/2.49c55691.chunk.js.LICENSE.txt": "/Mosaicos_magicos/static/js/2.49c55691.chunk.js.LICENSE.txt",
     "static/media/LogoMM.png": "/Mosaicos_magicos/static/media/LogoMM.06d3b768.png",
     "static/media/barco.png": "/Mosaicos_magicos/static/media/barco.ed91d9d9.png",
     "static/media/brazil.png": "/Mosaicos_magicos/static/media/brazil.2d17b1bb.png",
     "static/media/casa.png": "/Mosaicos_magicos/static/media/casa.23a5048a.png",
+    "static/media/Instruccion.module.css": "/Mosaicos_magicos/static/media/greenArrowRight.5b28707d.png",
     "static/media/Sala.module.css": "/Mosaicos_magicos/static/media/horno.dae2ab7a.svg",
     "static/media/horno1.jpg": "/Mosaicos_magicos/static/media/horno1.b0b58307.jpg",
     "static/media/horno2.png": "/Mosaicos_magicos/static/media/horno2.3b8e2959.png",
@@ -29,9 +30,9 @@
     "static/media/index.css": "/Mosaicos_magicos/static/media/vertical.14b93909.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.3f07601c.js",
-    "static/js/2.32d04a05.chunk.js",
-    "static/css/main.ac9b396d.chunk.css",
-    "static/js/main.916e85e9.chunk.js"
+    "static/js/runtime-main.b5655de2.js",
+    "static/js/2.49c55691.chunk.js",
+    "static/css/main.845bfc13.chunk.css",
+    "static/js/main.a20a1239.chunk.js"
   ]
 }
