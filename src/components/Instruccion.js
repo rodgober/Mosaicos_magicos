@@ -2,9 +2,9 @@ import React from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
 import { SimpleMediaQuery } from '../helper';
+import styles from './Instruccion.module.css';
 
-
-const Instruccion = ({instruccion, eliminarInstruccion, instActual}) => {
+const Instruccion = ({instruccion, eliminarInstruccion, i, instActual}) => {
     let fontsize = 15;
     let minimo = '10px';
 
@@ -19,8 +19,9 @@ const Instruccion = ({instruccion, eliminarInstruccion, instActual}) => {
     return ( 
         <li
             key={instruccion.id}
+            className=
+            {(i === instActual) ? `${styles.seleccionada}` : null}
         >
-            {(instActual+1 ===  instruccion.id) ? '>' : null}
             {instruccion.tipo === 1
             ? <b>Ir al origen</b>
             : null}

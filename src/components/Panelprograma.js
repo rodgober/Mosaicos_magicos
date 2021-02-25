@@ -21,7 +21,7 @@ const Panelprograma = () => {
     if (SimpleMediaQuery('(max-width: 768px)')){
         minwidth = '22px';
     }
-
+    let i = -1;
     return ( 
         <div className={`${styles.cont_panelprograma}`}  >
             <div className={`${styles.inicio}`}>
@@ -33,11 +33,13 @@ const Panelprograma = () => {
                 ? null
                 : (programa.map(instruccion => (
                     <Instruccion
-
+                        
                         key={instruccion.id}
                         instruccion={instruccion}
                         eliminarInstruccion = {eliminarInstruccion}
+                        i = {++i}
                         instActual = {instActual}
+                        
                     ></Instruccion>
                         
                 )))

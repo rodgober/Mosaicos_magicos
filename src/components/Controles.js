@@ -101,10 +101,11 @@ const Controles = React.forwardRef((props, ref) => {
     }
 
     const next = async () => {
-        
+        console.log('Instrucción actual: ', instActual);
         await ejecuta(programa[instActual], milliseconds);
         setinstActual(instActual + 1);
         console.log('Listo!!!');
+        console.log('La próxima Instrucción actual: ', instActual);
     }
 
     /***** INSTRUCCIONES ASYNCRONAS QUE SIMULAN SER SINCRONAS*/
@@ -167,6 +168,11 @@ const Controles = React.forwardRef((props, ref) => {
     }
 
     /***** FIN INSTRUCCIONES ASYNCRONAS QUE SIMULAN SER SINCRONAS*/
+    const reset = e => { 
+        setXX(1);
+        setYY(1);
+        setinstActual(0);
+    }
 
     return ( 
         <div className={`${styles.cont_controles}`}  >
@@ -203,7 +209,7 @@ const Controles = React.forwardRef((props, ref) => {
                 style={{minWidth: '24px'}}
             >
                 <ReplayIcon
-                    
+                    onClick={e => reset()}
                     style={{ minWidth: '24px', fontSize: fontsize }}
                 ></ReplayIcon>
             </Button>
